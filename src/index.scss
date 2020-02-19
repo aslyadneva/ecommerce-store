@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400&display=swap');
+
+/* Main colors */
+  $main-grey: #6a6a6a; 
+  $main-black: #1c1b1b; 
+  $primary: #caa98a; 
+
+/* General Styles  */
+*, html {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}
+
+/* Custom Utility Classes */
+.main-nav-link {
+  color: white; 
+  margin: 0 2rem; 
+  font-weight: 300; 
+}
+
+/* Header */
+#main-header {
+  height: 100vh; 
+  background-color: lightgrey; 
+
+  nav {
+    z-index: 99;
+    position: fixed; 
+    padding: 1rem;
+    width: 100%;
+    border-bottom: solid 0.3px white;
+
+    .top-container {
+      display: flex; 
+      margin-bottom: 1rem;;
+
+      .flex-item {
+        flex: 1;
+      }
+      
+      .logo {
+        text-align: center;
+        align-self: center;
+
+        h1 {
+          font-weight: bold;
+          color: white;
+        }
+      }
+      .mini-nav {
+        display: flex; 
+        justify-content: flex-end;
+        margin-right: 2rem;
+
+        a {
+          color: white; 
+          font-weight: 300;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          margin: 0 1rem;
+        }
+
+      } 
+    }
+
+    .bottom-container {
+      
+      .main-nav {
+        display: flex; 
+        justify-content: center;
+      }
+    }
+
+  }
+
+
+  nav:hover {
+    background-color: white;
+    
+    .top-container h1,.mini-nav a, .main-nav a {
+      color: #1c1b1b; 
+    } 
+  }
+
+  .img-container {
+    height: 100vh; 
+    background: url('/images/photo1.jpg') no-repeat center center/cover;
+  }
+}
+
+/* New In */
+
+/* Footer */
+footer {
+  border-top: 1px solid #ddd; 
+}
+
+
