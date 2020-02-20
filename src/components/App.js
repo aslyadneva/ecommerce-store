@@ -12,6 +12,7 @@ import ProductList from './pages/ProductList';
 import Product from './pages/Product'; 
 import Login from './pages/Login';
 import Account from './pages/Account';
+import Cart from './cart/Cart'; 
 
  
 class App extends Component {
@@ -23,13 +24,15 @@ class App extends Component {
     return (
       <div>
         <Navigation />
+        <Cart/>
           <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/login" exact component={Login}/>
             <Route path="/account" exact component={Account}/>
-            <Route path="/collections/productlist" component={ProductList}/>
-            <Route path="/collections/productlist/product" component={Product}/>
+            <Route path="/productlist" exact component={ProductList}/>
+            <Route path="/product" exact component={Product}/>
           </Switch>
+        
         <Newsletter/>
         <Footer/>
       </div>

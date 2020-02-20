@@ -3,7 +3,10 @@ import React from 'react';
 function Product() {
   return (
     <div>
-      Product Page
+      <h1>Product Name</h1>
+      <p>Product Details </p>
+      <div></div>
+      <button>Add To Cart</button>
     </div>
   );
 }

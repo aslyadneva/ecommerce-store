@@ -1,4 +1,4 @@
-import { INIT_AUTH, SIGN_IN, SIGN_OUT } from './types'; 
+import { INIT_AUTH, SIGN_IN, SIGN_OUT, OPEN_CART, CLOSE_CART } from './types'; 
 
 let auth; 
 
@@ -37,4 +37,16 @@ export const signOut = () => {
   return {
     type: SIGN_OUT
   };
+};
+
+export const openCart = () => {
+  return {
+    type: OPEN_CART
+  }; 
+}; 
+
+export const closeCart = () => {
+  return {
+    type: CLOSE_CART
+  }; 
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
+import { openCart } from '../actions'; 
 
 class Navigation extends React.Component {
   constructor () {
@@ -14,38 +15,61 @@ class Navigation extends React.Component {
     } else {
       return '/login'
     }
-  }
+  } 
 
   render () {
     return (
-      <header>
-        <div>
-          <nav>
-            <ul>
-              <li><NavLink to="/">HOME</NavLink></li>
-            </ul>
-            <ul>
-              <li><NavLink to="/collections/productlist">SHOP</NavLink></li>
-            </ul>
-          </nav>
-        </div>
-        <div>
-          <NavLink to="/">
-            <h1>Brand Name</h1>
-          </NavLink>       
-        </div>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to={this.isAuthorized}>Account</NavLink>             
-              </li>
-              <li>Search</li>
-              <li>Cart</li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <div className="shopify-section--header">
+        <header className="Header">
+          <div className="Header__Wrapper">
+
+            <div className="Header__FlexItem Header__FlexItem--fill">
+              <nav className="Header__MainNav">
+                <ul className="HorizontalList HorizontalList--spacingExtraLoose">
+                  <li className="HorizontalList__Item">
+                    <NavLink className="Heading u-h6" to="/">HOME</NavLink>
+                  </li>
+                  <li className="HorizontalList__Item">
+                    <NavLink className="Heading u-h6" to="/productlist">SHOP</NavLink>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div className="Header__FlexItem">
+              <h1 className="Header__Logo">
+                <NavLink className="Header__LogoLink" to="/"> Brand Name</NavLink>             
+              </h1>
+                      
+            </div>
+
+            <div className="Header__FlexItem Header__FlexItem--fill">
+              <nav className="Header__SecondaryNav">
+                <ul className="HorizontalList HorizontalList--spacingLoose">
+                  <li className="HorizontalList__Item">
+                    <NavLink className="Heading Link--primary Text--subdued u-h8" to={this.isAuthorized}>ACCOUNT</NavLink>             
+                  </li>
+                  <li className="HorizontalList__Item">
+                    <NavLink className="Heading Link--primary Text--subdued u-h8" to="/">SEARCH</NavLink>
+                  </li>
+                  <li className="HorizontalList__Item">
+                    <a 
+                      className="Heading u-h6" 
+                      data-action="open-drawer"
+                      data-drawer-id="open-drawer"
+                      aria-label="Open cart"
+                      onClick={this.props.openCart}
+                    >
+                      CART (<span className="Heading">0</span>)
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+          </div>
+        </header>
+      </div>
     );
   }
   
@@ -55,4 +79,4 @@ const mapStateToProps = state => {
   return { isSignedIn: state.auth.isSignedIn }
 }
 
-export default connect (mapStateToProps)(Navigation);
+export default connect (mapStateToProps, {openCart})(Navigation);
