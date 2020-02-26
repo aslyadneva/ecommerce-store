@@ -30,7 +30,7 @@ class Navigation extends React.Component {
                     <NavLink className="Heading u-h6" to="/">HOME</NavLink>
                   </li>
                   <li className="HorizontalList__Item">
-                    <NavLink className="Heading u-h6" to="/productlist">SHOP</NavLink>
+                    <NavLink className="Heading u-h6" to="/products">SHOP</NavLink>
                   </li>
                 </ul>
               </nav>
@@ -60,7 +60,7 @@ class Navigation extends React.Component {
                       aria-label="Open cart"
                       onClick={this.props.openCart}
                     >
-                      CART (<span className="Heading">0</span>)
+                      CART (<span className="Heading">{this.props.numOfCartItems}</span>)
                     </a>
                   </li>
                 </ul>
@@ -76,7 +76,10 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { isSignedIn: state.auth.isSignedIn }
+  return { 
+    isSignedIn: state.auth.isSignedIn, 
+    numOfCartItems: state.cart.products.length 
+  }
 }
 
 export default connect (mapStateToProps, {openCart})(Navigation);

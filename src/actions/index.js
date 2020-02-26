@@ -1,4 +1,11 @@
-import { INIT_AUTH, SIGN_IN, SIGN_OUT, OPEN_CART, CLOSE_CART } from './types'; 
+import { 
+  INIT_AUTH, 
+  SIGN_IN, 
+  SIGN_OUT, 
+  OPEN_CART, 
+  CLOSE_CART, 
+  ADD_TO_CART,
+  REMOVE_FROM_CART } from './types'; 
 
 let auth; 
 
@@ -50,3 +57,19 @@ export const closeCart = () => {
     type: CLOSE_CART
   }; 
 };
+
+export const addToCart = (product) => {
+  return {
+    type: ADD_TO_CART, 
+    //the payload is the product object 
+    payload: product
+  }; 
+};
+
+export const removeFromCart = (id) => {
+  return {
+    type: REMOVE_FROM_CART,  
+    payload: id
+  }; 
+};
+

@@ -1,45 +1,69 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom'; 
 
-function CartItem(props) {
-  return (
-    <div className="CartItemWrapper">
-      <div className="CartItem">
-        <div className="CartItem__ImageWrapper AspectRatio"></div>
-        <div className="CartItem__Info">
 
-          <h2 className="CartItem__Title Heading">Item Title</h2>
+class CartItem extends Component {
 
-          <div className="CartItem__Meta Heading Text--subdued">
-            <p className="CartItem__Variant">medium</p>
-            <div className="CartItem__PriceList">
-              <span className="CartItem__Price Price">
-                <span className="money">$99.99</span>
-              </span>
-            </div>
+  handleClick = (e) => {
+    e.preventDefault(); 
+    this.props.remove(this.props.item);
+  }
+
+  render () {
+    return (
+      <div className="CartItemWrapper">
+        <div className="CartItem">
+          <div className="CartItem__ImageWrapper AspectRatio">
+            <img src={this.props.image}/>
           </div>
-
-          <div className="CartItem__Actions Heading Text--subdued">
-
-            <div className="CartItem__QuantitySelector">
-              <div className="QuantitySelector">
-                <Link className="QuantitySelector__Button Link Link--primary">
-                  <i className="fas fa-minus"></i>
-                </Link>
-                <input className="QuantitySelector__CurrentQuantity" type="text" value="2"></input>
-                <Link className="QuantitySelector__Button Link Link--primary">
-                  <i className="fas fa-plus"></i>
-                </Link>
+          
+          <div className="CartItem__Info">
+  
+            <h2 className="CartItem__Title Heading">{this.props.title}</h2>
+  
+            <div className="CartItem__Meta Heading Text--subdued">
+              <p className="CartItem__Variant">medium</p>
+              <div className="CartItem__PriceList">
+                <span className="CartItem__Price Price">
+                  <span className="money">{`$${this.props.price}`}</span>
+                </span>
               </div>
             </div>
 
-            <Link className="CartItem__Remove Link Link--undeline Link--undelineShort">Remove</Link>
-          </div>
+            <div>{this.props.item.quantity}</div>
+  
+            <div className="CartItem__Actions Heading Text--subdued">
 
-        </div>
-      </div>  
-    </div>
-  );
+              {/* // Quantity Selector Buttons  */}
+              {/* <div className="CartItem__QuantitySelector">
+                <div className="QuantitySelector">
+                  <Link className="QuantitySelector__Button Link Link--primary">
+                    <i className="fas fa-minus"></i>
+                  </Link>
+
+                  <Field name="product quantity" component={this.renderInput}/>
+                  
+  
+                  <Link className="QuantitySelector__Button Link Link--primary">
+                    <i className="fas fa-plus"></i>
+                  </Link>
+                </div>
+              </div> */}
+  
+              {/* Remove Button */}
+              <button 
+                onClick={this.handleClick}
+              >
+                Remove
+              </button>
+            </div>
+  
+          </div>
+        </div>  
+      </div>
+    );
+  }
+  
 }
 
 export default CartItem;

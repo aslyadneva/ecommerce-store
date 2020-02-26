@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 
+
 function ProductTile(props) {
   return (
     <div className="ProductItem">
       <div className="ProductItem__Wrapper">
 
-        <Link>
+        <Link to={`/products/${props.id}`}>
           <div className="AspectRatio">
             <img 
               className=""
               src={props.image}
+              alt={props.name}
             >
             </img>
           </div>
@@ -18,7 +20,7 @@ function ProductTile(props) {
 
         <div className="ProductItem__Info ProductItem__Info--center">
           <h2 className="ProductItem__Title Heading">
-            <Link>{props.name}</Link>            
+            <Link to={`/products/${props.id}`}>{props.name}</Link>            
           </h2>
           <div className="ProductItem__PriceList Heading">
             <span className="Price">

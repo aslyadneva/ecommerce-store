@@ -514,33 +514,3 @@
   }
 }
 
-.QuantitySelector {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  white-space: nowrap;
-}
-
-.QuantitySelector__Button {
-  display: inline-block;
-  padding: 5px 9px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.QuantitySelector__CurrentQuantity {
-  display: inline-block;
-  width: 20px;
-  padding: 0;
-  font-size: 9px;
-  text-align: center;
-  letter-spacing: normal;
-  background: transparent;
-  border: none;
-}
-
-@media screen and (min-width: 641px) {
-  .QuantitySelector__Button {
-      padding: 7px 14px 8px 14px;
-  }
-}

@@ -29,8 +29,8 @@ class App extends Component {
             <Route path="/" exact component={Home}/>
             <Route path="/login" exact component={Login}/>
             <Route path="/account" exact component={Account}/>
-            <Route path="/productlist" exact component={ProductList}/>
-            <Route path="/product" exact component={Product}/>
+            <Route path="/products" exact component={ProductList}/>
+            <Route path="/products/:name" exact component={Product}/>
           </Switch>
         
         <Newsletter/>

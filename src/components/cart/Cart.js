@@ -1,10 +1,60 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closeCart } from '../../actions';  
+import { closeCart, removeFromCart } from '../../actions';  
 import CartItem from './CartItem'; 
 
 
 class Cart extends Component {
+  handleRemove = (item) => {
+    this.props.removeFromCart(item); 
+  }
+
+  renderCartContent () {
+    if (this.props.cartItems.length === 0) {
+      return (
+        <p className="Cart__Empty Heading u-h5">Your cart is empty</p>
+      ); 
+    }
+
+    return (
+      <div className="Drawer__Container">
+          <div className="Cart__ItemList">
+
+            {this.props.cartItems.map(item => {
+              return (
+                <CartItem 
+                  item = {item}
+                  title={item.name}
+                  price={item.price}
+                  image={item.img}
+                  id={item.id}
+                  key={item.id}
+                  remove={this.handleRemove}
+                />
+              );
+            })}
+
+          </div>
+      </div>
+    ); 
+  }
+
+  renderCartFooter() {
+    if (this.props.cartItems.length !== 0) {
+      return (
+        <div className="Drawer__Footer">
+            <button className="Cart__Checkout Button Button--full" type="submit">
+              <span>Checkout</span>
+              <span className="Button__SeparatorDot"></span>
+              <span className="money">{`$${this.props.total}`}</span>
+            </button>
+        </div>
+      ); 
+    }
+
+    return null;
+  }
+
   render () {
     return (
       <div 
@@ -28,25 +78,14 @@ class Cart extends Component {
 
         <form className="Drawer__Content">
           <div className="Drawer__Main">
-
-            {/* <p className="Cart__Empty Heading u-h5">Your cart is empty</p> */}
-
-            <div className="Drawer__Container">
-              <div className="Cart__ItemList">
-                <CartItem />
-                <CartItem />
-              </div>
-            </div>
-
+            
+            {this.renderCartContent()}
+            
           </div>
 
-          <div className="Drawer__Footer">
-            <button className="Cart__Checkout Button Button--primary Button--full" type="submit">
-              <span>Checkout</span>
-              <span className="Button__SeparatorDot"></span>
-              <span className="money">$165.99</span>
-            </button>
-          </div>
+            {this.renderCartFooter()}
+
+          
         </form>
 
       </div>
@@ -55,6 +94,10 @@ class Cart extends Component {
   
 }
 const mapStateToProps = state => {
-  return { isOpen: state.cart.isOpen }
+  return { 
+    isOpen: state.cart.isOpen, 
+    cartItems: state.cart.products, 
+    total: state.cart.total
+  }
 }
-export default connect (mapStateToProps, {closeCart})(Cart);
+export default connect (mapStateToProps, { closeCart, removeFromCart })(Cart);

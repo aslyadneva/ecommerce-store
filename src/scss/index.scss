@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400&display=swap');
 @import './cart'; 
 @import './productTile'; 
+@import './product'; 
 
 /* Main colors */
   $main-grey: #6a6a6a; 
@@ -46,6 +47,15 @@ article, aside, details, figcaption, figure, footer, header, main, nav, section,
   display: block;
 }
 
+input {
+  line-height: normal;
+  border-radius: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
 .Heading {
   font-weight: 400;
   font-style: normal;
@@ -53,6 +63,10 @@ article, aside, details, figcaption, figure, footer, header, main, nav, section,
   transition: color 0.2s ease-in-out;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.u-h2, .Rte h2 {
+  font-size: 18px;
 }
 
 .u-h4, .Rte h4 {
@@ -131,6 +145,11 @@ a {
     display: inline-block;
     margin: 6px 8px 6px 8px;
   }
+
+  .HorizontalList--spacingTight .HorizontalList__Item {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
 }
 .Icon {
   display: inline-block;
@@ -146,6 +165,20 @@ a {
 .Icon-Wrapper--clickable {
   position: relative;
   background: transparent
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
 }
 
 .Button {
@@ -171,6 +204,11 @@ a {
 .Button--primary {
     color: #fff;
     border-color: #caa98a
+}
+
+.Button--secondary {
+  color: #6a6a6a;
+  border: 1px solid rgba(106,106,106,0.2);
 }
 
 .Button--full {
@@ -204,6 +242,32 @@ a {
 .CollectionInner {
   margin-top: 24px
 }
+
+.QuantitySelector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.QuantitySelector__Button {
+  display: inline-block;
+  padding: 5px 9px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.QuantitySelector__CurrentQuantity {
+  display: inline-block;
+  width: 20px;
+  padding: 0;
+  font-size: 9px;
+  text-align: center;
+  letter-spacing: normal;
+  background: transparent;
+  border: none;
+}
+
 
 @media screen and (min-width: 1008px) {
   .CollectionInner {
@@ -434,6 +498,15 @@ a {
   }
   .\31\31\/12--tablet-and-up {
       width: 91.66667%
+  }
+  .Container {
+    padding: 0 50px;
+  }
+  .u-h2, .Rte h2 {
+    font-size: 18px;
+  } 
+  .QuantitySelector__Button {
+    padding: 7px 14px 8px 14px;
   }
 }
 
