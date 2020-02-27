@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'; 
 import authReducer from './authReducer'; 
 import authInitReducer from './authInitReducer';
-import cartIsOpenedReducer from './cartIsOpenedReducer';
+import cartReducer from './cartReducer';
 import productsReducer from './productsReducer';
 import { reducer as formReducer } from 'redux-form'; 
 
 export default combineReducers({
-  cart: cartIsOpenedReducer,
+  cart: cartReducer,
   isInitialized: authInitReducer,
   auth: authReducer, 
   products: productsReducer,

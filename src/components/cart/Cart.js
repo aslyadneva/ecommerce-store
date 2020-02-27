@@ -14,24 +14,30 @@ class Cart extends Component {
       return (
         <p className="Cart__Empty Heading u-h5">Your cart is empty</p>
       ); 
-    }
+    } 
 
     return (
       <div className="Drawer__Container">
           <div className="Cart__ItemList">
 
-            {this.props.cartItems.map(item => {
+
+            {(this.props.cartItems).map(item => {
+              if (item.name )
+
+
+
+
               return (
                 <CartItem 
-                  item = {item}
                   title={item.name}
-                  price={item.price}
                   image={item.img}
-                  id={item.id}
-                  key={item.id}
+                  size={item.size}
+                  price={item.price}
+                  quantity={item.quantity}
                   remove={this.handleRemove}
                 />
               );
+
             })}
 
           </div>
@@ -79,11 +85,11 @@ class Cart extends Component {
         <form className="Drawer__Content">
           <div className="Drawer__Main">
             
-            {this.renderCartContent()}
+            {/* {this.renderCartContent()} */}
             
           </div>
 
-            {this.renderCartFooter()}
+            {/* {this.renderCartFooter()} */}
 
           
         </form>
@@ -101,3 +107,12 @@ const mapStateToProps = state => {
   }
 }
 export default connect (mapStateToProps, { closeCart, removeFromCart })(Cart);
+
+
+
+
+
+
+
+
+

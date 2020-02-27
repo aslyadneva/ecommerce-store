@@ -4,12 +4,16 @@ import { addToCart, openCart } from '../../actions';
 import ProductForm from '../ProductForm'; 
 
 class Product extends Component {
-  //Callback for StreamForm
+  //Callback for ProductForm
   onSubmit = (formValues) => {
-    const item = this.props.product; 
-    const itemToBeAdded = {...formValues, ...item}
-    // EXAMPLE!!!! this.props.editStream(this.props.match.params.id, formValues); 
-    console.log(itemToBeAdded); 
+    const { id, name, price, img } = this.props.product; 
+
+    const productToAdd = {
+      [id]: {name, price, img, [formValues.size]:formValues.quantity}
+    };
+    console.log(productToAdd);
+    // this.props.addToCart(productToAdd)
+   
     // USE FOR LATER this.props.openCart();
   }
 
@@ -23,7 +27,7 @@ class Product extends Component {
             <div className="Product__Slideshow Carousel">
               <img src={this.props.product.img} alt={this.props.product.name}></img>
             </div>           
-          </div>
+          </div> 
           
           {/* Product Details */}
           <div className="Product__InfoWrapper">

@@ -9,7 +9,7 @@ class CartItem extends Component {
     this.props.remove(this.props.item);
   }
 
-  render () {
+  render () { 
     return (
       <div className="CartItemWrapper">
         <div className="CartItem">
@@ -22,7 +22,7 @@ class CartItem extends Component {
             <h2 className="CartItem__Title Heading">{this.props.title}</h2>
   
             <div className="CartItem__Meta Heading Text--subdued">
-              <p className="CartItem__Variant">medium</p>
+              <p className="CartItem__Variant">{this.props.size}</p>
               <div className="CartItem__PriceList">
                 <span className="CartItem__Price Price">
                   <span className="money">{`$${this.props.price}`}</span>
@@ -30,7 +30,7 @@ class CartItem extends Component {
               </div>
             </div>
 
-            <div>{this.props.item.quantity}</div>
+            <div>{this.props.quantity}</div>
   
             <div className="CartItem__Actions Heading Text--subdued">
 

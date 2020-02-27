@@ -7,7 +7,7 @@ class ProductForm extends Component {
   }
 
   render () {
-    return (
+    return ( 
       //handleSubmit is a built in Redux Form function that calls your method of choice
       <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ProductForm">
         {/* Size Buttons */}
@@ -39,39 +39,6 @@ class ProductForm extends Component {
           </div>        
         </div>
         {/* Size Buttons End */}
-  
-        {/* Quantity Selector */}
-        <span className="ProductForm__Label">
-          Quantity:
-        </span> 
-            
-        <div className="ProductForm__QuantitySelector">
-          <div className="QuantitySelector">
-
-            <span 
-              onClick={()=> console.log('subtract quantity')}
-              className="QuantitySelector__Button Link Link--secondary"
-            >
-              <i className="fas fa-minus"></i>
-            </span>            
-            {/* make sure to put initial value of 1 */}
-            <Field 
-              name="quantity" 
-              component="input" 
-              type="text" 
-              autoComplete="off"
-              className="QuantitySelector__CurrentQuantity"
-            />           
-            <span 
-              onClick={()=> console.log('add quantity')}
-              className="QuantitySelector__Button Link Link--secondary"
-            >
-              <i className="fas fa-plus"></i>
-            </span>
-
-          </div>
-        </div>
-        {/* Quantity Selector End */}
         
         <button 
           type="submit"   
