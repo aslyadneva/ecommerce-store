@@ -53,15 +53,9 @@ class Navigation extends React.Component {
                     <NavLink className="Heading Link--primary Text--subdued u-h8" to="/">SEARCH</NavLink>
                   </li>
                   <li className="HorizontalList__Item">
-                    <a 
-                      className="Heading u-h6" 
-                      data-action="open-drawer"
-                      data-drawer-id="open-drawer"
-                      aria-label="Open cart"
-                      onClick={this.props.openCart}
-                    >
+                    <NavLink to="#" className="Heading u-h6" onClick={this.props.openCart}>
                       CART (<span className="Heading">{this.props.numOfCartItems}</span>)
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </nav>

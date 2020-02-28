@@ -2,9 +2,7 @@ import { OPEN_CART, CLOSE_CART, ADD_TO_CART, REMOVE_FROM_CART  } from '../action
 
 const INITIAL_STATE = {
   isOpen: false,
-  products: {}, 
-  numOfProducts: null,
-  total: null
+  products: []
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,18 +14,31 @@ export default (state = INITIAL_STATE, action) => {
     case CLOSE_CART: 
       return {...state, isOpen: false};
 
-    case ADD_TO_CART:  
+    case ADD_TO_CART: 
+
+      function getProducts () {
+        const addedItem = action.payload;
+    
+        const duplicateItem = state.products.filter(product => product.id === addedItem.id && product.size === addedItem.size)[0]
+        
+        if (duplicateItem) {
+            duplicateItem.quantity = duplicateItem.quantity + addedItem.quantity;
+            duplicateItem.price = duplicateItem.price + addedItem.price
+            return state.products
+        }
+        return [...state.products, addedItem]
+      }
       
-      return {
+      return { 
         ...state, 
-       
-      };
+        products: getProducts()
+      }
 
     case REMOVE_FROM_CART: 
-      const removedItem = action.payload; 
-    
+      console.log(action.payload); 
       return {
-        ...state
+        ...state, 
+        products: state.products.filter((product) => product != action.payload)
       };
 
     default: 

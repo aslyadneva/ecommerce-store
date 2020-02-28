@@ -3,21 +3,19 @@ import { connect } from 'react-redux';
 import { addToCart, openCart } from '../../actions'; 
 import ProductForm from '../ProductForm'; 
 
-class Product extends Component {
-  //Callback for ProductForm
-  onSubmit = (formValues) => {
-    const { id, name, price, img } = this.props.product; 
 
-    const productToAdd = {
-      [id]: {name, price, img, [formValues.size]:formValues.quantity}
-    };
-    console.log(productToAdd);
-    // this.props.addToCart(productToAdd)
-   
-    // USE FOR LATER this.props.openCart();
+class Product extends Component {
+  // Callback for ProductForm
+  onSubmit = ({ quantity, size }) => {
+    const { image, name, price, id } = this.props.product;
+
+    // a product obj with a quantity and size is sent to addToCart()
+    this.props.addToCart({ id, name, image, price, quantity, size })
   }
 
   render () {
+    const { image, name, price, description } = this.props.product; 
+
     return (
       <section className="Product Product--medium">
         <div className="Product__Wrapper">
@@ -25,7 +23,7 @@ class Product extends Component {
           {/* Product Image */}
           <div className="Product__Gallery Product__Gallery--stack Product__Gallery--withThumbnails">
             <div className="Product__Slideshow Carousel">
-              <img src={this.props.product.img} alt={this.props.product.name}></img>
+              <img src={image} alt={name}></img>
             </div>           
           </div> 
           
@@ -36,13 +34,13 @@ class Product extends Component {
 
                 {/* Product Description */}
                 <div className="ProductMeta">
-                  <h1 className="ProductMeta__Title Heading u-h2">{this.props.product.name}</h1>
+                  <h1 className="ProductMeta__Title Heading u-h2">{name}</h1>
                   <div className="ProductMeta__PriceList Heading">
-                    <span className="ProductMeta__Price Price Text--subdued u-h4">{`$${this.props.product.price}`}</span>     
+                    <span className="ProductMeta__Price Price Text--subdued u-h4">{`$${price}`}</span>     
                   </div>
                   <p className="afterpay-paragraph">or 4 interest free installments of bla bla bla</p>
                   <div className="ProductMeta__Description Rte">
-                    <p>{this.props.product.description}</p>
+                    <p>{description}</p>
                   </div>            
                 </div>
               
@@ -58,13 +56,12 @@ class Product extends Component {
         </div>
       </section>
     );
-  }
-  
+  }    
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    product: state.products[ownProps.match.params.name]
+    product: state.products.filter(product => product.id === ownProps.match.params.name)[0]
   }
 }
 

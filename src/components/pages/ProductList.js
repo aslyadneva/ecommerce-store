@@ -2,7 +2,7 @@ import React from 'react';
 import ProductTile  from '../ProductTile'; 
 import { connect } from 'react-redux'; 
 
-function ProductList(props) {
+function ProductList({ products }) {
   return (
     <main>
       <div>
@@ -18,21 +18,22 @@ function ProductList(props) {
 
             <div className="ProductListWrapper">
 
-            <div className="ProductList ProductList--grid ProductList--removeMargin Grid">
-              {props.products.map(product => {
-                return (
-                  <div key={product.id} className="Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up">
-                    <ProductTile 
-                      
-                      id={product.id}
-                      image={product.img}
-                      name={product.name}
-                      price={product.price}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+              <div className="ProductList ProductList--grid ProductList--removeMargin Grid">
+
+                {products.map(product => {
+                  return (
+                    <div key={product.id} className="Grid__Cell 1/2--phone 1/3--tablet-and-up 1/4--lap-and-up">
+                      <ProductTile                     
+                        id={product.id}
+                        image={product.image}
+                        name={product.name}
+                        price={product.price}
+                      />
+                    </div>
+                  );
+                })}
+                
+              </div>
 
             </div>
           </div>
@@ -46,7 +47,7 @@ function ProductList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    products: Object.values(state.products)
+    products: state.products
   }
 }
 

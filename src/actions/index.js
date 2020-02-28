@@ -66,10 +66,10 @@ export const addToCart = (product) => {
   }; 
 };
 
-export const removeFromCart = (id) => {
+export const removeFromCart = (product) => {
   return {
     type: REMOVE_FROM_CART,  
-    payload: id
+    payload: product
   }; 
 };
 
