@@ -18,7 +18,7 @@ class ProductForm extends Component {
                 Size: 
                 <button className="ProductForm__LabelLink Link Text--subdued">Size Chart</button>
               </span> 
-            </label>
+            </label> 
   
             <ul className="SizeSwatchList HorizontalList HorizontalList--spacingTight">
 
@@ -35,7 +35,7 @@ class ProductForm extends Component {
                 <label className="SizeSwatch">Large</label>
               </li>
 
-            </ul>
+            </ul> 
           </div>        
         </div>
         {/* Size Buttons End */}

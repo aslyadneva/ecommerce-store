@@ -2,10 +2,12 @@ import {
   INIT_AUTH, 
   SIGN_IN, 
   SIGN_OUT, 
-  OPEN_CART, 
+  OPEN_CART,  
   CLOSE_CART, 
   ADD_TO_CART,
-  REMOVE_FROM_CART } from './types'; 
+  REMOVE_FROM_CART,
+  DECREASE_QUANTITY, 
+  INCREASE_QUANTITY } from './types'; 
 
 let auth; 
 
@@ -69,6 +71,20 @@ export const addToCart = (product) => {
 export const removeFromCart = (product) => {
   return {
     type: REMOVE_FROM_CART,  
+    payload: product
+  }; 
+};
+
+export const increaseQuantity = (product) => {
+  return {
+    type: INCREASE_QUANTITY,  
+    payload: product
+  }; 
+};
+
+export const decreaseQuantity = (product) => {
+  return {
+    type: DECREASE_QUANTITY,  
     payload: product
   }; 
 };

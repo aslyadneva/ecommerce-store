@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'; 
+import QuantityForm from '../QuantityForm'; 
+import {connect} from 'react-redux'; 
+import { increaseQuantity, decreaseQuantity } from '../../actions'; 
 
 
 class CartItem extends Component {
@@ -9,51 +11,51 @@ class CartItem extends Component {
     this.props.remove(this.props.item);
   }
 
+  increaseItemQuantity = () => {
+    this.props.increaseQuantity(this.props.item); 
+  }
+
+  decreaseItemQuantity = (value) => {
+    if (value ===1) {
+      this.props.remove(this.props.item); 
+    } else {
+      this.props.decreaseQuantity(this.props.item); 
+    }  
+  }
+
   render () { 
+    const { image, title, size, price, quantity } = this.props; 
     return (
       <div className="CartItemWrapper">
         <div className="CartItem">
           <div className="CartItem__ImageWrapper AspectRatio">
-            <img src={this.props.image}/>
+            <img src={image} alt={title}/>
           </div>
           
           <div className="CartItem__Info">
   
-            <h2 className="CartItem__Title Heading">{this.props.title}</h2>
+            <h2 className="CartItem__Title Heading">{title}</h2>
   
             <div className="CartItem__Meta Heading Text--subdued">
-              <p className="CartItem__Variant">{this.props.size}</p>
+              <p className="CartItem__Variant">{size}</p>
               <div className="CartItem__PriceList">
                 <span className="CartItem__Price Price">
-                  <span className="money">{`$${this.props.price}`}</span>
+                  <span className="money">{`$${price}`}</span>
                 </span>
               </div>
             </div>
-
-            <div>{this.props.quantity}</div>
   
             <div className="CartItem__Actions Heading Text--subdued">
 
               {/* // Quantity Selector Buttons  */}
-              {/* <div className="CartItem__QuantitySelector">
-                <div className="QuantitySelector">
-                  <Link className="QuantitySelector__Button Link Link--primary">
-                    <i className="fas fa-minus"></i>
-                  </Link>
-
-                  <Field name="product quantity" component={this.renderInput}/>
-                  
-  
-                  <Link className="QuantitySelector__Button Link Link--primary">
-                    <i className="fas fa-plus"></i>
-                  </Link>
-                </div>
-              </div> */}
+              <QuantityForm 
+                initialValues={{ itemQuantity: quantity }} 
+                onIncrease={this.increaseItemQuantity} 
+                onDecrease={this.decreaseItemQuantity}
+              />
   
               {/* Remove Button */}
-              <button 
-                onClick={this.handleClick}
-              >
+              <button onClick={this.handleClick}>
                 Remove
               </button>
             </div>
@@ -66,4 +68,4 @@ class CartItem extends Component {
   
 }
 
-export default CartItem;
+export default connect (null, { increaseQuantity, decreaseQuantity })(CartItem);

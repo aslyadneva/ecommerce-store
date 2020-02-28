@@ -20,6 +20,7 @@ class Cart extends Component {
               return (
                 <CartItem 
                   item = {item}
+                  key = {item.id}
                   title={item.name}
                   image={item.image}
                   size={item.size}

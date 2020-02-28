@@ -46,7 +46,7 @@ class Product extends Component {
               
                 {/* Product Form */}
                 <ProductForm 
-                  initialValues={{ quantity: 1 }}
+                  initialValues={{ quantity: 1, size: "Small" }}
                   onSubmit={this.onSubmit}
                 />
               </div>
