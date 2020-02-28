@@ -19,26 +19,27 @@ export default (state = INITIAL_STATE, action) => {
       function getProducts () {
         const addedItem = action.payload;
     
-        const duplicateItem = state.products.filter(product => product.id === addedItem.id && product.size === addedItem.size)[0]
+        const isDuplicateItem = state.products.filter(product => product.id === addedItem.id && product.size === addedItem.size)[0]
         
-        if (duplicateItem) {
-            duplicateItem.quantity = duplicateItem.quantity + addedItem.quantity;
-            duplicateItem.price = duplicateItem.price + addedItem.price
-            return state.products
+        if (isDuplicateItem) {
+            const newItem = {...isDuplicateItem, quantity: isDuplicateItem.quantity +1, price: isDuplicateItem.price + addedItem.price};
+            const newItemsArr = state.products.filter(product => product !== isDuplicateItem); 
+            return [...newItemsArr, newItem]
         }
         return [...state.products, addedItem]
       }
       
       return { 
         ...state, 
-        products: getProducts()
+        products: getProducts(), 
+        isOpen: true
       }
 
     case REMOVE_FROM_CART: 
       console.log(action.payload); 
       return {
         ...state, 
-        products: state.products.filter((product) => product != action.payload)
+        products: state.products.filter((product) => product !== action.payload)
       };
 
     default: 

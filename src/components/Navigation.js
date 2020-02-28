@@ -17,7 +17,12 @@ class Navigation extends React.Component {
     }
   } 
 
+  renderNumOfCartItems (cartItems) {
+    return cartItems.reduce((acc, product)=> acc + product.quantity, 0)
+  }
+
   render () {
+    const { cartItems } = this.props
     return (
       <div className="shopify-section--header">
         <header className="Header">
@@ -54,7 +59,7 @@ class Navigation extends React.Component {
                   </li>
                   <li className="HorizontalList__Item">
                     <NavLink to="#" className="Heading u-h6" onClick={this.props.openCart}>
-                      CART (<span className="Heading">{this.props.numOfCartItems}</span>)
+                      CART (<span className="Heading">{this.renderNumOfCartItems(cartItems)}</span>)
                     </NavLink>
                   </li>
                 </ul>
@@ -72,7 +77,7 @@ class Navigation extends React.Component {
 const mapStateToProps = state => {
   return { 
     isSignedIn: state.auth.isSignedIn, 
-    numOfCartItems: state.cart.products.length 
+    cartItems: state.cart.products
   }
 }
 
