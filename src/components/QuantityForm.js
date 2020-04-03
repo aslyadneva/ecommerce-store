@@ -8,18 +8,19 @@ class QuantityForm extends Component {
       <div className="CartItem__QuantitySelector">
         <div className="QuantitySelector">
 
-          <button onClick ={this.props.handleSubmit(() => this.props.onDecrease(this.props.initialValues.itemQuantity))} className="QuantitySelector__Button" >
+          <button onClick ={(e) => {e.preventDefault(); this.props.onDecrease()}} className="QuantitySelector__Button" >
             <i className="fas fa-minus"></i>
           </button>
 
-          <Field
+          <div>{this.props.quantity}</div>
+          {/* <Field
             name="itemQuantity"
             component="input"
             type="text"
             placeholder={this.props.initialValues.itemQuantity}
-          />
+          /> */}
                    
-          <button onClick ={this.props.handleSubmit(() => this.props.onIncrease())} className="QuantitySelector__Button">
+          <button onClick ={(e) => {e.preventDefault(); this.props.onIncrease()}} className="QuantitySelector__Button">
             <i className="fas fa-plus"></i>
           </button>
 
@@ -29,5 +30,5 @@ class QuantityForm extends Component {
   }
 }
 
-export default reduxForm({form: 'quantityForm', enableReinitialize: true})(QuantityForm)
+export default QuantityForm; 
 

@@ -1,0 +1,30 @@
+.Product {
+  display: flex; 
+  flex-direction: column;
+  // margin: 0 auto 50px auto;
+}
+
+.Product__Gallery {
+  margin-bottom: 2.8rem;
+}
+
+.Product__Image {
+  width: 100%;
+}
+
+.Product__Meta {
+  text-align: center; 
+
+  .ProductMeta__Description {
+    margin: 2.4rem 0;
+    padding-top: 2.4rem;
+    border-top: 1px solid #ddd;
+    text-align: left;
+  }
+}
+
+
+
+
+
+

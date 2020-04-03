@@ -1,0 +1,63 @@
+.Footer {
+  color: var(--color-main-grey); 
+  border-top: 1px solid #ddd; 
+  padding: 5rem 5vw; 
+
+  display: grid;
+  row-gap: 5rem; 
+
+  @media only screen and (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  &__menu {
+    // background-color: red; 
+    justify-self: start; 
+  }
+
+  &__heading {
+    margin-bottom: 2rem; 
+  }
+  &__link {
+    text-transform: uppercase;
+    color: var(--color-main-grey); 
+    font-size: 1.3rem; 
+    display: block;    
+    width: 100%;
+    line-height: 1.5;
+    text-align: left;
+
+    &:not(:last-child) {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  &__delivery {
+    // background-color: blue; 
+    justify-self: start;
+    @media only screen and (min-width: 800px) {
+      justify-self: end;
+    }
+  }
+
+  &__socials {
+    // background-color: pink; 
+    display: flex; 
+    justify-content: space-between;
+    font-size: 1.5rem; 
+  }
+
+  &__icon {
+    padding: .5rem; 
+  }
+
+  &__copyright {
+    // background-color: green; 
+    // padding: 1rem 0; 
+    text-align: center; 
+
+    @media only screen and (min-width: 800px) {
+      grid-column: 1/-1; 
+    }
+  }
+}

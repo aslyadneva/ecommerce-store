@@ -1,0 +1,33 @@
+.ProductForm {
+  margin-top: 2.4rem;
+}
+
+.ProductForm__Variants {
+  margin-bottom: 2.5rem; 
+}
+
+.ProductForm__Label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.SizeSwatch {
+  font-size: 1.3rem;
+  display: inline-block;
+  text-align: center;
+  min-width: 36px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  color: #6a6a6a;
+  cursor: pointer;
+}
+
+.SizeSwatch__Radio {
+  display: none;
+}
+
+.SizeSwatch__Radio:checked+.SizeSwatch {
+  border-color: #1c1b1b;
+  color: #1c1b1b;
+}

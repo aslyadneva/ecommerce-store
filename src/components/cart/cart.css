@@ -1,0 +1,9 @@
+.Cart {
+  position: fixed;
+  top: 0; 
+  right: 0;
+  height: 100vh;
+  width: calc(100vw - 65px);
+  z-index: 20;
+  background: #fff;
+}

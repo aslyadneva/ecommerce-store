@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import QuantityForm from '../QuantityForm'; 
 import {connect} from 'react-redux'; 
 import { increaseQuantity, decreaseQuantity } from '../../actions'; 
+import './cart.css'; 
 
 
 class CartItem extends Component {
@@ -15,8 +16,8 @@ class CartItem extends Component {
     this.props.increaseQuantity(this.props.item); 
   }
 
-  decreaseItemQuantity = (value) => {
-    if (value ===1) {
+  decreaseItemQuantity = () => {
+    if (this.props.quantity === 1) {
       this.props.remove(this.props.item); 
     } else {
       this.props.decreaseQuantity(this.props.item); 
@@ -49,7 +50,7 @@ class CartItem extends Component {
 
               {/* // Quantity Selector Buttons  */}
               <QuantityForm 
-                initialValues={{ itemQuantity: quantity }} 
+                quantity={quantity} 
                 onIncrease={this.increaseItemQuantity} 
                 onDecrease={this.decreaseItemQuantity}
               />

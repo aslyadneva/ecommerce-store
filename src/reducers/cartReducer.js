@@ -51,7 +51,7 @@ export default (state = INITIAL_STATE, action) => {
 
       function getIncreasedProducts () {
         const itemToIncrease = action.payload;
-        const currentItemToIncrease = state.products.filter(product => product === itemToIncrease)[0];
+        const currentItemToIncrease = state.products.filter(product => product.id === itemToIncrease.id && product.size === itemToIncrease.size)[0];
         const newIncreasedItem = {
         ...currentItemToIncrease, 
         quantity: currentItemToIncrease.quantity+1,
@@ -59,7 +59,7 @@ export default (state = INITIAL_STATE, action) => {
         }
 
         const increasedItemsArray = state.products.filter(product => product !== currentItemToIncrease);
-        return [...increasedItemsArray, newIncreasedItem]
+        return [...increasedItemsArray, newIncreasedItem, ]
       }
       
       return {...state, products: getIncreasedProducts()};
@@ -68,7 +68,7 @@ export default (state = INITIAL_STATE, action) => {
       
       function getDecreasedProducts () {
         const itemToDecrease = action.payload;
-        const currentItemToDecrease = state.products.filter(product => product === itemToDecrease)[0];
+        const currentItemToDecrease = state.products.filter(product => product.id === itemToDecrease.id && product.size === itemToDecrease.size)[0];
         const newDecreasedItem = {
         ...currentItemToDecrease, 
         quantity: currentItemToDecrease.quantity-1,

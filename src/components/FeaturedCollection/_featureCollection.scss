@@ -1,0 +1,23 @@
+.Carousel {
+  overflow-x: auto;
+  display: flex; 
+  white-space: nowrap; 
+}
+
+.Carousel__Item {
+  width: 62%; 
+  padding: 0 1.2rem; 
+}
+
+.Carousel__ImageWrapper {
+  width: 200px;
+  img {
+    width: 100%
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .Carousel__ImageWrapper {
+    width: 338px;
+  }
+}

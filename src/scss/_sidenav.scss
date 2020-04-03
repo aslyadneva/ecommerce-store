@@ -1,0 +1,86 @@
+//******************* SIDE NAV ********************//
+.SideNav {
+  position: fixed;
+  z-index: 20;
+  height: 100vh;
+  background: #caa98a;
+  color: #fff;
+  width: calc(100vw - 65px);
+  display: flex;
+  flex-direction: column;
+
+  .SideNav__Header {
+    padding: 1.5rem;
+
+    button {
+      background: none;
+      border: none;
+    }
+    i {
+      font-size: 2rem;
+      color: #fff;
+    }
+  }
+
+  .SideNav__Main {
+    flex: 1;
+
+    .SideNav__Main__Wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .SideNav__Main__PrimaryNav {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      .NavItem {
+        padding-bottom: 1.5rem;
+        padding-top: 1.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+  
+        a {
+          font-size: 1.5rem;   
+          letter-spacing: 0.2rem;
+          font-weight: 200;      
+        }
+      }
+    }
+
+    .SideNav__Main__SecondaryNav {
+      li {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      a {
+        color: rgba(255,255,255,0.5);
+        line-height: 1.5;
+        font-size: 1.3rem;
+        letter-spacing: 0.1rem;
+      }
+            
+    }
+
+
+  }
+
+  .SideNav__Footer {
+    box-shadow: 0 1px rgba(255,255,255,0.25) inset;
+    color: rgba(255,255,255,0.5);
+    padding: 2rem 2rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    display: flex; 
+    justify-content: space-between;
+
+    i {
+      font-size: 1.5rem;
+    }    
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .SideNav {
+    width: 340px
+  }
+}

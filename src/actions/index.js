@@ -1,13 +1,18 @@
 import { 
   INIT_AUTH, 
   SIGN_IN, 
-  SIGN_OUT, 
+  SIGN_OUT,  
   OPEN_CART,  
   CLOSE_CART, 
   ADD_TO_CART,
   REMOVE_FROM_CART,
   DECREASE_QUANTITY, 
-  INCREASE_QUANTITY } from './types'; 
+  INCREASE_QUANTITY, 
+  OPEN_SIDENAV, 
+  CLOSE_SIDENAV, 
+  OPEN_SORT, 
+  CLOSE_SORT, SORT } from './types'; 
+import { actionTypes } from 'redux-form';
 
 let auth; 
 
@@ -89,3 +94,42 @@ export const decreaseQuantity = (product) => {
   }; 
 };
 
+export const openSideNav = () => {
+  return {
+    type: OPEN_SIDENAV
+  }; 
+}; 
+
+export const closeSideNav = () => {
+  return {
+    type: CLOSE_SIDENAV
+  }; 
+}; 
+
+export const openSort = () => {
+  return {
+    type: OPEN_SORT
+  }; 
+}; 
+
+export const closeSort = () => {
+  return {
+    type: CLOSE_SORT
+  }; 
+}; 
+
+export const sort = (sortType) => {
+
+  return function (dispatch, getState) {
+
+    const { products } = getState(); 
+
+    dispatch({
+      type: SORT, 
+      payload: {sortType: sortType, products: products}
+    });
+    
+    dispatch(closeSort())
+  }
+}; 
+ 

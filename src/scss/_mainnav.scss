@@ -1,0 +1,104 @@
+.MainNav {
+  position: fixed; 
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0; 
+  height: var(--header-height);
+  // z-index: 0; 
+  background-color: white; 
+  // padding: 1vw 3vw;
+  transition: all 0.3s ease-in; 
+
+  display: grid; 
+  justify-items: center;
+  align-items: center; 
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 1.5rem;
+
+  @media only screen and (min-width: 1200px) {
+    padding-bottom: 0;   
+  }
+
+    &__MainNav {  
+      grid-column: 1/-1;
+      display: none; 
+
+      a {
+        border-bottom: 2px solid transparent;
+        // padding-bottom: 1.5vw;
+        transition: border-color .3s ease-in; 
+
+        &:hover {
+          border-bottom: 2px solid #1c1b1b;
+        }
+      }
+      
+      & :not(:last-child) {
+        margin-right: 4rem; 
+      }
+ 
+      @media only screen and (min-width: 1200px) {
+        display: flex;    
+      }
+    }
+
+    &__SecondaryNav {
+      display: none; 
+      justify-self: end;
+      
+      & :not(:last-child) {
+        margin-right: 2.8rem; 
+      }
+
+      @media only screen and (min-width: 1200px) {
+        display: flex; 
+        align-items: center; 
+      }
+    }
+
+    &__sideNavButton {
+      font-size: 2.5rem; 
+      justify-self: start;
+
+      @media only screen and (min-width: 1200px) {
+        visibility: hidden; 
+      }
+    }
+
+    &__CartButton {  
+      font-size: 2.5rem; 
+      justify-self: end;
+
+      @media only screen and (min-width: 1200px) {
+        display: none; 
+      }   
+    }
+
+  &--transparent {
+    box-shadow: 0 -1px rgba(255, 255, 255, 0.25) inset; 
+    background: transparent; 
+    transition: all .2s ease-in;
+    
+    & > *, a {
+      transition: color .2s;
+      color: white; 
+    }
+
+    &:hover {
+      background-color: white; 
+
+      .MainNav__MainNav a, .MainNav__Logo a, .MainNav__SecondaryNav :last-child, .MainNav__sideNavButton, .MainNav__CartButton {  
+        color: black; 
+      }
+
+      .MainNav__SecondaryNav :not(:last-child) {
+        color: var(--color-main-grey); 
+      }
+    }
+  }
+}
+
+  
+  
+  

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { closeCart, removeFromCart } from '../../actions';  
 import CartItem from './CartItem'; 
+import './cart.css'; 
 
 
 class Cart extends Component {
@@ -10,17 +11,17 @@ class Cart extends Component {
   }
 
   renderCartContent (cartItems) {
-    if (cartItems.length === 0) { return (<p className="Cart__Empty Heading u-h5">Your cart is empty</p>); } 
+    if (cartItems.length === 0) { return (<p>Your cart is empty</p>); } 
 
     return (
-      <div className="Drawer__Container">
-          <div className="Cart__ItemList">
+      <div >
+          <div >
 
             {cartItems.map(item => {
               return (
                 <CartItem 
                   item = {item}
-                  key = {item.id}
+                  key = {`${item.id}-${item.size}`}
                   title={item.name}
                   image={item.image}
                   size={item.size}
@@ -43,32 +44,32 @@ class Cart extends Component {
   renderCartFooter(cartItems) {
     if (cartItems.length !== 0) {
       return (
-        <div className="Drawer__Footer">
-            <button className="Cart__Checkout Button Button--full" type="submit">
+        <div>
+            <button type="submit">
               <span>Checkout</span>
-              <span className="Button__SeparatorDot"></span>
-              <span className="money">{`$${this.renderTotal(cartItems)}`}</span>
+              <span ></span>
+              <span >{`$${this.renderTotal(cartItems)}`}</span>
             </button>
         </div>
       ); 
     }
 
     return null;
-  }
+  } 
 
   render () {
     const { cartItems, isOpen } = this.props; 
     return (
-      <div id="sidebar-cart" className="Drawer Drawer--fromRight" aria-hidden={isOpen ? "false" : "true"}>
-        <div className="Drawer__Header Drawer__Header--bordered Drawer__Container">
-          <span className="Drawer__Title Heading u-h4">Cart</span>
-          <button onClick={this.props.closeCart} className="Drawer__Close Icon-Wrapper--clickable">
-            <i className="Icon Icon--close fas fa-times"></i>
+      <div id="sidebar-cart" style={{visibility: isOpen ? "visible" : "hidden"}} className="Cart">
+        <div>
+          <span >Cart</span>
+          <button onClick={this.props.closeCart}>
+            <i className="fas fa-times"></i>
           </button>
         </div>
 
-        <form className="Drawer__Content">
-          <div className="Drawer__Main">          
+        <form>
+          <div>          
             {this.renderCartContent(cartItems)}           
           </div>
           {this.renderCartFooter(cartItems)}        
