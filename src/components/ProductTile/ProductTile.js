@@ -11,8 +11,8 @@ const ProductTile = ({id, image, name, price}) => {
       </Link>     
 
       <div className="ProductTile__Info">
-        <Link to={`/products/${id}`}> <h2 className="Heading">{name}</h2> </Link>  
-        <span className="Text--subdued">{`$${price}`}</span>  
+        <Link to={`/products/${id}`}> <h2 className="ProductTile__heading Heading">{name}</h2> </Link>  
+        <span className="ProductTile__price Text--subdued">{`$${price}`}</span>  
       </div>   
 
     </div>         

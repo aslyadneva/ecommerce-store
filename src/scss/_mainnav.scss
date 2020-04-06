@@ -5,8 +5,9 @@
   left: 0;
   right: 0; 
   height: var(--header-height);
-  // z-index: 0; 
+  z-index: 1; 
   background-color: white; 
+  box-shadow: 0 -1px #ddd inset;
   // padding: 1vw 3vw;
   transition: all 0.3s ease-in; 
 
@@ -16,7 +17,7 @@
   grid-template-columns: repeat(3, 1fr);
   row-gap: 1.5rem;
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1240px) {
     padding-bottom: 0;   
   }
 
@@ -38,7 +39,7 @@
         margin-right: 4rem; 
       }
  
-      @media only screen and (min-width: 1200px) {
+      @media only screen and (min-width: 1240px) {
         display: flex;    
       }
     }
@@ -51,7 +52,7 @@
         margin-right: 2.8rem; 
       }
 
-      @media only screen and (min-width: 1200px) {
+      @media only screen and (min-width: 1240px) {
         display: flex; 
         align-items: center; 
       }
@@ -61,7 +62,7 @@
       font-size: 2.5rem; 
       justify-self: start;
 
-      @media only screen and (min-width: 1200px) {
+      @media only screen and (min-width: 1240px) {
         visibility: hidden; 
       }
     }
@@ -70,7 +71,7 @@
       font-size: 2.5rem; 
       justify-self: end;
 
-      @media only screen and (min-width: 1200px) {
+      @media only screen and (min-width: 1240px) {
         display: none; 
       }   
     }

@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 import { closeSort, sort } from '../actions'; 
 
 
-const Modal = ({sortTab, closeSort, sort}) => {
+const Modal = ({sortTab, closeSort, sort, topOffset}) => {
   return ReactDOM.createPortal(
 
     <div className="Modal" onClick={() => closeSort()} style={{visibility: sortTab ? 'visible' : 'hidden'}}>
 
-      <div className="Modal__sort" onClick={e => e.stopPropagation()}>
-        <div>
+      <div className="Modal__sort" onClick={e => e.stopPropagation()} style={ {top: `calc(${topOffset}px + 7.2rem)`} }>
+        <div className="Modal__header">
           <button onClick={() => closeSort()}>
             <i className="fas fa-times"/>
           </button>
           <span className="Heading h4">Sort</span>
         </div>
 
-        <div>
+        <div className="Modal__content">
           <p onClick={() => sort("alpha")} className="Heading h6 Text--subdued">Alpabetically, A - Z</p>
           <p onClick={() => sort("alphaZ")} className="Heading h6 Text--subdued">Alpabetically, Z - A</p>
           <p onClick={() => sort("numericLow")} className="Heading h6 Text--subdued">Price, low to high</p>
@@ -25,7 +25,7 @@ const Modal = ({sortTab, closeSort, sort}) => {
         </div>
       </div>
  
-    </div>, 
+    </div>,  
 
     document.querySelector('#modal')
 
@@ -34,7 +34,8 @@ const Modal = ({sortTab, closeSort, sort}) => {
 
 const mapStateToProps = (state) => {
   return {
-    sortTab: state.sort.sortTab
+    sortTab: state.sort.sortTab, 
+    topOffset: state.modalDistance
   }
 }
 

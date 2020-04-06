@@ -11,7 +11,7 @@ import {
   OPEN_SIDENAV, 
   CLOSE_SIDENAV, 
   OPEN_SORT, 
-  CLOSE_SORT, SORT } from './types'; 
+  CLOSE_SORT, SORT, GET_SORT_DISTANCE } from './types'; 
 import { actionTypes } from 'redux-form';
 
 let auth; 
@@ -131,5 +131,12 @@ export const sort = (sortType) => {
     
     dispatch(closeSort())
   }
+}; 
+
+export const getSortDistance = (distance) => {
+  return {
+    type: GET_SORT_DISTANCE,
+    payload: distance
+  }; 
 }; 
  

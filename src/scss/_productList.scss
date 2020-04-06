@@ -9,7 +9,7 @@
     align-items: center; 
   }
 
-  &__heading {
+  h1 {
     color: white; 
     font-weight: 300;  
   }
@@ -18,13 +18,22 @@
     background-color:white; 
     box-shadow: 1px 1px #ddd, -1px -1px #ddd; 
     position: sticky; 
-    top: var(--header-height); 
+    top: var( --sort-top); 
     width: 100%; 
     display: flex; 
     justify-content: center;
+
+    @media only screen and (min-width: 641px) {
+      justify-content: flex-end;
+    }
     
     button {
       padding: 1.5rem 0; 
+
+      @media only screen and (min-width: 641px) {
+        padding: 1.8rem 4.5rem; 
+        border-left: 1px solid #ddd; 
+      }
     }
 
     i {

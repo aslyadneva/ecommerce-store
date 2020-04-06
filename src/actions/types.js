@@ -11,4 +11,5 @@ export const OPEN_SIDENAV = "OPEN_SIDENAV";
 export const CLOSE_SIDENAV = "CLOSE_SIDENAV"; 
 export const OPEN_SORT = "OPEN_SORT"; 
 export const CLOSE_SORT = "CLOSE_SORT"; 
-export const SORT = "SORT"
+export const SORT = "SORT"; 
+export const GET_SORT_DISTANCE = "GET_SORT_DISTANCE"; 

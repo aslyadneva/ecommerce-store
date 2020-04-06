@@ -18,11 +18,16 @@
   --color-main-grey: #6a6a6a; 
   --color-main-black: #1c1b1b;  
   --color-primary: #caa98a;  
-  --header-height:  10vh; 
+  --header-height: 5rem;  
 
-  @media only screen and (min-width: 1200px) {
-    --header-height: 13vh; 
+  @media only screen and (min-width: 641px) {
+    --header-height: 5.9rem; 
   }
+  @media only screen and (min-width: 1240px) {
+    --header-height: 10.03rem; 
+  }
+
+  --sort-top: var(--header-height); 
 }
 
 /* General Reset  */
@@ -41,7 +46,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; 
-}
+} 
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -57,6 +62,12 @@ a {
   background-color: transparent;
   text-decoration: none;
 }
+
+a:hover {
+  text-decoration: none;
+  color: black; 
+}
+
 
 ul, ol {
   list-style-type: none;
@@ -119,7 +130,7 @@ button {
     font-weight: 400;
     font-style: normal;
     background-color: transparent;
-    z-index: 1;
+    // z-index: 1;
 
     &--primary {
       color: #fff;
