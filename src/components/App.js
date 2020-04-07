@@ -17,17 +17,33 @@ import SideNav from './SideNav';
 import Modal from './Modal'; 
  
 class App extends Component {
+  constructor () {
+    super(); 
+    this.appRef = React.createRef(); 
+    this.state = { body: null}
+  }
+
   componentDidMount () {
     this.props.initAuth();
+    const bodyElement = this.appRef.current.parentElement.parentElement; 
+    console.log(bodyElement); 
+    this.setState({body : bodyElement}); 
   } 
 
   render () {
-    return ( 
-      <Fragment >
+    const { sortTab, cartOpen } = this.props; 
+    // if (sortTab && this.state.body || cartOpen && this.state.body) {
+    //   this.setState({body: this.state.body.style = "overflow: hidden"})
+    // } else if (!sortTab && this.state.body) {
+    //   this.setState({body: this.state.body.style = "overflow: auto"})
+    // }
+
+    return (  
+      <Fragment>
           <SideNav/>
           <Cart/>
           <Modal/>
-          <div className="PageContainer">
+          <div className="PageContainer" ref={this.appRef}>
               <Navigation />
               <main id="main">       
                   <Switch>
@@ -41,14 +57,15 @@ class App extends Component {
               <Newsletter /> 
               <Footer/>
           </div>    
-      </Fragment>
+      </Fragment> 
     );
   }  
 }
 
 const mapStateToProps = state => {
   return {
-    sortTab: state.sort.sortTab
+    sortTab: state.sort.sortTab,
+    cartOpen: state.cart.isOpen
   }
 }
 

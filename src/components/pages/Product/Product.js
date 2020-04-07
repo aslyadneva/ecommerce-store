@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { addToCart, openCart } from '../../../actions'; 
+import { addToCart, setNavColor } from '../../../actions'; 
 import ProductForm from '../../ProductForm/ProductForm'; 
 
 class Product extends Component {
+
+  componentDidMount () {
+    this.props.setNavColor('opaque'); 
+  } 
+
+  componentWillUnmount() {
+    this.props.setNavColor(null);
+  } 
+
   // Callback for ProductForm
   onSubmit = ({ quantity, size }) => {
     const { image, name, price, id } = this.props.product;
@@ -20,23 +29,22 @@ class Product extends Component {
           {/* Product Image */}  
           <div className="Product__Gallery">    
             <img className="Product__Image" src={image} alt={name}></img>
-          </div> 
+          </div>  
 
           {/* Product Info */}
-          <div className="Product__Info">
-            <div className="Container">
+          <div className="Product__Info">       
               <div className="Product__Meta">
                 <h1 className="Heading h2">{name}</h1>     
                 <span className="Heading Text--subdued h4">{`$${price}`}</span>     
-                <p>or 4 interest free installments of bla bla bla</p>
+                {/* <p>or 4 interest free installments of bla bla bla</p> */}
                 <p className="ProductMeta__Description">{description}</p>
               </div>
               <ProductForm initialValues={{ quantity: 1, size: "Small" }} onSubmit={this.onSubmit}/>
-            </div>
           </div>
       </section>
     );
   }    
+
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,4 +53,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {addToCart, openCart})(Product);
+export default connect(mapStateToProps, {addToCart, setNavColor })(Product);

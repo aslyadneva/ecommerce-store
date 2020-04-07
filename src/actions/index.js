@@ -11,8 +11,8 @@ import {
   OPEN_SIDENAV, 
   CLOSE_SIDENAV, 
   OPEN_SORT, 
-  CLOSE_SORT, SORT, GET_SORT_DISTANCE } from './types'; 
-import { actionTypes } from 'redux-form';
+  CLOSE_SORT, SORT, GET_SORT_DISTANCE, SET_NAV } from './types'; 
+// import { actionTypes } from 'redux-form';
 
 let auth; 
 
@@ -66,11 +66,16 @@ export const closeCart = () => {
 };
 
 export const addToCart = (product) => {
-  return {
-    type: ADD_TO_CART, 
-    //the payload is the product object 
-    payload: product
-  }; 
+
+  return function (dispatch, getState){
+    const { cart } = getState(); 
+
+    dispatch({
+      type: ADD_TO_CART, 
+      payload: {product, cartItems: cart.products}
+    })    
+  }
+
 };
 
 export const removeFromCart = (product) => {
@@ -81,17 +86,31 @@ export const removeFromCart = (product) => {
 };
 
 export const increaseQuantity = (product) => {
-  return {
-    type: INCREASE_QUANTITY,  
-    payload: product
-  }; 
+
+  return function (dispatch, getState) {
+
+    const { cart } = getState();
+
+    dispatch({
+      type: INCREASE_QUANTITY,  
+      payload:  {productToIncrease: product, cartItems: cart.products }
+    })
+  }
+
 };
 
 export const decreaseQuantity = (product) => {
-  return {
-    type: DECREASE_QUANTITY,  
-    payload: product
-  }; 
+
+  return function (dispatch, getState) {
+
+    const { cart } = getState();
+
+    dispatch({
+      type: DECREASE_QUANTITY,  
+      payload:  {productToDecrease: product, cartItems: cart.products }
+    })
+  }
+  
 };
 
 export const openSideNav = () => {
@@ -110,7 +129,7 @@ export const openSort = () => {
   return {
     type: OPEN_SORT
   }; 
-}; 
+};  
 
 export const closeSort = () => {
   return {
@@ -137,6 +156,13 @@ export const getSortDistance = (distance) => {
   return {
     type: GET_SORT_DISTANCE,
     payload: distance
+  }; 
+}; 
+
+export const setNavColor = (path) => {
+  return {
+    type: SET_NAV,
+    payload: path
   }; 
 }; 
  

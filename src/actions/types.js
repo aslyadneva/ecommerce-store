@@ -13,3 +13,4 @@ export const OPEN_SORT = "OPEN_SORT";
 export const CLOSE_SORT = "CLOSE_SORT"; 
 export const SORT = "SORT"; 
 export const GET_SORT_DISTANCE = "GET_SORT_DISTANCE"; 
+export const SET_NAV = "SET_NAV"; 

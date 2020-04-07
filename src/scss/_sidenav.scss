@@ -42,7 +42,10 @@
         a {
           font-size: 1.5rem;   
           letter-spacing: 0.2rem;
-          font-weight: 200;      
+          font-weight: 200;   
+          &:hover {
+            color: currentColor;
+          }   
         }
       }
     }

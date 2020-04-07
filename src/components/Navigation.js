@@ -17,7 +17,7 @@ class Navigation extends React.Component {
   
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
-  }
+  } 
 
   handleScroll () {
     this.setState({ scrollPosition: window.pageYOffset })
@@ -35,14 +35,21 @@ class Navigation extends React.Component {
     return cartItems.reduce((acc, product)=> acc + product.quantity, 0); 
   }
 
+  renderNavStyle (navStyle) {
+    if (navStyle) {
+      return 'MainNav'
+    } else if (!navStyle && this.state.scrollPosition < 15) {
+      return 'MainNav MainNav--transparent'
+    } else if ((!navStyle && this.state.scrollPosition > 15)) {
+      return 'MainNav'
+    }
+  }
+
   render () {
-    const { cartItems } = this.props; 
+    const { cartItems, mainNav } = this.props; 
     return (
-        <header 
-          className = {this.state.scrollPosition > 15 ? "MainNav" : "MainNav MainNav--transparent" }
-          // onMouseEnter = {this.handle}
-          // onMouseLeave = {this.handle}
-        >               
+        <header className={this.renderNavStyle(mainNav)}>     
+
               {/* SMALL Device */}
               <NavLink className="MainNav__sideNavButton" to="#" onClick={this.props.openSideNav}>
                 <i className="fas fa-bars"></i>
@@ -85,6 +92,7 @@ const mapStateToProps = state => {
   return { 
     isSignedIn: state.auth.isSignedIn, 
     cartItems: state.cart.products,
+    mainNav: state.mainNav
   }
 }
 

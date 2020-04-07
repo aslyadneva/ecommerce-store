@@ -8,7 +8,7 @@ import {
 
 const INITIAL_STATE = {
   isOpen: false,
-  products: []
+  products: [] 
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -23,16 +23,22 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_TO_CART: 
 
       function getProducts () {
-        const addedItem = action.payload;
+        const { product, cartItems } = action.payload;
     
-        const isDuplicateItem = state.products.filter(product => product.id === addedItem.id && product.size === addedItem.size)[0]
+        const isDuplicateItem = cartItems.filter(cartProduct => cartProduct.id === product.id && cartProduct.size === product.size)[0];
         
         if (isDuplicateItem) {
-            const newItem = {...isDuplicateItem, quantity: isDuplicateItem.quantity +1, price: isDuplicateItem.price + addedItem.price};
-            const newItemsArr = state.products.filter(product => product !== isDuplicateItem); 
-            return [...newItemsArr, newItem]
+            const newItem = {
+              ...isDuplicateItem, 
+              quantity: isDuplicateItem.quantity +1, 
+              price: isDuplicateItem.price + product.price
+            };
+
+          const newItemsArr = cartItems.filter(cartProduct => cartProduct !== isDuplicateItem); 
+          return [newItem, ...newItemsArr]
         }
-        return [...state.products, addedItem]
+
+        return [product, ...cartItems]
       }
       
       return { 
@@ -50,16 +56,19 @@ export default (state = INITIAL_STATE, action) => {
     case INCREASE_QUANTITY: 
 
       function getIncreasedProducts () {
-        const itemToIncrease = action.payload;
-        const currentItemToIncrease = state.products.filter(product => product.id === itemToIncrease.id && product.size === itemToIncrease.size)[0];
-        const newIncreasedItem = {
-        ...currentItemToIncrease, 
-        quantity: currentItemToIncrease.quantity+1,
-        price: currentItemToIncrease.price + (currentItemToIncrease.price/currentItemToIncrease.quantity)
-        }
+        const { productToIncrease, cartItems } = action.payload;
+        // console.log(cartItems); 
+        // console.log(productToIncrease)
+        
+        let idx = cartItems.findIndex(item => item.id === productToIncrease.id && item.size === productToIncrease.size); 
 
-        const increasedItemsArray = state.products.filter(product => product !== currentItemToIncrease);
-        return [...increasedItemsArray, newIncreasedItem, ]
+        const itemToIncrease = cartItems[idx]; 
+        const pricePerItem = itemToIncrease.price / itemToIncrease.quantity; 
+
+        itemToIncrease.quantity = itemToIncrease.quantity + 1; 
+        itemToIncrease.price = itemToIncrease.price + pricePerItem;
+
+        return [...cartItems]
       }
       
       return {...state, products: getIncreasedProducts()};
@@ -67,16 +76,17 @@ export default (state = INITIAL_STATE, action) => {
     case DECREASE_QUANTITY: 
       
       function getDecreasedProducts () {
-        const itemToDecrease = action.payload;
-        const currentItemToDecrease = state.products.filter(product => product.id === itemToDecrease.id && product.size === itemToDecrease.size)[0];
-        const newDecreasedItem = {
-        ...currentItemToDecrease, 
-        quantity: currentItemToDecrease.quantity-1,
-        price: currentItemToDecrease.price - (currentItemToDecrease.price/currentItemToDecrease.quantity)
-        }
+        const { productToDecrease, cartItems } = action.payload;
+        
+        let idx = cartItems.findIndex(item => item.id === productToDecrease.id && item.size === productToDecrease.size);  
 
-        const decreasedItemsArray = state.products.filter(product => product !== currentItemToDecrease);
-        return [...decreasedItemsArray, newDecreasedItem]
+        const itemToDecrease = cartItems[idx]; 
+        const pricePerItem = itemToDecrease.price / itemToDecrease.quantity; 
+
+        itemToDecrease.quantity = itemToDecrease.quantity - 1 ; 
+        itemToDecrease.price = itemToDecrease.price - pricePerItem;
+        
+        return [...cartItems]
         }
 
       return {...state, products: getDecreasedProducts()};

@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; 
 import QuantityForm from '../QuantityForm'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import { increaseQuantity, decreaseQuantity } from '../../actions'; 
-import './cart.css'; 
-
 
 class CartItem extends Component {
 
@@ -25,45 +24,36 @@ class CartItem extends Component {
   }
 
   render () { 
-    const { image, title, size, price, quantity } = this.props; 
+    const { image, title, size, price, quantity, item: id } = this.props; 
     return (
-      <div className="CartItemWrapper">
-        <div className="CartItem">
-          <div className="CartItem__ImageWrapper AspectRatio">
-            <img src={image} alt={title}/>
-          </div>
-          
-          <div className="CartItem__Info">
-  
-            <h2 className="CartItem__Title Heading">{title}</h2>
-  
-            <div className="CartItem__Meta Heading Text--subdued">
-              <p className="CartItem__Variant">{size}</p>
-              <div className="CartItem__PriceList">
-                <span className="CartItem__Price Price">
-                  <span className="money">{`$${price}`}</span>
-                </span>
-              </div>
-            </div>
-  
-            <div className="CartItem__Actions Heading Text--subdued">
+      <div className="CartItem">
+        
+        <div className="CartItem__image">
+          <img src={image} alt={title}/>
+        </div>
 
-              {/* // Quantity Selector Buttons  */}
-              <QuantityForm 
-                quantity={quantity} 
-                onIncrease={this.increaseItemQuantity} 
-                onDecrease={this.decreaseItemQuantity}
-              />
-  
-              {/* Remove Button */}
-              <button onClick={this.handleClick}>
-                Remove
-              </button>
-            </div>
-  
+        <div className="CartItem__content">
+          <h2 className="CartItem__title Heading"><Link to={`/products/${id}`}>{title}</Link></h2>
+          
+          <div className="CartItem__info Heading Text--subdued">
+            <p className="CartItem__Variant">{size}</p>              
+            <span className="money">{`$${price.toFixed(2)}`}</span>
           </div>
-        </div>  
-      </div>
+           
+          <div className="CartItem__actions Heading Text--subdued">
+            {/* // Quantity Selector Buttons  */}
+            <QuantityForm 
+              quantity={quantity} 
+              onIncrease={this.increaseItemQuantity} 
+              onDecrease={this.decreaseItemQuantity}
+            />
+        
+            {/* Remove Button */}
+            <span className="CartItem__remove" onClick={this.handleClick}>Remove</span>
+          </div>
+        </div>
+        
+      </div>                  
     );
   }
   

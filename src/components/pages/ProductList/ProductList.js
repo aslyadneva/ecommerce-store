@@ -8,12 +8,12 @@ import productListHeader from '../../../images/productListHeader.jpg';
 
 class ProductList extends Component  {
   constructor() {
-    super(); 
+    super();  
     this.productSortRef = React.createRef(); 
     this.handleSortPosition = this.handleSortPosition.bind(this); 
   }
 
-  componentDidMount () {
+  componentDidMount () { 
     window.addEventListener("scroll", this.handleSortPosition);
     let distanceFromTop = this.productSortRef.current.getClientRects()[0].top; 
     this.props.getSortDistance(distanceFromTop); 

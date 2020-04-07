@@ -7,7 +7,7 @@ const INITIAL_STATE = [
   {
     "id": "black-jeans", 
     "name": "Black Jeans",  
-    "description": "The product desciption is black jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
     "image": blackjeans,
     "sizes": ["small", "medium", "large"],
     "price": 59.99
@@ -15,7 +15,7 @@ const INITIAL_STATE = [
   {
     "id": "blue-jeans", 
     "name": "Blue Jeans", 
-    "description": "The product desciption is black jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
     "image": bluejeans,
     "sizes": ["small", "medium", "large"],
     "price": 75.99
@@ -23,7 +23,7 @@ const INITIAL_STATE = [
   {
     "id": "white-jeans", 
     "name": "White Jeans", 
-    "description": "The product desciption is black jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
     "image": whitejeans,
     "sizes": ["small", "medium", "large"],
     "price": 19.99
@@ -31,7 +31,7 @@ const INITIAL_STATE = [
   {
     "id": "pink-jeans", 
     "name": "Pink Jeans", 
-    "description": "The product desciption is pink jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
     "image": pinkjeans,
     "sizes": ["small", "medium", "large"],
     "price": 89.99

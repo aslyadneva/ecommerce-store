@@ -1,12 +1,26 @@
 .ProductForm {
   margin-top: 2.4rem;
+
+  &__Variants {
+    margin-bottom: 2.5rem; 
+  }
+
+  &__List {
+    display: grid; 
+    grid-template-columns: auto auto auto;
+    justify-content: flex-start;
+    column-gap: .8rem;
+  }
+
+  &__Item {
+    display: inline-block; 
+  }
+
 }
 
-.ProductForm__Variants {
-  margin-bottom: 2.5rem; 
-}
 
-.ProductForm__Label {
+
+.ProductForm__Label { 
   display: block;
   margin-bottom: 0.8rem;
   font-size: 1.3rem;

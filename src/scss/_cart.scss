@@ -1,0 +1,88 @@
+.Cart__Modal {
+  width: 100%; 
+  height: 100% ;
+  top: 0; 
+  left: 0; 
+  background-color: rgba(#363636, .5); 
+  position: fixed; 
+  z-index: 2000000000000;
+  overflow: hidden;
+}
+
+.Cart {
+  position: fixed;
+  display: flex; 
+  flex-direction: column;
+  top: 0; 
+  right: 0;
+  height: 100vh;
+  width: calc(100vw - 65px);
+  z-index: 20;
+  background: #fff;
+  box-shadow: 0 -1px #ddd inset; 
+
+  @media only screen and (min-width: 427px) {
+    width: 40rem; 
+  }
+
+  &__header {
+    flex: 1; 
+    padding-left: 2.4rem; 
+    padding-right: 1.8rem; 
+    display: flex; 
+    box-shadow: 0 -1px #ddd inset;
+    justify-content: space-between;
+    align-items: center; 
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (min-width: 427px) {
+      flex: 1.5; 
+    }
+  }
+
+  &__content {
+    flex: 15; 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+  }
+
+  &__itemList {
+    overflow: auto; 
+    flex: 5; 
+    padding: 3rem 0; 
+    padding-left: 2.4rem; 
+    padding-right: 1.8rem; 
+    display: grid; 
+    row-gap: 3rem; 
+    // grid-auto-rows: 13.1rem; 
+    grid-auto-rows: min-content; 
+  }
+
+  &__checkout {
+    flex: 1; 
+    box-shadow: 0 -1px #ddd; 
+    display: flex; 
+    justify-content: center;
+    align-content: center; 
+    padding: 0 2rem; 
+  }
+
+  &__checkoutButton {
+    align-self: center; 
+  }
+
+  &__checkoutSpan {
+    margin-right: 2rem;
+  }
+
+  &__empty {
+    margin: auto; 
+    align-self: center; 
+  }
+}

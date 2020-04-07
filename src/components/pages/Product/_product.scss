@@ -1,19 +1,50 @@
 .Product {
-  display: flex; 
-  flex-direction: column;
-  // margin: 0 auto 50px auto;
+  display: grid; 
+  margin-top: var(--header-height); 
+  margin-bottom: 5rem; 
+  
+  @media only screen and (min-width: 1008px) {
+    grid-template-columns: 1fr 1fr;
+    margin-top: calc(var(--header-height) + 5.9rem); 
+  }
+
+  @media only screen and (min-width: 1240px) {
+    max-width: 1100px; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
 
 .Product__Gallery {
   margin-bottom: 2.8rem;
+
+  @media only screen and (min-width: 1008px) {
+    margin-bottom: 0;
+  }
 }
 
 .Product__Image {
   width: 100%;
+} 
+
+.Product__Info {
+  max-width: 50rem; 
+  margin: 0 auto; 
+  padding: 0 2.4rem; 
 }
+
 
 .Product__Meta {
   text-align: center; 
+
+  @media only screen and (min-width: 1008px) {
+    text-align: left; 
+
+    h1 {
+      margin-bottom: 1.5rem; 
+    }
+  }
 
   .ProductMeta__Description {
     margin: 2.4rem 0;

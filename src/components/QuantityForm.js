@@ -4,15 +4,14 @@ import { Field, reduxForm } from 'redux-form'
 class QuantityForm extends Component {
 
   render () {
-    return (
-      <div className="CartItem__QuantitySelector">
-        <div className="QuantitySelector">
+    return (  
+      <div className="QuantityForm">
 
-          <button onClick ={(e) => {e.preventDefault(); this.props.onDecrease()}} className="QuantitySelector__Button" >
-            <i className="fas fa-minus"></i>
-          </button>
+        <button onClick ={(e) => {e.preventDefault(); this.props.onDecrease()}} className="QuantityForm__button" >
+          <i className="fas fa-minus"></i>
+        </button>
 
-          <div>{this.props.quantity}</div>
+        <div>{this.props.quantity}</div>
           {/* <Field
             name="itemQuantity"
             component="input"
@@ -20,12 +19,11 @@ class QuantityForm extends Component {
             placeholder={this.props.initialValues.itemQuantity}
           /> */}
                    
-          <button onClick ={(e) => {e.preventDefault(); this.props.onIncrease()}} className="QuantitySelector__Button">
-            <i className="fas fa-plus"></i>
-          </button>
+        <button onClick ={(e) => {e.preventDefault(); this.props.onIncrease()}} className="QuantityForm__button">
+          <i className="fas fa-plus"></i>
+        </button>
 
-        </div>
-      </div> 
+      </div>
     );
   }
 }
