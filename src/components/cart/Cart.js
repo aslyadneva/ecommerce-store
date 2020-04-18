@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { closeCart, removeFromCart } from '../../actions';  
 import CartItem from './CartItem'; 
+import axios from 'axios'; 
 
 
 class Cart extends Component {
@@ -10,10 +11,32 @@ class Cart extends Component {
     this.props.removeFromCart(item); 
   } 
 
+  handleCheckoutClick = (e) => {
+    e.preventDefault(); 
+    this.props.closeCart(); 
+    this.props.history.replace('/checkout')
+    // const order = {
+    //   items: this.props.cartItems, 
+    //   customer: {
+    //     name: 'Pandegrosa Bla', 
+    //     address: '5 Test street, Winnipeg, Canada', 
+    //   }, 
+    //   delivery: 'slowest'
+    // }
+    // axios.post(`https://react-e-commerce-65275.firebaseio.com/orders.json`, order)
+    //   .then(
+    //     response => {
+    //       console.log(response); 
+    //       this.props.closeCart(); 
+    //     }
+    //   )
+    //   .catch(error => console.log(error));
+  }
+
   renderCartContent (cartItems) {
     if (cartItems.length === 0) { return (<p className="Heading h5 Cart__empty">Your cart is empty</p>); } 
  
-    return (
+    return ( 
       <div className="Cart__itemList">
             {cartItems.map(item => {
               return (
@@ -41,7 +64,10 @@ class Cart extends Component {
     if (cartItems.length !== 0) {
       return (
         <div className="Cart__checkout">
-            <button className="Button Button--full Button--primary Cart__checkoutButton"type="submit">
+            <button 
+              onClick={this.handleCheckoutClick} 
+              className="Button Button--full Button--primary Cart__checkoutButton"
+            >
               <span className="Cart__checkoutSpan">Checkout</span>
               <span>{`$${this.renderTotal(cartItems).toFixed(2)}`}</span>
             </button>
@@ -65,10 +91,10 @@ class Cart extends Component {
             </button>
           </div>
 
-          <form className="Cart__content">             
+          <div className="Cart__content">             
             {this.renderCartContent(cartItems)}           
             {this.renderCartFooter(cartItems)}        
-          </form>
+          </div>
         </div>
 
       </div>, 

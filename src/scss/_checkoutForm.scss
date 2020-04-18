@@ -1,0 +1,74 @@
+.checkoutForm {
+  &__heading {
+    color: #333333; 
+    margin-bottom: 1.4rem; 
+    font-weight: normal; 
+  }
+}
+
+.CustomerInfo {
+  &__address {
+
+    @media only screen and (min-width: 755px) {
+      // display: flex; 
+    }
+  }
+}
+
+.formGrid {
+  display: grid; 
+  row-gap: 1.5rem; 
+
+  &__name {
+
+  }
+}
+
+.ButtonGroup {
+  margin-top: 2.1rem; 
+  display: flex; 
+  flex-direction: column-reverse; 
+  // justify-content: space-between;
+
+  @media only screen and (min-width: 755px) {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__previous {
+      padding-top: 2.1rem; 
+      color: #caa98a; 
+      font-size: 1.4rem; 
+      text-align: center;
+
+      i {
+        margin-right: .7rem; 
+      }
+
+      @media only screen and (min-width: 755px) {
+        padding-top: 0; 
+      }
+    
+      &:hover {
+        color: #bf9771
+      }
+  }
+
+  &__continue {
+      width: 100%; 
+      padding: 2.45rem 2.38rem; 
+      background-color: #caa98a;
+      font-size: 1.4rem; 
+      border-radius: 5px;
+    
+      &:hover {
+        background-color: #ba8f67; 
+      }     
+
+      @media only screen and (min-width: 755px) {
+        width: auto; 
+        padding: 2rem 2.38rem; 
+      }
+  }
+}

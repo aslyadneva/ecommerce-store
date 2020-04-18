@@ -23,7 +23,7 @@ class Home extends Component {
         <section id="main-image" className="MainImage" style={styles}>
           <button>Shop Now</button>
         </section>
-  
+
         {/* Free Shipping GIF */}
         {/* <section>
           <img className="Home__FreeShipping__Image" src={freeShipping}/>

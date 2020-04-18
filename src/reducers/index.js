@@ -7,6 +7,7 @@ import sideNavReducer from './sideNavReducer';
 import sortReducer from './sortReducer';
 import modalReducer from './modalReducer';
 import productsReducer from './productsReducer';
+import checkOutReducer from './checkOutReducer';
 import { reducer as formReducer } from 'redux-form'; 
 
 export default combineReducers({
@@ -18,5 +19,6 @@ export default combineReducers({
   isInitialized: authInitReducer,
   auth: authReducer, 
   products: productsReducer,
+  checkOut: checkOutReducer, 
   form: formReducer
 });  

@@ -5,6 +5,6 @@ export default (state = null, action) => {
     case SET_NAV: 
       return action.payload
     default: 
-    return state
+    return state 
   }
 }

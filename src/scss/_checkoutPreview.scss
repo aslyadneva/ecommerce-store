@@ -1,0 +1,47 @@
+.CheckoutPreview {
+  max-width: 560px; 
+  padding: 0 1.4rem; 
+  margin: 0 auto; 
+
+  &__items {
+    display: grid; 
+    row-gap: 1.5rem; 
+    padding: 2.1rem 0; 
+  }
+
+  &__pricing {
+    border-top: 1px solid rgba(173,173,173,0.34); 
+    border-bottom: 1px solid rgba(173,173,173,0.34); 
+    padding: 2.1rem 0; 
+  }
+
+  &__total {
+      padding: 2.1rem 0; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      
+    &__text {
+      color: #313131; 
+      font-size: 1.6rem;
+      font-weight: 400; 
+    }
+
+    &__price {
+      display: flex; 
+      align-items: center; 
+    }
+  }
+
+  &__currency {
+    color: #6f6f6f; 
+    font-size: 1.2rem; 
+    margin-right: .8rem; 
+  }
+
+  &__totalDue {
+    color: #313131; 
+    font-weight: 500; 
+    font-size: 2.4rem; 
+  }
+}

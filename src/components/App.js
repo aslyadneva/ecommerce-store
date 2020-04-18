@@ -15,7 +15,8 @@ import Account from './pages/Account';
 import Cart from './cart/Cart'; 
 import SideNav from './SideNav'; 
 import Modal from './Modal'; 
- 
+import Checkout from './pages/Checkout/Checkout'; 
+
 class App extends Component {
   constructor () {
     super(); 
@@ -25,10 +26,7 @@ class App extends Component {
 
   componentDidMount () {
     this.props.initAuth();
-    const bodyElement = this.appRef.current.parentElement.parentElement; 
-    console.log(bodyElement); 
-    this.setState({body : bodyElement}); 
-  } 
+  }  
 
   render () {
     const { sortTab, cartOpen } = this.props; 
@@ -37,26 +35,26 @@ class App extends Component {
     // } else if (!sortTab && this.state.body) {
     //   this.setState({body: this.state.body.style = "overflow: auto"})
     // }
+    // console.log(this.props.checkingOut); 
 
     return (  
       <Fragment>
           <SideNav/>
-          <Cart/>
+          <Route path="/" component={Cart}/>
           <Modal/>
-          <div className="PageContainer" ref={this.appRef}>
-              <Navigation />
-              <main id="main">       
+              {this.props.checkingOut ? null : <Navigation/>}            
+                
                   <Switch>
                       <Route path="/" exact component={Home}/>
                       <Route path="/login" exact component={Login}/>
                       <Route path="/account" exact component={Account}/>
                       <Route path="/products" exact component={ProductList}/>
                       <Route path="/products/:name" exact component={Product}/>
+                      <Route path="/checkout" exact component={Checkout}/>
                   </Switch>
-              </main>  
-              <Newsletter /> 
-              <Footer/>
-          </div>    
+             
+              {this.props.checkingOut ? null :  <Newsletter />}  
+              {this.props.checkingOut ? null :  <Footer/>}                
       </Fragment> 
     );
   }  
@@ -65,7 +63,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     sortTab: state.sort.sortTab,
-    cartOpen: state.cart.isOpen
+    cartOpen: state.cart.isOpen, 
+    checkingOut: state.checkOut.inProgress
   }
 }
 

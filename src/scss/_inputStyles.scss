@@ -1,0 +1,161 @@
+.TextInput {
+  position: relative; 
+  
+  label {
+    display: none; 
+  }
+
+  &__input {
+    border: 1px transparent solid; 
+    border-radius: 5px; 
+    width: 100%; 
+    padding: 1.3rem 1.02rem;
+    font: inherit; 
+    line-height: inherit;
+
+    background-color: white;
+    color: #333333; 
+    border-color: #d9d9d9; 
+
+    &::placeholder {
+      
+    }
+
+    &:focus {
+      outline: none; 
+      border-color: #caa98a; 
+      box-shadow: 0 0 0 1px #caa98a; 
+    }
+  }
+}
+
+.SelectInput {
+  position: relative; 
+  label {
+    display: none; 
+  }
+
+  &__select {
+    appearance: none;
+    border: 1px transparent solid; 
+    border-radius: 5px; 
+    width: 100%; 
+    padding: 1.3rem 1.02rem;
+    font: inherit; 
+    line-height: inherit;
+
+    background-color: white;
+    color: #333333; 
+    border-color: #d9d9d9; 
+    
+    &:focus {
+      outline: none; 
+      border-color: #caa98a; 
+      box-shadow: 0 0 0 1px #caa98a; 
+    }
+  }
+
+  &__caret{
+    display: block;
+    width: 2.14286em;
+    height: 43%;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%);
+
+    border-left: 1px rgba(179,179,179,0.5) solid; 
+
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+
+    i {
+      color: #919191;
+    }
+  }
+}
+
+.RadioInput {
+    background: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    color: #545454;
+    border-color: #d9d9d9; 
+
+    &__row {
+      padding: 1.6rem; 
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+
+      &--last {
+        border-top: 1px solid #d9d9d9; 
+      }
+    }
+
+    &__radio {
+      padding-right: 1.05rem; 
+
+
+  
+      input {
+        position: relative; 
+        width: 1.8rem; 
+        height: 1.8rem; 
+        cursor: pointer; 
+        box-shadow: 0 0 0 0 #caa98a inset; 
+        border: 1px solid;
+        border-radius: 50%; 
+        border-color: #d9d9d9; 
+        background-color: white;
+        padding: 0;
+
+        &::after{
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: scale(0.2);
+          transition: all 0.2s ease-in-out 0.1s;
+          opacity: 0;
+
+          width: 4px;
+          height: 4px;
+          margin-left: -2px;
+          margin-top: -2px;
+          background-color: #fff;
+          border-radius: 50%;
+        }
+         
+  
+        &:checked {
+          box-shadow: 0 0 0 10px #caa98a inset; 
+
+          &::after{
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      }
+
+
+
+    }
+
+    &__label {
+      width: 100%; 
+      cursor: pointer; 
+      margin-bottom: 0; 
+      display: flex; 
+      justify-content: space-between;
+    }
+
+    &__price {
+      font-weight: 500; 
+      color: #333333; 
+    }
+
+}

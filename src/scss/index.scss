@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:200,300,400&display=swap');
+
+@import "~bootstrap/scss/bootstrap";
+
 @import './mainnav'; 
 @import './cart'; 
 @import './cartItem';
@@ -14,6 +17,12 @@
 @import '../components/ProductForm/productForm'; 
 @import './productList'; 
 @import '../components/FeaturedCollection/featureCollection'; 
+@import './checkout'; 
+@import './checkoutPreview'; 
+@import './checkoutItem';
+@import './breadcrumbs'; 
+@import './checkoutForm';
+@import './inputStyles'; 
 
 /* Main colors */
 :root {
@@ -57,6 +66,16 @@ body {
   font-weight: 400;
   background: #fff;
   
+}
+
+#root {
+  width: 100vw; 
+  height: 100vh; 
+}
+
+.PageContainer {
+  height: 100%; 
+  width: 100%; 
 }
 
 a {
@@ -154,6 +173,12 @@ button {
   color: var(--color-main-grey); 
 }
 
+.Separator {
+  width: 100%; 
+  margin: 1.8rem 0; 
+  height: 1px;  
+  background-color: #e6e6e6;
+}
 // .HorizontalList__Item {
 //   display: inline-block;
 //   margin: 6px 8px 6px 8px;

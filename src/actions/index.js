@@ -11,7 +11,11 @@ import {
   OPEN_SIDENAV, 
   CLOSE_SIDENAV, 
   OPEN_SORT, 
-  CLOSE_SORT, SORT, GET_SORT_DISTANCE, SET_NAV } from './types'; 
+  CLOSE_SORT, 
+  SORT, 
+  GET_SORT_DISTANCE, 
+  SET_NAV, 
+  CHECKING_OUT } from './types'; 
 // import { actionTypes } from 'redux-form';
 
 let auth; 
@@ -163,6 +167,13 @@ export const setNavColor = (path) => {
   return {
     type: SET_NAV,
     payload: path
+  }; 
+}; 
+
+export const checkingOut = (value) => {
+  return {
+    type: CHECKING_OUT, 
+    payload: value
   }; 
 }; 
  

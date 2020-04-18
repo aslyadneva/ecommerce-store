@@ -1,0 +1,50 @@
+.CheckoutItem {
+  display: flex; 
+  align-items: center;
+
+  &__thumbnail {
+    height: 6.5rem;
+    position: relative; 
+
+    img {
+      height: 100%; 
+    }
+  }
+
+  &__quantity {
+    border-radius: 21px;
+    background-color: rgba(114,114,114,0.9);
+    color: white; 
+    position: absolute; 
+    top: -8.9px;
+    right: -8.9px;
+    height: 2.2rem; 
+    width: 2.2rem; 
+    font-size: 1.2rem;
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+    line-height: 20.9px;
+  }
+
+  &__details {
+    display: flex; 
+    flex-direction: column;
+    padding-left: 2rem; 
+  }
+
+  &__itemName {
+    font-weight: 500; 
+  }
+
+  &__itemSize {
+    font-weight: 400; 
+    color: #6f6f6f; 
+    font-size: 1.2rem; 
+  }
+
+  &__price {
+    margin-left: auto; 
+    font-weight: 500; 
+  }
+}

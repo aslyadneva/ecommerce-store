@@ -1,0 +1,17 @@
+.Breadcrumbs {
+  display: flex; 
+  justify-content: center;
+
+  &__item {
+    font-size: 1.2rem; 
+    margin-right: .8rem; 
+
+    i {
+      color: #737373; 
+    }
+
+    span {
+      margin-right: .8rem; 
+    }
+  }
+}

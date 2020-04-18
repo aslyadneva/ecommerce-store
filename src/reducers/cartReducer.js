@@ -57,18 +57,19 @@ export default (state = INITIAL_STATE, action) => {
 
       function getIncreasedProducts () {
         const { productToIncrease, cartItems } = action.payload;
-        // console.log(cartItems); 
-        // console.log(productToIncrease)
-        
-        let idx = cartItems.findIndex(item => item.id === productToIncrease.id && item.size === productToIncrease.size); 
-
-        const itemToIncrease = cartItems[idx]; 
-        const pricePerItem = itemToIncrease.price / itemToIncrease.quantity; 
-
-        itemToIncrease.quantity = itemToIncrease.quantity + 1; 
-        itemToIncrease.price = itemToIncrease.price + pricePerItem;
-
-        return [...cartItems]
+       
+        return cartItems.map(cartItem => {
+          if (cartItem.id === productToIncrease.id && cartItem.size === productToIncrease.size) {
+            
+            return {
+              ...cartItem, 
+              price: cartItem['price'] + (productToIncrease.price/productToIncrease.quantity),
+              quantity: cartItem['quantity'] + 1,         
+            }
+          } else {
+            return {...cartItem}
+          }
+        })
       }
       
       return {...state, products: getIncreasedProducts()};
@@ -78,15 +79,18 @@ export default (state = INITIAL_STATE, action) => {
       function getDecreasedProducts () {
         const { productToDecrease, cartItems } = action.payload;
         
-        let idx = cartItems.findIndex(item => item.id === productToDecrease.id && item.size === productToDecrease.size);  
+        return cartItems.map(cartItem => {
+          if (cartItem.id === productToDecrease.id && cartItem.size === productToDecrease.size) {
 
-        const itemToDecrease = cartItems[idx]; 
-        const pricePerItem = itemToDecrease.price / itemToDecrease.quantity; 
-
-        itemToDecrease.quantity = itemToDecrease.quantity - 1 ; 
-        itemToDecrease.price = itemToDecrease.price - pricePerItem;
-        
-        return [...cartItems]
+            return {
+              ...cartItem, 
+              price: cartItem['price'] - (productToDecrease.price/productToDecrease.quantity),
+              quantity: cartItem['quantity'] - 1,         
+            }
+          } else {
+            return {...cartItem}
+          }
+        })
         }
 
       return {...state, products: getDecreasedProducts()};

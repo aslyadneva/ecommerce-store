@@ -56,9 +56,11 @@ class Navigation extends React.Component {
               </NavLink>   
               {/* SMALL Device */}      
 
+              {/* ALL Devices */}
               <h1 className="MainNav__Logo" style={{letterSpacing: '6px'}}>
                 <NavLink to="/"> <span style={{fontWeight: '200'}}>BRAND</span>NAME</NavLink>             
               </h1>
+              {/* ALL Devices */}
           
               {/* LARGE Device  */}
               <nav className="MainNav__SecondaryNav">       
