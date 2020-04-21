@@ -4,11 +4,29 @@ import { Link } from 'react-router-dom';
 class ButtonGroup extends Component {
   renderNext = (page) => {
     if (page === 1) {
-      return 'Continue to shipping'
+      return (
+        <button type="submit" className="ButtonGroup__continue">
+          Continue to shipping
+        </button>
+      )     
     } else if (page === 2) {
-      return 'Continue to payment'
+      return (
+        <button type="submit" className="ButtonGroup__continue">
+          Continue to payment
+        </button>
+      )  
+    } else if (page === 3) {
+      return (
+        <button type="submit" className="ButtonGroup__continue">
+          Pay now
+        </button>
+      )  
     } else {
-      return 'Pay now'
+      return (
+        <Link to="/" className="ButtonGroup__continue">
+          Continue shopping
+        </Link>
+      )  
     }
   }
 
@@ -34,13 +52,8 @@ class ButtonGroup extends Component {
 
     return (
       <div className="ButtonGroup">  
-
         {this.renderPrev(page)}
-
-        <button type="submit" className="ButtonGroup__continue">
-          {this.renderNext(page)}
-        </button>
-
+        {this.renderNext(page)}
       </div>
     )
   }

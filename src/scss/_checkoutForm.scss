@@ -1,9 +1,17 @@
-.checkoutForm {
+.CheckoutForm {
+  padding-bottom: 1.5rem; 
+
+  
   &__heading {
     color: #333333; 
     margin-bottom: 1.4rem; 
     font-weight: normal; 
   }
+
+  @media only screen and (min-width: 755px) {
+    padding-bottom: 4rem; 
+  } 
+
 }
 
 .CustomerInfo {
@@ -12,17 +20,106 @@
     @media only screen and (min-width: 755px) {
       // display: flex; 
     }
-  }
+  } 
 }
 
 .formGrid {
   display: grid; 
   row-gap: 1.5rem; 
 
-  &__name {
+  &--half {
+    @media only screen and (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
+    }
+  }
 
+  &--third {
+    @media only screen and (min-width: 750px) {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1.5rem;
+    }
+  }
+
+  
+}
+
+
+
+
+
+
+
+
+
+.OrderComplete {
+  &__header {
+    display: flex; 
+    margin-bottom: 2.5rem; 
+    align-items: center; 
+
+    i {
+      font-size: 6rem; 
+      color: #bf9771; 
+    }
+  }
+
+  &__thankYou {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.4; 
+    margin-left: 1rem; 
+
+    &__text {
+      font-size: 2.5rem; 
+    }
+  }
+
+  &__orderNumber {
+    color: #737373; 
+  }
+
+  &__section {
+    padding: 2rem; 
+    border:1px solid #d9d9d9; 
+    border-radius: 5px; 
+  }
+
+  &__details {
+    display: grid; 
+    // grid-template-columns: 1fr 1fr;
+    row-gap: 2rem; 
+    column-gap: 4rem; 
+
+    @media only screen and (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
+
+.OrderDetail {
+  &__header {
+    display: inline-block;
+    font-weight: bold; 
+    color: #333333; 
+    margin-bottom: .5rem; 
+  }
+
+  &__content {
+    color: #737373; 
+    line-height: 1.5
+  }
+}
+
+
+
+
+
+
+
+
+
 
 .ButtonGroup {
   margin-top: 2.1rem; 

@@ -28,7 +28,7 @@ class ShippingMethod extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2 className="checkoutForm__heading">Shipping Method</h2>
+        <h2 className="CheckoutForm__heading">Shipping Method</h2>
         <RadioInput selectedOption={shippingMethod} change={this.handleChange}/>     
         <ButtonGroup page={this.props.page} goBack={this.handleReturn}/>
       </form>

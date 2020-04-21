@@ -14,7 +14,7 @@ class CheckoutForm extends Component {
     orderComplete: false, 
     email: '', firstName: '', lastName: '', address: '', city: '', country: '', state: '', zipCode: '', phone: '', 
     shippingMethod: 'standard', 
-    cardNumber: '', cardHolderName: '', cardExpiry: '', cardSecurityCode: ''
+    cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***'
   }
 
   nextPage = () => {
@@ -43,7 +43,7 @@ class CheckoutForm extends Component {
           zipCode: this.state.zipCode, 
           phone: this.state.phone, 
         }, 
-      shipphingMethod: this.state.shippingMethod, 
+      shippingMethod: this.state.shippingMethod, 
       payment: 
         {
           cardNumber: this.state.cardNumber, 
@@ -70,7 +70,7 @@ class CheckoutForm extends Component {
         {orderComplete ? <OrderComplete orderDetails={order}/> : null}
         {orderComplete ? null : <Breadcrumbs page={page}/> }
 
-        <Separator/>
+        {!orderComplete ? <Separator/> : null}
 
         {!orderComplete && page === 1 && 
           <CustomerInfo 

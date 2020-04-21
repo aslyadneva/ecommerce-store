@@ -27,7 +27,7 @@ class CustomerInfo extends Component {
       <form className="CustomerInfo" onSubmit={this.handleSubmit}>
 
         <div className="CustomerInfo__contact">
-          <h2 className="checkoutForm__heading">Contact Info</h2>
+          <h2 className="CheckoutForm__heading">Contact Info</h2>
           <TextInput 
             type='email'
             placeholder='Email' 
@@ -39,10 +39,11 @@ class CustomerInfo extends Component {
         </div>
 
         <div className="CustomerInfo__address" style={{marginTop: '2rem'}}>
-          <h2 className="checkoutForm__heading">Shipping address</h2>
-          <div className="formGrid">
+          <h2 className="CheckoutForm__heading">Shipping address</h2>
 
-           
+          <div className="formGrid">  
+
+            <div className="formGrid formGrid--half">     
               <TextInput 
                 type='text'
                 placeholder='First name' 
@@ -59,8 +60,9 @@ class CustomerInfo extends Component {
                   value={this.props.lastName}     
                   change={this.handleChange}
               />
+            </div> 
          
-
+         
           <TextInput 
             type='text'
             placeholder='Address' 
@@ -79,7 +81,8 @@ class CustomerInfo extends Component {
             change={this.handleChange}
           />  
 
-         
+              <div className="formGrid formGrid--third">  
+        
               <SelectInput 
                 placeholder="Country" 
                 name="country"
@@ -87,9 +90,7 @@ class CustomerInfo extends Component {
                 change={this.handleChange}
                 value={this.props.country}
               />
-            
-
-            
+                      
               <SelectInput 
                 placeholder="State" 
                 name='state' 
@@ -106,8 +107,9 @@ class CustomerInfo extends Component {
                 value={this.props.zipCode}     
                 change={this.handleChange}
               />
-            
 
+            </div>
+            
           <TextInput 
             type='phone'
             placeholder='Phone' 
@@ -117,8 +119,8 @@ class CustomerInfo extends Component {
             change={this.handleChange}
           />
           </div>
-
         </div>
+
         <ButtonGroup page={this.props.page}/>
       </form>
     )

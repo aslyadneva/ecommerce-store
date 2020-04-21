@@ -25,7 +25,7 @@ class Payment extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-          <h2 className="checkoutForm__heading">Payment</h2>
+          <h2 className="CheckoutForm__heading">Payment</h2>
           {/* <p>All transactions are secure and encrypted</p> */}
 
           <div className="formGrid">
@@ -47,7 +47,7 @@ class Payment extends Component {
             change={this.handleChange}
           />
 
-          
+            <div className="formGrid formGrid--half">
               <TextInput 
                 type='text'
                 placeholder='Expiration date (MM/YY)' 
@@ -66,6 +66,7 @@ class Payment extends Component {
                   value={this.props.cardSecurityCode}
                   change={this.handleChange}
               />
+            </div>
            
           </div>
 

@@ -1,7 +1,16 @@
 .CheckoutPreview {
-  max-width: 560px; 
-  padding: 0 1.4rem; 
-  margin: 0 auto; 
+
+  &--isCollapsed {
+    height: 0; 
+    visibility: hidden; 
+    overflow: hidden; 
+  }
+
+  @media only screen and (min-width: 1000px) {
+    height: auto; 
+    visibility: visible; 
+    overflow: hidden; 
+  }  
 
   &__items {
     display: grid; 
@@ -13,6 +22,16 @@
     border-top: 1px solid rgba(173,173,173,0.34); 
     border-bottom: 1px solid rgba(173,173,173,0.34); 
     padding: 2.1rem 0; 
+
+    &__section {
+      display: flex; 
+    }
+
+    span {
+      margin-left: auto; 
+      color: #313131; 
+      font-weight: 500;
+    }
   }
 
   &__total {
