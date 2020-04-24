@@ -1,7 +1,7 @@
 import React from 'react'; 
 import CheckoutItem from './CheckoutItem'; 
 
-const CheckoutPreview = ({products, isOpen}) => {
+const CheckoutPreview = ({products, isOpen, subTotal, shipping}) => {
   return (
     <div className={`CheckoutPreview ${isOpen ? 'CheckoutPreview--isExpanded' : 'CheckoutPreview--isCollapsed'}`}>
 
@@ -12,12 +12,12 @@ const CheckoutPreview = ({products, isOpen}) => {
       <div className="CheckoutPreview__pricing" style={{color: '#525252'}}>
         <div className="CheckoutPreview__pricing__section" style={{ marginBottom: '1rem'}}>
           Subtotal
-          <span>$69.99</span>
+          <span>${subTotal.toFixed(2)}</span>
         </div>
 
         <div className="CheckoutPreview__pricing__section">
           Shipping
-          <span>TBD</span>
+          <span>{shipping === 0 ? 'TBD' : `$${shipping}`}</span>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ const CheckoutPreview = ({products, isOpen}) => {
         <span className="CheckoutPreview__total__text">Total</span>
         <div className="CheckoutPreview__total__price">
           <span className="CheckoutPreview__currency">USD</span>
-          <span className="CheckoutPreview__totalDue">$69.99</span>
+          <span className="CheckoutPreview__totalDue">${!shipping ? subTotal.toFixed(2) : (subTotal + shipping).toFixed(2)}</span>
         </div>
       </div>
 

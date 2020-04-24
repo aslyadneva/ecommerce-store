@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'; 
 import { connect } from 'react-redux';
-import { closeCart, removeFromCart } from '../../actions';  
+import { closeCart, removeFromCart, checkingOut } from '../../actions';  
 import CartItem from './CartItem'; 
 import axios from 'axios'; 
 
@@ -14,7 +14,8 @@ class Cart extends Component {
   handleCheckoutClick = (e) => {
     e.preventDefault(); 
     this.props.closeCart(); 
-    this.props.history.replace('/checkout')
+    this.props.checkingOut(true);
+    this.props.history.replace('/checkout');
     // const order = {
     //   items: this.props.cartItems, 
     //   customer: {
@@ -54,13 +55,9 @@ class Cart extends Component {
             })}
       </div>
     ); 
-  }
+  } 
 
-  renderTotal (cartItems) {
-    return cartItems.reduce((acc, product)=> acc + product.price, 0); 
-  }
-
-  renderCartFooter(cartItems) {
+  renderCartFooter(cartItems, total) {
     if (cartItems.length !== 0) {
       return (
         <div className="Cart__checkout">
@@ -69,7 +66,7 @@ class Cart extends Component {
               className="Button Button--full Button--primary Cart__checkoutButton"
             >
               <span className="Cart__checkoutSpan">Checkout</span>
-              <span>{`$${this.renderTotal(cartItems).toFixed(2)}`}</span>
+              <span>{`$${total.toFixed(2)}`}</span>
             </button>
         </div>
       ); 
@@ -77,9 +74,9 @@ class Cart extends Component {
 
     return null;
   } 
-
+ 
   render () {
-    const { cartItems, isOpen } = this.props; 
+    const { cartItems, isOpen, total } = this.props; 
     return ReactDOM.createPortal (
       <div className="Cart__Modal" style={{visibility: isOpen ? "visible" : "hidden"}} onClick={this.props.closeCart}>
 
@@ -93,7 +90,7 @@ class Cart extends Component {
 
           <div className="Cart__content">             
             {this.renderCartContent(cartItems)}           
-            {this.renderCartFooter(cartItems)}        
+            {this.renderCartFooter(cartItems, total)}        
           </div>
         </div>
 
@@ -107,10 +104,11 @@ class Cart extends Component {
 const mapStateToProps = state => {
   return { 
     isOpen: state.cart.isOpen, 
-    cartItems: state.cart.products
+    cartItems: state.cart.products, 
+    total: state.total.subTotal
   }
 }
-export default connect (mapStateToProps, { closeCart, removeFromCart })(Cart);
+export default connect (mapStateToProps, { closeCart, removeFromCart, checkingOut })(Cart);
 
 
 

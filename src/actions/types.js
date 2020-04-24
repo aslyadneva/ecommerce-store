@@ -15,3 +15,5 @@ export const SORT = "SORT";
 export const GET_SORT_DISTANCE = "GET_SORT_DISTANCE"; 
 export const SET_NAV = "SET_NAV"; 
 export const CHECKING_OUT = "CHECKING_OUT"; 
+export const UPDATE_SUBTOTAL = "UPDATE_SUBTOTAL"; 
+export const ADD_SHIPPING = "ADD_SHIPPING"; 

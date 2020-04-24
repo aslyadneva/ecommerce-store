@@ -8,7 +8,7 @@ import {
 
 const INITIAL_STATE = {
   isOpen: false,
-  products: [] 
+  products: []
 }
 
 export default (state = INITIAL_STATE, action) => {

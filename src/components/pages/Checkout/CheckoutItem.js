@@ -13,7 +13,7 @@ const CheckoutItem = ({ image, quantity, name, size, price}) => {
         <span className="CheckoutItem__itemSize">{size}</span>      
       </div>
 
-      <div className="CheckoutItem__price">${price}</div>
+      <div className="CheckoutItem__price">${price.toFixed(2)}</div>
     </div>
   )
 }

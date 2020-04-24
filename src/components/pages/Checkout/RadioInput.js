@@ -9,14 +9,14 @@ const RadioInput = ({selectedOption, change}) => {
               type="radio" 
               name='shippingMethod' 
               value='standard'
-              checked={selectedOption === 'standard'}
+              checked = {selectedOption === 'standard'}
               onChange={change}
             />
           </div>
 
           <label className="RadioInput__label">
             <span>Standard Shipping (7-14 business days)</span>
-            <span className="RadioInput__price">$5.99</span>
+            <span className="RadioInput__price">$6.95</span>
           </label>
       </div>
 
@@ -26,14 +26,14 @@ const RadioInput = ({selectedOption, change}) => {
               type="radio" 
               name='shippingMethod' 
               value='express'
-              checked={selectedOption === 'express'}
+              checked = {selectedOption === 'express'}
               onChange={change}
             />
           </div>
 
           <label className="RadioInput__label">
             <span>Express Shipping (2-4 business days)</span>
-            <span className="RadioInput__price">$15.99</span>
+            <span className="RadioInput__price">$16.99</span>
           </label>
       </div>
   

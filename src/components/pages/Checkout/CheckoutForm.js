@@ -1,5 +1,7 @@
 import React, { Component } from 'react'; 
 
+import {connect} from 'react-redux'; 
+import { addShipping } from '../../../actions'; 
 import Breadcrumbs from './Breadcrumbs'; 
 import Separator from '../../Separator'; 
 import CustomerInfo from './CustomerInfo'; 
@@ -11,9 +13,8 @@ class CheckoutForm extends Component {
   state = { 
     page: 1, 
     order: null, 
-    orderComplete: false, 
     email: '', firstName: '', lastName: '', address: '', city: '', country: '', state: '', zipCode: '', phone: '', 
-    shippingMethod: 'standard', 
+    shippingMethod: '', 
     cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***'
   }
 
@@ -26,7 +27,17 @@ class CheckoutForm extends Component {
   }
 
   handleChange = (valueName, value) => {
-    this.setState({ [valueName]: value })
+    this.setState({
+      [valueName]: value 
+    }, () => {
+      if (valueName === 'shippingMethod') {
+        if (this.state.shippingMethod === 'standard') {
+          this.props.addShipping('standard')
+        } else if (this.state.shippingMethod === 'express') {
+          this.props.addShipping('express')
+        }
+      }  
+    }) 
   }
 
   handleSubmit = () => {
@@ -51,37 +62,38 @@ class CheckoutForm extends Component {
           cardExpiry: this.state.cardExpiry, 
           cardSecurityCode: this.state.cardSecurityCode
         }, 
-      products: this.props.products
+      products: this.props.products, 
+      subTotal: this.props.subTotal, 
+      shippingAmount: this.props.shipping, 
+      total: this.props.subTotal + this.props.shipping
     }
-    this.setState({order: order})
-    
-    console.log(order); 
-    this.setState({orderComplete: true})
+    this.setState({order: order}); 
+          
   }
-
+ 
   render() {
-    const { page, orderComplete, order } = this.state; 
+    const { page, order } = this.state; 
     const { email, firstName, lastName, address, city, country, state, zipCode, phone, 
     shippingMethod,
     cardNumber, cardHolderName, cardExpiry, cardSecurityCode } = this.state; 
 
     return (
       <div className="CheckoutForm">
-        {orderComplete ? <OrderComplete orderDetails={order}/> : null}
-        {orderComplete ? null : <Breadcrumbs page={page}/> }
+        {order ? <OrderComplete orderDetails={order}/> : null}
+        {order ? null : <Breadcrumbs page={page}/> }
 
-        {!orderComplete ? <Separator/> : null}
+        {!order ? <Separator/> : null}
 
-        {!orderComplete && page === 1 && 
+        {!order && page === 1 && 
           <CustomerInfo 
             email={email} 
             firstName={firstName} lastName={lastName} address={address} city={city} country={country} state={state} zipCode={zipCode} phone={phone} 
             change={this.handleChange} next={this.nextPage}
             page={page}
-          />
+          /> 
         }
 
-        {!orderComplete && page === 2 && 
+        {!order && page === 2 && 
           <ShippingMethod 
             shippingMethod={shippingMethod}
             change={this.handleChange} next={this.nextPage} prev={this.previousPage}
@@ -89,7 +101,7 @@ class CheckoutForm extends Component {
           />
         }   
 
-        {!orderComplete && page === 3 && 
+        {!order && page === 3 && 
           <Payment 
             cardNumber={cardNumber} cardHolderName={cardHolderName} cardExpiry={cardExpiry} cardSecurityCode={cardSecurityCode}
             change={this.handleChange} next={this.handleSubmit} prev={this.previousPage}
@@ -101,4 +113,4 @@ class CheckoutForm extends Component {
   }
 }
 
-export default CheckoutForm
+export default connect(null, {addShipping})(CheckoutForm);

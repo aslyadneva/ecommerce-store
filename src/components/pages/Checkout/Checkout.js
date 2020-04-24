@@ -13,46 +13,41 @@ import CheckoutFooter from './CheckoutFooter';
 class Checkout extends Component {
   state = {
     orderSummary: false 
-  }
-
-  componentDidMount () {
-    this.props.checkingOut(true); 
-  } 
-  componentWillUnmount() {
-    this.props.checkingOut(false);
   } 
 
-  handleSubmit = (values) => {
-    // console.log(this.props.form.values)
-    console.log(values)
-  }
+  // componentDidMount () {
+  //   this.props.checkingOut(true); 
+  // } 
+  // componentWillUnmount() {
+  //   this.props.checkingOut(false);
+  // } 
 
   handleToggleClick = () => {
     this.state.orderSummary ? this.setState({ orderSummary: false }) : this.setState({ orderSummary: true }) 
   }
  
   render () {
-    const { products } = this.props; 
+    const { products, subTotal, shipping } = this.props; 
     const { orderSummary } = this.state; 
-
+ 
     return (
       <section className="Checkout">
 
         <CheckoutHeader size='small'/> 
 
-        <CheckoutToggle click={this.handleToggleClick} orderSummary={orderSummary}/>
+        <CheckoutToggle click={this.handleToggleClick} total={subTotal + shipping} orderSummary={orderSummary}/>
 
         <div className="Checkout__content">
 
           <div className="Checkout__wrap">
             <main className="Checkout__main">
               <CheckoutHeader size='large'/>
-              <CheckoutForm products={products}/>
+              <CheckoutForm products={products} subTotal={subTotal} shipping={shipping}/>
               <CheckoutFooter />
             </main>
 
             <aside className="Checkout__aside">
-              <CheckoutPreview products={products} isOpen={orderSummary}/>
+              <CheckoutPreview products={products} subTotal={subTotal} shipping={shipping} isOpen={orderSummary}/>
             </aside>
           </div> 
 
@@ -66,7 +61,9 @@ class Checkout extends Component {
 const mapStateToProps = state => {
   return {
     form : state.form.wizard, 
-    products: state.cart.products
+    products: state.cart.products, 
+    subTotal: state.total.subTotal, 
+    shipping: state.total.shipping
   }
 }
 

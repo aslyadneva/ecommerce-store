@@ -4,7 +4,7 @@ import {
   SIGN_OUT,  
   OPEN_CART,  
   CLOSE_CART, 
-  ADD_TO_CART,
+  ADD_TO_CART, 
   REMOVE_FROM_CART,
   DECREASE_QUANTITY, 
   INCREASE_QUANTITY, 
@@ -15,7 +15,7 @@ import {
   SORT, 
   GET_SORT_DISTANCE, 
   SET_NAV, 
-  CHECKING_OUT } from './types'; 
+  CHECKING_OUT, UPDATE_SUBTOTAL, ADD_SHIPPING } from './types'; 
 // import { actionTypes } from 'redux-form';
 
 let auth; 
@@ -69,6 +69,13 @@ export const closeCart = () => {
   }; 
 };
 
+export const addShipping = (type) => {
+  return {
+    type: ADD_SHIPPING, 
+    payload: type
+  }
+}
+
 export const addToCart = (product) => {
 
   return function (dispatch, getState){
@@ -77,15 +84,29 @@ export const addToCart = (product) => {
     dispatch({
       type: ADD_TO_CART, 
       payload: {product, cartItems: cart.products}
-    })    
+    })
+    
+    dispatch({
+      type: UPDATE_SUBTOTAL, 
+      payload: getState().cart.products
+    })
   }
 
 };
 
 export const removeFromCart = (product) => {
-  return {
-    type: REMOVE_FROM_CART,  
-    payload: product
+  return function (dispatch, getState){
+
+    dispatch({
+      type: REMOVE_FROM_CART,  
+      payload: product
+    })
+    
+    dispatch({
+      type: UPDATE_SUBTOTAL, 
+      payload: getState().cart.products
+    })
+
   }; 
 };
 
@@ -98,6 +119,11 @@ export const increaseQuantity = (product) => {
     dispatch({
       type: INCREASE_QUANTITY,  
       payload:  {productToIncrease: product, cartItems: cart.products }
+    })
+
+    dispatch({
+      type: UPDATE_SUBTOTAL, 
+      payload: getState().cart.products
     })
   }
 
@@ -112,6 +138,11 @@ export const decreaseQuantity = (product) => {
     dispatch({
       type: DECREASE_QUANTITY,  
       payload:  {productToDecrease: product, cartItems: cart.products }
+    })
+
+    dispatch({
+      type: UPDATE_SUBTOTAL, 
+      payload: getState().cart.products
     })
   }
   

@@ -1,10 +1,5 @@
 import React, { Component } from 'react'; 
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-
 import RadioInput from './RadioInput'; 
 import ButtonGroup from './ButtonGroup'; 
 
@@ -23,7 +18,7 @@ class ShippingMethod extends Component {
     this.props.prev(); 
   }
 
-  render() {
+  render() { 
     const { shippingMethod } = this.props; 
 
     return (

@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 
 import mainImage from '../../../images/photo1.jpg'; 
-import SectionHeader from '../../SectionHeader/SectionHeader'; 
+import SectionHeader from '../../SectionHeader'; 
 import Product from '../Product/Product'; 
 import freeShipping from '../../../images/free-shipping.gif'; 
 import './_home.scss'; 
@@ -30,18 +30,15 @@ class Home extends Component {
         </section>  */}
   
         {/* Featured Collection */}
-        {/* <section className="Section">
-          <div className="Container">
-            <SectionHeader title="Jeans"/>
-          </div>
+        <section className="Section">    
+          <SectionHeader title="Featured Collection"/>
           <FeaturedCollection/>
-        </section> */}
+        </section>
   
         {/* Video */}
         {/* <section className="Section">
-          <SectionHeader title="Latest Collection"/>
-          <video className="Home__Video" src={video} autoPlay loop muted/>
-        </section> */}
+          <video style={{filter: 'grayscale(100%)'}} className="Home__Video" src={video} autoPlay loop muted/>
+        </section>  */}
   
         {/* Featured Product */}
         {/* <section className="Section">

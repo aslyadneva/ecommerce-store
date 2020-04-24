@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom'; 
+import { Route, Switch, Redirect } from 'react-router-dom'; 
 
 import { connect } from 'react-redux'; 
 import { initAuth } from '../actions'; 
@@ -30,6 +30,8 @@ class App extends Component {
 
   render () {
     const { sortTab, cartOpen } = this.props; 
+    // console.log(history.location); 
+    
     // if (sortTab && this.state.body || cartOpen && this.state.body) {
     //   this.setState({body: this.state.body.style = "overflow: hidden"})
     // } else if (!sortTab && this.state.body) {
@@ -37,22 +39,20 @@ class App extends Component {
     // }
     // console.log(this.props.checkingOut); 
 
-    return (  
+    return (   
       <Fragment>
           <SideNav/>
           <Route path="/" component={Cart}/>
           <Modal/>
-              {this.props.checkingOut ? null : <Navigation/>}            
-                
+              {this.props.checkingOut ? null : <Navigation/>}                    
                   <Switch>
                       <Route path="/" exact component={Home}/>
                       <Route path="/login" exact component={Login}/>
                       <Route path="/account" exact component={Account}/>
                       <Route path="/products" exact component={ProductList}/>
                       <Route path="/products/:name" exact component={Product}/>
-                      <Route path="/checkout" exact component={Checkout}/>
+                      {this.props.checkingOut ? <Route path="/checkout" exact component={Checkout}/> : <Redirect to="/"/>}
                   </Switch>
-             
               {this.props.checkingOut ? null :  <Newsletter />}  
               {this.props.checkingOut ? null :  <Footer/>}                
       </Fragment> 

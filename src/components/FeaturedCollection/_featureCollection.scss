@@ -1,23 +1,84 @@
-.Carousel {
-  overflow-x: auto;
-  display: flex; 
-  white-space: nowrap; 
+.FeatureCollection {
+  position: relative;
+
+  &__products {
+    overflow-x: scroll;
+    overflow-y: hidden; 
+    white-space: nowrap; 
+    // padding-bottom: 3rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media only screen and (min-width: 1008px) {
+      overflow: hidden; 
+    }
+  }
+
+  @media only screen and (min-width: 1008px) {
+    margin: 0 9rem; 
+  }
+  
 }
 
 .Carousel__Item {
   width: 62%; 
   padding: 0 1.2rem; 
+  display: inline-block; 
+
+  &:first-child {
+    margin-left: 19%; 
+  }
+
+  @media only screen and (min-width: 641px) {
+    width: 48%; 
+    padding: 0 1.5rem; 
+
+    &:first-child {
+      margin-left: 26%; 
+    }
+  }
+
+  @media only screen and (min-width: 1008px) {
+    width: 33.33%; 
+    padding: 0 2rem; 
+
+    &:first-child {
+      margin-left: 0; 
+    }
+  }
+
+  @media only screen and (min-width: 1240px) {
+    width: 25%; 
+  }
+
 }
 
-.Carousel__ImageWrapper {
-  width: 200px;
-  img {
-    width: 100%
-  }
-}
 
-@media screen and (min-width: 641px) {
-  .Carousel__ImageWrapper {
-    width: 338px;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .Carousel__ImageWrapper {
+//   width: 34.1rem;
+//   img {
+//     width: 100%
+//   }
+// }
+
+// @media screen and (min-width: 641px) {
+//   .Carousel__ImageWrapper {
+//     width: 338px;
+//   }
+// }
