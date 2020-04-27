@@ -1,5 +1,5 @@
 import { 
-  UPDATE_SUBTOTAL, ADD_SHIPPING 
+  UPDATE_SUBTOTAL, ADD_SHIPPING, CLEAR_TOTAL 
 } from '../actions/types'; 
 
 const INITIAL_STATE = {
@@ -20,6 +20,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state, 
         shipping: shippingMethod === 'standard' ? 6.95 : 16.99      
+      }
+    case CLEAR_TOTAL:
+      return {
+        subTotal: 0, 
+        shipping: 0
       }
     default: 
       return state

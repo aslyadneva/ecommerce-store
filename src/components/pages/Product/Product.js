@@ -11,7 +11,7 @@ class Product extends Component {
 
   componentWillUnmount() {
     this.props.setNavColor(null);
-  } 
+  }  
 
   // Callback for ProductForm
   onSubmit = ({ quantity, size }) => {

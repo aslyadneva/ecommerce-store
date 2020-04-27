@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { closeCart, removeFromCart, checkingOut } from '../../actions';  
 import CartItem from './CartItem'; 
-import axios from 'axios'; 
 
 
 class Cart extends Component {
@@ -16,22 +15,6 @@ class Cart extends Component {
     this.props.closeCart(); 
     this.props.checkingOut(true);
     this.props.history.replace('/checkout');
-    // const order = {
-    //   items: this.props.cartItems, 
-    //   customer: {
-    //     name: 'Pandegrosa Bla', 
-    //     address: '5 Test street, Winnipeg, Canada', 
-    //   }, 
-    //   delivery: 'slowest'
-    // }
-    // axios.post(`https://react-e-commerce-65275.firebaseio.com/orders.json`, order)
-    //   .then(
-    //     response => {
-    //       console.log(response); 
-    //       this.props.closeCart(); 
-    //     }
-    //   )
-    //   .catch(error => console.log(error));
   }
 
   renderCartContent (cartItems) {

@@ -1,7 +1,8 @@
 import React, {Component} from 'react'; 
 import { connect } from 'react-redux'; 
 import {Link} from 'react-router-dom'; 
-import { checkingOut } from '../../../actions'; 
+import { checkingOut, clearCart, clearTotal } from '../../../actions'; 
+import axios from 'axios'; 
 
 import CheckoutHeader from './CheckoutHeader'; 
 import CheckoutToggle from './CheckoutToggle'
@@ -12,42 +13,72 @@ import CheckoutFooter from './CheckoutFooter';
 
 class Checkout extends Component {
   state = {
+    order: null, 
     orderSummary: false 
   } 
 
-  // componentDidMount () {
-  //   this.props.checkingOut(true); 
-  // } 
-  // componentWillUnmount() {
-  //   this.props.checkingOut(false);
-  // } 
+  componentWillUnmount() {
+    this.props.checkingOut(false);
+  } 
 
   handleToggleClick = () => {
     this.state.orderSummary ? this.setState({ orderSummary: false }) : this.setState({ orderSummary: true }) 
   }
+
+  handlePaymentComplete = (order) => {
+    // Send order to DB 
+    axios.post(`https://react-e-commerce-65275.firebaseio.com/orders.json`, order)
+      .then(
+        response => {
+          console.log(response); 
+          this.setState({order: order}, () => this.handleCleanUp())       
+        }
+      )
+      .catch(error => console.log(error));
+  }
+
+  handleCleanUp = () => {
+    // Clear cart and total state 
+    this.props.clearCart(); 
+    this.props.clearTotal(); 
+
+    // Show order details 
+  }
  
   render () {
     const { products, subTotal, shipping } = this.props; 
-    const { orderSummary } = this.state; 
+    const { orderSummary, order } = this.state; 
  
     return (
       <section className="Checkout">
 
         <CheckoutHeader size='small'/> 
 
-        <CheckoutToggle click={this.handleToggleClick} total={subTotal + shipping} orderSummary={orderSummary}/>
+        <CheckoutToggle 
+          click={this.handleToggleClick} 
+          total={subTotal ? subTotal + shipping : order.total} 
+          orderSummary={orderSummary}
+        />
 
         <div className="Checkout__content">
 
           <div className="Checkout__wrap">
             <main className="Checkout__main">
               <CheckoutHeader size='large'/>
-              <CheckoutForm products={products} subTotal={subTotal} shipping={shipping}/>
+              <CheckoutForm 
+                order={this.state.order}
+                onPayment={this.handlePaymentComplete}
+              />
               <CheckoutFooter />
             </main>
 
             <aside className="Checkout__aside">
-              <CheckoutPreview products={products} subTotal={subTotal} shipping={shipping} isOpen={orderSummary}/>
+              <CheckoutPreview 
+                products={products.length > 0 ? products : order.products} 
+                subTotal={subTotal ? subTotal : order.subTotal} 
+                shipping={order ? order.shippingAmount : shipping} 
+                isOpen={orderSummary}
+              />
             </aside>
           </div> 
 
@@ -60,11 +91,10 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    form : state.form.wizard, 
     products: state.cart.products, 
     subTotal: state.total.subTotal, 
     shipping: state.total.shipping
   }
 }
 
-export default connect(mapStateToProps, {checkingOut})(Checkout);  
+export default connect(mapStateToProps, {checkingOut, clearCart, clearTotal})(Checkout);  

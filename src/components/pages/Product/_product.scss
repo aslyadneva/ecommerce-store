@@ -14,6 +14,14 @@
     margin-right: auto;
   }
 
+  &--featured {
+    margin-top: 0; 
+
+    @media only screen and (min-width: 641px) {
+      grid-template-columns: 1fr 1fr; 
+    }
+  }
+
 }
 
 .Product__Gallery {

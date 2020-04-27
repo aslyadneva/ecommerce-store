@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
  
 const ProductTile = ({id, image, name, price}) => {
   return (
-    <div className="ProductTile">
+    <div className="ProductTile" data-aos="fade-up" data-aos-duration="1300"
+    data-aos-easing="ease-in-sine">
 
       <div style={{overflow: 'hidden'}}>
         <Link to={`/products/${id}`}>    

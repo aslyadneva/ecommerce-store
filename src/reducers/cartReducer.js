@@ -4,7 +4,7 @@ import {
   ADD_TO_CART, 
   REMOVE_FROM_CART, 
   INCREASE_QUANTITY, 
-  DECREASE_QUANTITY  } from '../actions/types'; 
+  DECREASE_QUANTITY, CLEAR_CART  } from '../actions/types'; 
 
 const INITIAL_STATE = {
   isOpen: false,
@@ -94,6 +94,11 @@ export default (state = INITIAL_STATE, action) => {
         }
 
       return {...state, products: getDecreasedProducts()};
+    
+    case CLEAR_CART: 
+      return  {
+        ...state, products: []
+      }
 
     default: 
       return state; 

@@ -15,7 +15,7 @@ import {
   SORT, 
   GET_SORT_DISTANCE, 
   SET_NAV, 
-  CHECKING_OUT, UPDATE_SUBTOTAL, ADD_SHIPPING } from './types'; 
+  CHECKING_OUT, UPDATE_SUBTOTAL, ADD_SHIPPING, CLEAR_CART, CLEAR_TOTAL } from './types'; 
 // import { actionTypes } from 'redux-form';
 
 let auth; 
@@ -69,10 +69,22 @@ export const closeCart = () => {
   }; 
 };
 
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART
+  }; 
+};
+
 export const addShipping = (type) => {
   return {
     type: ADD_SHIPPING, 
     payload: type
+  }
+}
+
+export const clearTotal = () => {
+  return {
+    type: CLEAR_TOTAL
   }
 }
 

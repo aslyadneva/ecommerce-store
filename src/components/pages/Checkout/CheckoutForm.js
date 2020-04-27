@@ -12,7 +12,6 @@ import OrderComplete from './OrderComplete';
 class CheckoutForm extends Component {
   state = { 
     page: 1, 
-    order: null, 
     email: '', firstName: '', lastName: '', address: '', city: '', country: '', state: '', zipCode: '', phone: '', 
     shippingMethod: '', 
     cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***'
@@ -67,15 +66,15 @@ class CheckoutForm extends Component {
       shippingAmount: this.props.shipping, 
       total: this.props.subTotal + this.props.shipping
     }
-    this.setState({order: order}); 
-          
+    this.props.onPayment(order)          
   }
  
   render() {
-    const { page, order } = this.state; 
+    const { page } = this.state; 
     const { email, firstName, lastName, address, city, country, state, zipCode, phone, 
     shippingMethod,
     cardNumber, cardHolderName, cardExpiry, cardSecurityCode } = this.state; 
+    const { order } = this.props; 
 
     return (
       <div className="CheckoutForm">
@@ -113,4 +112,12 @@ class CheckoutForm extends Component {
   }
 }
 
-export default connect(null, {addShipping})(CheckoutForm);
+const mapStateToProps = state => {
+  return {
+    products: state.cart.products, 
+    subTotal: state.total.subTotal, 
+    shipping: state.total.shipping
+  }
+}
+
+export default connect(mapStateToProps, {addShipping})(CheckoutForm);
