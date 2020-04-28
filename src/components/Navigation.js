@@ -29,7 +29,7 @@ class Navigation extends React.Component {
     } else {
       return '/login'
     }
-  } 
+  }  
 
   renderNumOfCartItems (cartItems) {
     return cartItems.reduce((acc, product)=> acc + product.quantity, 0); 

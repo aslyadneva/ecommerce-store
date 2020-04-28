@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductTile  from '../../ProductTile/ProductTile'; 
 import { connect } from 'react-redux'; 
-import { openSort, getSortDistance } from '../../../actions'; 
+import { openSort, getSortDistance, clearSort } from '../../../actions'; 
 
 import listHeaderImage from '../../../images/list-header.jpg'; 
 import productListHeader from '../../../images/productListHeader.jpg'; 
@@ -21,6 +21,7 @@ class ProductList extends Component  {
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleSortPosition);
+    this.props.clearSort(); 
   }
 
   handleSortPosition () {
@@ -34,7 +35,7 @@ class ProductList extends Component  {
       productsToRender = sortedProducts; 
     } else {
       productsToRender = currentProducts; 
-    }
+    } 
 
     return productsToRender.map(product => {
       return (                 
@@ -84,4 +85,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { openSort, getSortDistance })(ProductList);
+export default connect(mapStateToProps, { openSort, getSortDistance, clearSort })(ProductList);

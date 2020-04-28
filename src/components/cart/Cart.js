@@ -57,7 +57,7 @@ class Cart extends Component {
 
     return null;
   } 
- 
+  
   render () {
     const { cartItems, isOpen, total } = this.props; 
     return ReactDOM.createPortal (

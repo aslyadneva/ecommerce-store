@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'; 
 import {NavLink} from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
 import {closeSideNav} from '../actions';
@@ -6,8 +7,9 @@ import {closeSideNav} from '../actions';
 class SideNav extends Component {
   render()  {
     const { isOpen } = this.props; 
-    return (
-      <section className="SideNav" style={{visibility: isOpen ? 'visible' : 'hidden'}}>
+    return ReactDOM.createPortal(
+      <div className="Cart__Modal" style={{visibility: isOpen ? "visible" : "hidden"}} onClick={this.props.closeSideNav}>
+      <section className="SideNav" onClick={e => e.stopPropagation()}>
 
         <header className="SideNav__Header">
           <button onClick={this.props.closeSideNav}>
@@ -46,6 +48,9 @@ class SideNav extends Component {
         </footer>
         
       </section>
+      </div>
+      , 
+      document.querySelector('#sidenav')
     );
   }
 }

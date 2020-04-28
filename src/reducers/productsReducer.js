@@ -3,6 +3,10 @@ import blackjeans from '../images/blackjeans.jpeg';
 import whitejeans from '../images/whitejeans.jpeg'; 
 import pinkjeans from '../images/pinkjeans.jpeg'; 
 import creamjeans from '../images/creamjeans.jpeg'; 
+import lightwashjeans from '../images/lightbluejeans.jpeg'; 
+import greyjeans from '../images/greyjeans.jpeg'; 
+import stonejeans from '../images/stonejeans.jpeg'; 
+
 
 const INITIAL_STATE = [
   {
@@ -42,6 +46,30 @@ const INITIAL_STATE = [
     "name": "Cream Jeans", 
     "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
     "image": creamjeans,
+    "sizes": ["small", "medium", "large"],
+    "price": 59.99
+  }, 
+  {
+    "id": "lightwash-jeans", 
+    "name": "Light Wash Jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
+    "image": lightwashjeans,
+    "sizes": ["small", "medium", "large"],
+    "price": 59.99
+  },
+  {
+    "id": "grey-jeans", 
+    "name": "Grey Jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
+    "image": greyjeans,
+    "sizes": ["small", "medium", "large"],
+    "price": 59.99
+  },
+  {
+    "id": "stone-jeans", 
+    "name": "Stone Jeans", 
+    "description": "EXCLUSIVELY DESIGNED BY US FOR YOU. In our signature double lined fabric, this tank is just the right mix of casual and sleek. Soft with stretch. Shorter than a normal tank, longer than a crop.", 
+    "image": stonejeans,
     "sizes": ["small", "medium", "large"],
     "price": 59.99
   }

@@ -1,8 +1,11 @@
 import React, { Fragment, Component } from 'react';
 
 import { connect } from 'react-redux'; 
+import {Link} from 'react-router-dom'; 
 
 import mainImage from '../../../images/photo1.jpg'; 
+import secondaryImage from '../../../images/photo2.jpg'; 
+import photo4 from '../../../images/photo4.jpg'; 
 import SectionHeader from '../../SectionHeader'; 
 import freeShipping from '../../../images/free-shipping.gif'; 
 import './_home.scss'; 
@@ -13,9 +16,9 @@ import FeaturedProduct from '../../FeaturedProduct';
 
 class Home extends Component {
  
-  render () {
+  render () { 
     const styles = {
-      backgroundImage: `url(${mainImage})`, 
+      backgroundImage: `url(${photo4})`, 
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     } 
@@ -31,7 +34,10 @@ class Home extends Component {
           data-aos-duration="1300"
           data-aos-easing="ease-in-sine"
         >
-          <button>Shop Now</button>
+          <div className="MainImage__textArea">
+            <span className="MainImage__text">Essentials</span>
+            <Link to="/products" className="MainImage__cta">Shop The Collection</Link>
+          </div>
         </section>
 
         {/* Free Shipping GIF */}
@@ -41,7 +47,7 @@ class Home extends Component {
   
         {/* Featured Collection */}
         <section className="Section">    
-          <SectionHeader title="Featured Collection"/>
+          <SectionHeader title="new in"/>
           <FeaturedCollection/>
         </section>
   

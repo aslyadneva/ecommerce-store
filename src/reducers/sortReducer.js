@@ -1,9 +1,9 @@
-import { OPEN_SORT, CLOSE_SORT, SORT} from '../actions/types'; 
+import { OPEN_SORT, CLOSE_SORT, SORT, CLEAR_SORT} from '../actions/types'; 
 
 const INITIAL_STATE = {
   sortTab: false, 
   sortedProducts: []
-}
+} 
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -82,7 +82,10 @@ export default (state = INITIAL_STATE, action) => {
       }
 
       return {...state, sortedProducts: newSortedProducts}
-
+    
+    case CLEAR_SORT: 
+      return {...state, sortedProducts: []}
+      
     default: 
     return state
   }

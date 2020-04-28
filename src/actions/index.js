@@ -15,7 +15,10 @@ import {
   SORT, 
   GET_SORT_DISTANCE, 
   SET_NAV, 
-  CHECKING_OUT, UPDATE_SUBTOTAL, ADD_SHIPPING, CLEAR_CART, CLEAR_TOTAL } from './types'; 
+  CHECKING_OUT, 
+  UPDATE_SUBTOTAL, 
+  ADD_SHIPPING, 
+  CLEAR_CART, CLEAR_TOTAL, CLEAR_SORT} from './types'; 
 // import { actionTypes } from 'redux-form';
 
 let auth; 
@@ -197,6 +200,12 @@ export const sort = (sortType) => {
     
     dispatch(closeSort())
   }
+}; 
+
+export const clearSort = () => {
+  return {
+    type: CLEAR_SORT
+  }; 
 }; 
 
 export const getSortDistance = (distance) => {
