@@ -11,14 +11,14 @@ class Product extends Component {
 
   componentWillUnmount() {
     this.props.setNavColor(null);
-  }  
+  }   
 
   // Callback for ProductForm
-  onSubmit = ({ quantity, size }) => {
+  onSubmit = (size) => {
     const { image, name, price, id } = this.props.product;
 
     // a product obj with a quantity and size is sent to addToCart()
-    this.props.addToCart({ id, name, image, price, quantity, size })
+    this.props.addToCart({ id, name, image, price, quantity: 1, size })
   }
 
   render () {
@@ -39,7 +39,7 @@ class Product extends Component {
                 {/* <p>or 4 interest free installments of bla bla bla</p> */}
                 <p className="ProductMeta__Description">{description}</p>
               </div>
-              <ProductForm initialValues={{ quantity: 1, size: "Small" }} onSubmit={this.onSubmit}/>
+              <ProductForm onSubmit={this.onSubmit}/>
           </div>
       </section>
     );

@@ -1,25 +1,30 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'; 
-import { signOut } from '../../actions'; 
+import { signOut, setNavColor } from '../../actions'; 
 
 class Account extends Component {
-  constructor () {
-    super(); 
-    this.handleClick = this.handleClick.bind(this); 
-  }
-  handleClick () {
+
+  componentDidMount () {
+    this.props.setNavColor('opaque'); 
+  } 
+
+  componentWillUnmount() {
+    this.props.setNavColor(null);
+  }   
+
+  handleClick = () => {
     this.props.signOut(); 
   }
 
   render () {
     return (
-      <div>
+      <section className="Login">
         <h1>LOGOUT</h1>
         <button onClick={this.handleClick}>Log Me Out</button>
         <p>Welcome user name!</p>
-      </div>
+      </section>
     );
   }  
 }
 
-export default connect (null, { signOut })(Account);
+export default connect (null, { signOut, setNavColor })(Account);

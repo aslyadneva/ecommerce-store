@@ -20,6 +20,7 @@
 @import './breadcrumbs'; 
 @import './checkoutForm';
 @import './inputStyles'; 
+@import './login'; 
 
 /* Main colors */
 :root {
@@ -198,10 +199,6 @@ button {
 //   }
   
 // }
-
-.Container {
-
-}
 
 .h1 {
   font-size: 2rem;

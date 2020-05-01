@@ -44,7 +44,7 @@ export const initAuth = () => {
 }
 
 
-
+ 
 export const signIn = () => { 
   auth = window.gapi.auth2.getAuthInstance(); //returns an object with all necessary sign in/sign out methods
   auth.signIn(); 

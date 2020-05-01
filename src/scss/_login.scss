@@ -1,0 +1,19 @@
+.Login {
+  margin-top: var(--header-height); 
+  margin-bottom: 3.5rem; 
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+  }
+
+  &__form{
+    text-align: center; 
+  }
+
+  &__header {
+    margin-bottom: 2.4rem; 
+  }
+}

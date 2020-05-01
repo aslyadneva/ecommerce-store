@@ -18,40 +18,26 @@ import Modal from './Modal';
 import Checkout from './pages/Checkout/Checkout'; 
 
 class App extends Component {
-  constructor () {
-    super(); 
-    this.appRef = React.createRef(); 
-    this.state = { body: null}
-  }
 
   componentDidMount () {
     this.props.initAuth();
   }  
 
   render () {
-    const { sortTab, cartOpen } = this.props; 
-    // console.log(history.location); 
-    
-    // if (sortTab && this.state.body || cartOpen && this.state.body) {
-    //   this.setState({body: this.state.body.style = "overflow: hidden"})
-    // } else if (!sortTab && this.state.body) {
-    //   this.setState({body: this.state.body.style = "overflow: auto"})
-    // }
-    // console.log(this.props.checkingOut); 
 
     return (   
-      <Fragment>
+      <Fragment> 
           <SideNav/>
           <Route path="/" component={Cart}/>
           <Modal/>
               {this.props.checkingOut ? null : <Navigation/>}                    
               <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/login" exact component={Login}/>
                 <Route path="/account" exact component={Account}/>
+                <Route path="/login" exact component={Login}/>                   
                 <Route path="/products" exact component={ProductList}/>
                 <Route path="/products/:name" exact component={Product}/>
-                {this.props.checkingOut ? <Route path="/checkout" exact component={Checkout}/> : <Redirect to="/"/>}
+                <Route path="/checkout" exact component={Checkout}/>
               </Switch>
               {this.props.checkingOut ? null :  <Newsletter />}  
               {this.props.checkingOut ? null :  <Footer/>}                
@@ -64,7 +50,8 @@ const mapStateToProps = state => {
   return {
     sortTab: state.sort.sortTab,
     cartOpen: state.cart.isOpen, 
-    checkingOut: state.checkOut.inProgress
+    checkingOut: state.checkOut.inProgress, 
+    signedIn: state.auth.isSignedIn
   }
 }
 

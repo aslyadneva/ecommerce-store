@@ -6,7 +6,7 @@ const CheckoutPreview = ({products, isOpen, subTotal, shipping}) => {
     <div className={`CheckoutPreview ${isOpen ? 'CheckoutPreview--isExpanded' : 'CheckoutPreview--isCollapsed'}`}>
 
       <div className="CheckoutPreview__items">
-        {products.map(product => <CheckoutItem  {...product}/>)}                  
+        {products.map(product => <CheckoutItem key={`${product.id}-${product.size}`} {...product}/>)}                  
       </div>
 
       <div className="CheckoutPreview__pricing" style={{color: '#525252'}}>

@@ -1,56 +1,65 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
 
 class ProductForm extends Component {
-  onSubmit = (formValues) => {
-    this.props.onSubmit(formValues); 
-    console.log(formValues)
+  state = {
+    selectedValue: "Small"
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault(); 
+    this.props.onSubmit(this.state.selectedValue); 
+  } 
+
+  handleChange = (event) => {
+    this.setState({selectedValue: event.target.value})
   }
 
   render () { 
-    const {initialValues} = this.props; 
-    console.log(initialValues); 
+
     return ( 
-      //handleSubmit is a built in Redux Form function that calls your method of choice
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ProductForm">
+      <form onSubmit={this.onSubmit} className="ProductForm">
 
         <div className="ProductForm__Variants"> 
           <label className="ProductForm__Label">Size:</label>
           <ul className="ProductForm__List">
+
             <li className="ProductForm__Item">
-                <Field 
+                <input 
                   className="SizeSwatch__Radio" 
                   id="small" 
                   name="size" 
-                  component="input" 
                   type="radio" 
                   value="Small" 
+                  checked={this.state.selectedValue === "Small"}
+                  onChange={this.handleChange}
                 />
                   {' '}
                 <label htmlFor="small" className="SizeSwatch">Small</label>
             </li>
 
             <li className="ProductForm__Item">
-                <Field 
+                <input 
                   className="SizeSwatch__Radio" 
                   id="medium" 
                   name="size" 
-                  component="input" 
                   type="radio" 
                   value="Medium" 
+                  checked={this.state.selectedValue === "Medium"}
+                  onChange={this.handleChange}
                 />
                   {' '}
                 <label htmlFor="medium" className="SizeSwatch">Medium</label>
             </li>
 
             <li className="ProductForm__Item">
-                <Field 
+                <input 
                   className="SizeSwatch__Radio" 
                   id="large" 
                   name="size" 
-                  component="input" 
                   type="radio" 
                   value="Large" 
+                  checked={this.state.selectedValue === "Large"}
+                  onChange={this.handleChange}
                 />
                   {' '}
                 <label htmlFor="large" className="SizeSwatch">Large</label>
@@ -64,4 +73,4 @@ class ProductForm extends Component {
   }  
 }
 
-export default reduxForm({form: 'productForm'})(ProductForm)
+export default ProductForm;

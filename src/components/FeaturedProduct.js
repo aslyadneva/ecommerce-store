@@ -9,8 +9,6 @@ class FeaturedProduct extends Component {
   onSubmit = ({ quantity, size }) => {
     const { image, name, price, id } = this.props.product;
 
-    console.log(id, name, image, price, quantity, size); 
-
     // a product obj with a quantity and size is sent to addToCart()
     this.props.addToCart({ id, name, image, price, quantity, size })
   }
