@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import { connect } from 'react-redux'; 
-import { signIn, setNavColor } from '../../actions'; 
+import { trySignIn, setNavColor } from '../../actions'; 
 
 class Login extends Component {
 
@@ -12,12 +12,10 @@ class Login extends Component {
   componentWillUnmount() {
     this.props.setNavColor(null);
   }   
-
-  handleClick = () => {
-    this.props.signIn(); 
-  }
  
   render () {
+    const {trySignIn} = this.props;
+
     return (
       <section className="Login">
         <main className="Container Login__wrapper">
@@ -28,7 +26,7 @@ class Login extends Component {
             </div>
             <button 
               className="Button Button--primary Button--full" 
-              onClick={this.handleClick}
+              onClick={() => trySignIn(this.props.history)}
             >
               <i className="fab fa-google" style={{marginRight: '2rem'}}/>
               Sign In with Google
@@ -38,9 +36,7 @@ class Login extends Component {
       </section>
     );
   }
-
-
-  
 }
 
-export default connect (null, {signIn, setNavColor})(Login);
+
+export default connect (null, {trySignIn, setNavColor})(Login);

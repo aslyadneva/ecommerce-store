@@ -33,8 +33,8 @@ class App extends Component {
               {this.props.checkingOut ? null : <Navigation/>}                    
               <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/account" exact component={Account}/>
-                <Route path="/login" exact component={Login}/>                   
+                <Route path="/account" exact component={Account}/> 
+                <Route path="/login" exact component={Login}/>                         
                 <Route path="/products" exact component={ProductList}/>
                 <Route path="/products/:name" exact component={Product}/>
                 <Route path="/checkout" exact component={Checkout}/>

@@ -5,10 +5,22 @@ import { connect } from 'react-redux';
 import {closeSideNav} from '../actions';
 
 class SideNav extends Component {
+  isAuthorized = () => {
+    if (this.props.isSignedIn) {
+      return '/account'
+    } else {
+      return '/login'
+    }
+  }  
+
   render()  {
     const { isOpen } = this.props; 
     return ReactDOM.createPortal(
-      <div className="Cart__Modal" style={{visibility: isOpen ? "visible" : "hidden"}} onClick={this.props.closeSideNav}>
+      <div 
+        className="Cart__Modal" 
+        style={{visibility: isOpen ? "visible" : "hidden"}} 
+        onClick={this.props.closeSideNav}
+      >
       <section className="SideNav" onClick={e => e.stopPropagation()}>
 
         <header className="SideNav__Header">
@@ -21,11 +33,11 @@ class SideNav extends Component {
           <div className="SideNav__Main__Wrapper">
             <nav className="SideNav__Main__PrimaryNav">
                 <div className="NavItem">
-                  <NavLink to="/">HOME</NavLink>
+                  <NavLink to="/" onClick={this.props.closeSideNav}>HOME</NavLink>
                 </div>
                 <div className="NavItem">
-                  <NavLink to="/products">SHOP</NavLink>
-                </div>
+                  <NavLink to="/products" onClick={this.props.closeSideNav}>SHOP</NavLink>
+                </div> 
                 <div className="NavItem">
                   <NavLink to="/products">CLEARANCE</NavLink>
                 </div>
@@ -33,7 +45,7 @@ class SideNav extends Component {
             
             <nav className="SideNav__Main__SecondaryNav">
                 <ul>
-                  <li><NavLink  to="/">Account</NavLink></li>
+                  <li><NavLink  to={this.isAuthorized} onClick={this.props.closeSideNav}>Account</NavLink></li>
                   <li><NavLink  to="/">Search</NavLink></li>          
                 </ul>
             </nav>
@@ -57,7 +69,8 @@ class SideNav extends Component {
 
 const mapStateToProps = state => {
   return {
-    isOpen: state.sideNav
+    isOpen: state.sideNav,
+    isSignedIn: state.auth.isSignedIn
   }
 }
 export default connect (mapStateToProps, {closeSideNav})(SideNav); 

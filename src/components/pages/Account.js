@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'; 
-import { signOut, setNavColor } from '../../actions'; 
+import { trySignOut, setNavColor } from '../../actions'; 
 
 class Account extends Component {
 
@@ -13,7 +13,7 @@ class Account extends Component {
   }   
 
   handleClick = () => {
-    this.props.signOut(); 
+    this.props.trySignOut(this.props.history); 
   }
 
   render () {
@@ -27,4 +27,4 @@ class Account extends Component {
   }  
 }
 
-export default connect (null, { signOut, setNavColor })(Account);
+export default connect (null, {trySignOut, setNavColor })(Account);

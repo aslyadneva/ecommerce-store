@@ -1,64 +1,87 @@
 import { 
-  INIT_AUTH, 
-  SIGN_IN, 
-  SIGN_OUT,  
-  OPEN_CART,  
-  CLOSE_CART, 
-  ADD_TO_CART, 
-  REMOVE_FROM_CART,
-  DECREASE_QUANTITY, 
-  INCREASE_QUANTITY, 
-  OPEN_SIDENAV, 
-  CLOSE_SIDENAV, 
-  OPEN_SORT, 
-  CLOSE_SORT, 
-  SORT, 
-  GET_SORT_DISTANCE, 
+  CHANGE_AUTH,
+  OPEN_CART, CLOSE_CART, ADD_TO_CART, REMOVE_FROM_CART,
+  DECREASE_QUANTITY, INCREASE_QUANTITY, 
+  OPEN_SIDENAV, CLOSE_SIDENAV, 
+  OPEN_SORT, CLOSE_SORT, SORT, GET_SORT_DISTANCE, 
   SET_NAV, 
   CHECKING_OUT, 
   UPDATE_SUBTOTAL, 
   ADD_SHIPPING, 
   CLEAR_CART, CLEAR_TOTAL, CLEAR_SORT} from './types'; 
-// import { actionTypes } from 'redux-form';
 
-let auth; 
+import googleAuthApi from '../apis/googleAuth'; 
 
-//initAuth needs to be called when the App first loads (aka from it's componentDidMount())
+const googleAuthApiInstance = new googleAuthApi(); 
+let browserHistory; 
+
 export const initAuth = () => {
 
-  //1) Load the Auth2 library (this adds new methods to the gapi objects)
-
-
-  //2) Initialize Auth2 Library with our ID 
-  // ONLY do this step when the Auth2 library is finished loading duh 
-  return function (dispatch) {
-    window.gapi.load('client:auth2', () => {
-      window.gapi.client.init({
-        clientId: '157064655345-kbmdvrq88mknudq5k72kp028d75ugpkn.apps.googleusercontent.com', 
-        scope: 'email'
-      });
-      dispatch({ type: INIT_AUTH }); 
-    }); 
-
+  return function (dispatch) {    
+    try {
+      googleAuthApiInstance.init(dispatch);
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
+export const changeAuth = () => {
+  const isSignedIn = googleAuthApiInstance.isSignedIn(); // returns either true or false 
+  console.log(isSignedIn); 
 
- 
-export const signIn = () => { 
-  auth = window.gapi.auth2.getAuthInstance(); //returns an object with all necessary sign in/sign out methods
-  auth.signIn(); 
-  return {
-    type: SIGN_IN
-  };
+  if (browserHistory && isSignedIn) {
+    browserHistory.replace('/account')
+  } else if (browserHistory && !isSignedIn) {
+    console.log(browserHistory); 
+    browserHistory.replace('/')
+  }
+
+  return function (dispatch) {
+    dispatch({
+      type: CHANGE_AUTH, 
+      payload: isSignedIn
+    })
+  }  
+}
+
+export const trySignIn = (history) => {  
+  browserHistory = history; 
+  return function (dispatch) {
+    try {
+      googleAuthApiInstance.signIn();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
 
-export const signOut = () => {
-  auth.signOut(); 
-  return {
-    type: SIGN_OUT
-  };
+export const trySignOut = (history) => {
+  browserHistory = history; 
+  return function () {
+    try {
+      googleAuthApiInstance.signOut(); 
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const openCart = () => {
   return {
