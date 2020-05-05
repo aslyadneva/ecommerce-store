@@ -12,7 +12,7 @@ export default class GoogleAuth {
 
       window.gapi.client.init({
         clientId: this.clientId, 
-        scope: this.scope, 
+        scope: this.scope,  
         fetch_basic_profile: true
       })  // init returns a promise 
 
@@ -21,15 +21,26 @@ export default class GoogleAuth {
 
         // setting the listen method on the auth obj to listen for successful sign in or sign out
         this.auth.isSignedIn.listen(() => dispatch(changeAuth()));
-        
+              
         console.log(this); 
         dispatch(changeAuth());  
       })
-    }); 
+    });  
   }
 
   isSignedIn = () => {
     return this.auth.isSignedIn.get();
+  }
+
+  getCurrentUser = () => {
+    this.currentUser = this.auth.currentUser.get().getBasicProfile(); 
+    console.log(this); 
+    return {
+      id: this.currentUser.getId(),
+      firstName: this.currentUser.getGivenName(), 
+      lastName: this.currentUser.getFamilyName(), 
+      email: this.currentUser.getEmail()
+    }
   }
 
   signIn = () => {

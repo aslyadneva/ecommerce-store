@@ -23,8 +23,18 @@ class App extends Component {
     this.props.initAuth();
   }  
 
-  render () {
+  renderPrivateRoute = () => {
+    if (this.props.signedIn === 'pending') {
+      return <div>Loading...</div>
+    } else if (this.props.signedIn) {
+      return <Account/>
+    } else {
+      return <Redirect to="/login"/>
+    }
+  }
 
+  render () {
+    const {signedIn} = this.props;
     return (   
       <Fragment> 
           <SideNav/>
@@ -33,8 +43,12 @@ class App extends Component {
               {this.props.checkingOut ? null : <Navigation/>}                    
               <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/account" exact component={Account}/> 
-                <Route path="/login" exact component={Login}/>                         
+                <Route path="/account" exact>
+                  {this.renderPrivateRoute()}
+                </Route>               
+                <Route path="/login" exact> 
+                  {signedIn ? <Redirect to="/account"/> : <Login/>}
+                </Route>                                    
                 <Route path="/products" exact component={ProductList}/>
                 <Route path="/products/:name" exact component={Product}/>
                 <Route path="/checkout" exact component={Checkout}/>

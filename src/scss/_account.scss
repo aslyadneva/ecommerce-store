@@ -1,0 +1,12 @@
+.Account {
+  margin-top: var(--header-height); 
+  margin-bottom: 3.5rem; 
+
+  &__header {
+    padding: 3.5rem 0; 
+
+    @media only screen and (min-width: 641px) {
+      padding: 5rem 0;
+    }
+  }
+}

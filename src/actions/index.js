@@ -27,20 +27,30 @@ export const initAuth = () => {
 }
 
 export const changeAuth = () => {
+  let currentUser; 
   const isSignedIn = googleAuthApiInstance.isSignedIn(); // returns either true or false 
-  console.log(isSignedIn); 
 
-  if (browserHistory && isSignedIn) {
-    browserHistory.replace('/account')
-  } else if (browserHistory && !isSignedIn) {
-    console.log(browserHistory); 
-    browserHistory.replace('/')
+  if (isSignedIn) {
+    try {
+      currentUser = googleAuthApiInstance.getCurrentUser()
+    } catch (err) {
+      console.log(err);
+    }
+    
   }
+
+  // if (browserHistory && isSignedIn) {
+  //   browserHistory.replace('/account')
+  // } 
+  // else if (browserHistory && !isSignedIn) {
+  //   console.log(browserHistory); 
+  //   browserHistory.replace('/')
+  // }
 
   return function (dispatch) {
     dispatch({
       type: CHANGE_AUTH, 
-      payload: isSignedIn
+      payload: {signedIn: isSignedIn, user: currentUser}
     })
   }  
 }

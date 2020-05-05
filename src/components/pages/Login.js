@@ -33,7 +33,7 @@ class Login extends Component {
             </button>
           </div>
         </main>
-      </section>
+      </section> 
     );
   }
 }
