@@ -11,27 +11,74 @@ const states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','Califo
 
 class CustomerInfo extends Component {
   handleChange = (event) => {
-    this.props.change(event.target.name, event.target.value); 
+    const {name, value} = event.target;
+
+    // let errors = this.props.errors;
+
+    // switch (name) {
+    //   case 'email': 
+    //     errors.email = value.length === 0? 'Enter an email' : ''; 
+    //     break; 
+    //   case 'firstName': 
+    //     errors.firstName = value.length === 0? 'Enter a name' : ''; 
+    //     break;
+    //   case 'lasttName': 
+    //     errors.lastName = value.length === 0? 'Enter a last name' : ''; 
+    //     break;
+    //   case 'address': 
+    //     errors.address = value.length === 0? 'Enter an address' : ''; 
+    //     break;
+    //   case 'city': 
+    //     errors.city = value.length === 0? 'Enter a city' : ''; 
+    //     break;
+    //   case 'zipCode': 
+    //     errors.zipCode = value.length === 0? 'Enter a zip code' : ''; 
+    //     break;
+    //   case 'phone': 
+    //     errors.phone = value.length === 0? 'Enter a phone number' : ''; 
+    //     break;
+    //   default: 
+    //     break; 
+    // }
+
+    this.props.change(name, value); 
   }
 
-  handleSubmit = () => {
-    // validate forms 
-    this.props.next(); 
+  // validateForm = (errors) => {
+  //   console.log(Object.values(errors)); 
+  //   let valid = true;
+  //   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+  //   return valid; 
+  // }
+
+  handleSubmit = (event) => {
+    event.preventDefault(); 
+    
+    // console.log('form submitted')
+
+    // if(this.validateForm(this.props.errors)) {
+    //   console.info('Valid Form'); 
+      this.props.next();
+    // }else{
+    //   console.error('Invalid Form')
+    // }
+      
   }
 
   render() {
     return (
-      <form className="CustomerInfo" onSubmit={this.handleSubmit}>
+      <form className="CustomerInfo" onSubmit={this.handleSubmit} noValidate>
 
         <div className="CustomerInfo__contact">
           <h2 className="CheckoutForm__heading">Contact Info</h2>
-          <TextInput 
+          <TextInput  
             type='email'
             placeholder='Email' 
             label='Email' 
             name='email' 
             value={this.props.email}
             change={this.handleChange}
+            
           />
         </div>
 
@@ -56,6 +103,7 @@ class CustomerInfo extends Component {
                   name='lastName' 
                   value={this.props.lastName}     
                   change={this.handleChange}
+
               />
             </div> 
          

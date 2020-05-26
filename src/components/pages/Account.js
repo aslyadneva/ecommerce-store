@@ -15,7 +15,7 @@ class Account extends Component {
   }   
 
   handleClick = () => {
-    this.props.trySignOut(this.props.history); 
+    this.props.trySignOut(); 
   }
 
   render () {

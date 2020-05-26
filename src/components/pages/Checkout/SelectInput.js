@@ -2,7 +2,7 @@ import React from 'react'
 
 const SelectInput = ({placeholder, name, value, change, options}) => {
   return (
-    <div className="SelectInput">
+    <div className="SelectInput"> 
       <label className="SelectInput__label">Label</label>
 
       <select 
@@ -11,6 +11,7 @@ const SelectInput = ({placeholder, name, value, change, options}) => {
         value={value}
         name={name}
         onChange={change}
+        noValidate 
       > 
         <option value='' defaultValue>{placeholder}</option>
         {options.map(option => <option key={option} value={option}>{option}</option>)}
@@ -19,6 +20,7 @@ const SelectInput = ({placeholder, name, value, change, options}) => {
       <div className="SelectInput__caret">
         <i className="fas fa-caret-down"/>
       </div>
+      {/* <span className="SelectInput__errorText">Error text</span> */}
     </div>
   )
 }

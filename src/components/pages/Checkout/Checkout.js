@@ -42,9 +42,9 @@ class Checkout extends Component {
     this.props.clearCart(); 
     this.props.clearTotal(); 
 
-    // Show order details 
+    // Show order details  
   }
- 
+  
   render () {
     const { products, subTotal, shipping } = this.props; 
     const { orderSummary, order } = this.state; 

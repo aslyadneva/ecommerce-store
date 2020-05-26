@@ -6,11 +6,11 @@ import ProductForm from './ProductForm/ProductForm';
 class FeaturedProduct extends Component {
 
   // Callback for ProductForm
-  onSubmit = ({ quantity, size }) => {
+  onSubmit = (size) => {
     const { image, name, price, id } = this.props.product;
 
     // a product obj with a quantity and size is sent to addToCart()
-    this.props.addToCart({ id, name, image, price, quantity, size })
+    this.props.addToCart({ id, name, image, price, quantity: 1, size })
   }
 
   render () {

@@ -16,8 +16,12 @@ import Cart from './cart/Cart';
 import SideNav from './SideNav'; 
 import Modal from './Modal'; 
 import Checkout from './pages/Checkout/Checkout'; 
+import Search from './Search';
 
 class App extends Component {
+  state = {
+    searchOpen: false
+  }
 
   componentDidMount () {
     this.props.initAuth();
@@ -33,14 +37,25 @@ class App extends Component {
     }
   }
 
+  openSearch = () => {
+    this.setState({searchOpen : true})
+  }
+
+  closeSearch = () => {
+    this.setState({searchOpen : false})
+  }
+
   render () {
-    const {signedIn} = this.props;
+    const {searchOpen} = this.state
+    const {signedIn, checkingOut, products} = this.props
+
     return (   
       <Fragment> 
+          {searchOpen && <Search close={this.closeSearch}/>}
           <SideNav/>
           <Route path="/" component={Cart}/>
           <Modal/>
-              {this.props.checkingOut ? null : <Navigation/>}                    
+              {this.props.checkingOut ? null : <Navigation openSearch={this.openSearch}/>}                    
               <Switch>
                 <Route path="/" exact component={Home}/>
                 <Route path="/account" exact>
@@ -51,7 +66,9 @@ class App extends Component {
                 </Route>                                    
                 <Route path="/products" exact component={ProductList}/>
                 <Route path="/products/:name" exact component={Product}/>
-                <Route path="/checkout" exact component={Checkout}/>
+                <Route path="/checkout" exact>
+                  {checkingOut ? <Checkout/> : <Redirect to="/"/>}
+                </Route>
               </Switch>
               {this.props.checkingOut ? null :  <Newsletter />}  
               {this.props.checkingOut ? null :  <Footer/>}                

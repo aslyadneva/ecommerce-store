@@ -22,7 +22,6 @@ export default class GoogleAuth {
         // setting the listen method on the auth obj to listen for successful sign in or sign out
         this.auth.isSignedIn.listen(() => dispatch(changeAuth()));
               
-        console.log(this); 
         dispatch(changeAuth());  
       })
     });  
@@ -34,7 +33,6 @@ export default class GoogleAuth {
 
   getCurrentUser = () => {
     this.currentUser = this.auth.currentUser.get().getBasicProfile(); 
-    console.log(this); 
     return {
       id: this.currentUser.getId(),
       firstName: this.currentUser.getGivenName(), 

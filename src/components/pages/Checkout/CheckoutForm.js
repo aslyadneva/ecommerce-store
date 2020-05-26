@@ -12,9 +12,14 @@ import OrderComplete from './OrderComplete';
 class CheckoutForm extends Component {
   state = { 
     page: 1, 
+
     email: '', firstName: '', lastName: '', address: '', city: '', country: '', state: '', zipCode: '', phone: '', 
     shippingMethod: '', 
-    cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***'
+    cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***',
+
+    errors: {
+      email: '', firstName: '', lastName: '', address: '', city: '', zipCode: '', phone: ''
+    }
   }
 
   nextPage = () => {
@@ -36,13 +41,14 @@ class CheckoutForm extends Component {
           this.props.addShipping('express')
         }
       }  
-    }) 
+    }); 
   }
 
   handleSubmit = () => {
     const order = {
       customer: 
-        {
+        { 
+          id: this.props.user.id || 'guest',
           email: this.state.email,
           firstName: this.state.firstName, 
           lastName: this.state.lastName, 
@@ -70,7 +76,7 @@ class CheckoutForm extends Component {
   }
  
   render() {
-    const { page } = this.state; 
+    const { page, errors } = this.state; 
     const { email, firstName, lastName, address, city, country, state, zipCode, phone, 
     shippingMethod,
     cardNumber, cardHolderName, cardExpiry, cardSecurityCode } = this.state; 
@@ -85,6 +91,7 @@ class CheckoutForm extends Component {
 
         {!order && page === 1 && 
           <CustomerInfo 
+            errors={errors}
             email={email} 
             firstName={firstName} lastName={lastName} address={address} city={city} country={country} state={state} zipCode={zipCode} phone={phone} 
             change={this.handleChange} next={this.nextPage}
@@ -104,7 +111,7 @@ class CheckoutForm extends Component {
           <Payment 
             cardNumber={cardNumber} cardHolderName={cardHolderName} cardExpiry={cardExpiry} cardSecurityCode={cardSecurityCode}
             change={this.handleChange} next={this.handleSubmit} prev={this.previousPage}
-            page={page}
+            page={page} 
           />
         }          
       </div>
@@ -116,7 +123,8 @@ const mapStateToProps = state => {
   return {
     products: state.cart.products, 
     subTotal: state.total.subTotal, 
-    shipping: state.total.shipping
+    shipping: state.total.shipping, 
+    user: state.auth.user
   }
 }
 

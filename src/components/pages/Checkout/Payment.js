@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import React, { Component, Fragment } from 'react'; 
 
 import TextInput from './TextInput';
 
@@ -20,9 +20,9 @@ class Payment extends Component {
     this.props.change(event.target.name, event.target.value); 
   }
 
-
   render() {
     return (
+      <Fragment>
       <form onSubmit={this.handleSubmit}>
           <h2 className="CheckoutForm__heading">Payment</h2>
           {/* <p>All transactions are secure and encrypted</p> */}
@@ -71,6 +71,7 @@ class Payment extends Component {
 
       <ButtonGroup page={this.props.page} goBack={this.handleReturn} />
       </form>
+      </Fragment>
     )
   }
 }

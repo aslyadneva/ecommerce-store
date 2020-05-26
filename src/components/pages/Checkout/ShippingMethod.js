@@ -12,7 +12,7 @@ class ShippingMethod extends Component {
     event.preventDefault(); 
     this.props.next(); 
   }
-
+ 
   handleReturn = (event) => {
     event.preventDefault(); 
     this.props.prev(); 

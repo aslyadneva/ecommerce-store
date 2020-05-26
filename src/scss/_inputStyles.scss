@@ -26,6 +26,16 @@
       border-color: #caa98a; 
       box-shadow: 0 0 0 1px #caa98a; 
     }
+
+    &--error {
+      border: 2px red solid; 
+    }
+  }
+
+  &__errorText {
+    // display: inline-block; 
+    // margin-top: .6rem; 
+    color: red; 
   }
 }
 
@@ -53,6 +63,16 @@
       border-color: #caa98a; 
       box-shadow: 0 0 0 1px #caa98a; 
     }
+
+    &--error {
+      border: 2px red solid; 
+    }    
+  }
+
+  &__errorText {
+    // display: inline-block; 
+    // margin-top: .6rem; 
+    color: red; 
   }
 
   &__caret{

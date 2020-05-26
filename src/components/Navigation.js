@@ -46,11 +46,11 @@ class Navigation extends React.Component {
   }
 
   render () {
-    const { cartItems, mainNav } = this.props; 
+    const { cartItems, mainNav, openSearch } = this.props; 
     return (
         <header className={this.renderNavStyle(mainNav)}>     
 
-              {/* SMALL Device */}
+              {/* SMALL Device Only*/}
               <NavLink className="MainNav__sideNavButton" to="#" onClick={this.props.openSideNav}>
                 <i className="fas fa-bars"></i>
               </NavLink>   
@@ -62,22 +62,22 @@ class Navigation extends React.Component {
               </h1>
               {/* ALL Devices */}
           
-              {/* LARGE Device  */}
+              {/* LARGE Device Only */}
               <nav className="MainNav__SecondaryNav">       
                 <NavLink className="Heading Text--subdued" to={this.isAuthorized}>ACCOUNT</NavLink>                  
-                <NavLink className="Heading Text--subdued" to="/">SEARCH</NavLink>         
+                <NavLink className="Heading Text--subdued" to="#" onClick={openSearch}>SEARCH</NavLink>         
                 <NavLink className="Heading h6" to="#" onClick={this.props.openCart}>CART (<span>{this.renderNumOfCartItems(cartItems)}</span>)</NavLink>
               </nav>
               {/* LARGE Device  */}
 
-              {/* SMALL Device */}
+              {/* SMALL Device  Only*/}
               <NavLink className="MainNav__CartButton" to="#" onClick={this.props.openCart}>
                 <i className="fas fa-shopping-bag"></i>
               </NavLink>
               {/* SMALL Device */}
           
 
-              {/* LARGE Device  */}
+              {/* LARGE Device Only */}
               <nav className="MainNav__MainNav">
                 <NavLink className="Heading h6" to="/">HOME</NavLink>
                 <NavLink className="Heading h6" to="/products">SHOP</NavLink>   

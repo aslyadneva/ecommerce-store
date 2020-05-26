@@ -20,7 +20,7 @@ class Product extends Component {
     // a product obj with a quantity and size is sent to addToCart()
     this.props.addToCart({ id, name, image, price, quantity: 1, size })
   }
-
+ 
   render () {
     const { image, name, price, description } = this.props.product; 
 

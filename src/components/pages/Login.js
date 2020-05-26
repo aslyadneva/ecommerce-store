@@ -26,7 +26,7 @@ class Login extends Component {
             </div>
             <button 
               className="Button Button--primary Button--full" 
-              onClick={() => trySignIn(this.props.history)}
+              onClick={() => trySignIn()}
             >
               <i className="fab fa-google" style={{marginRight: '2rem'}}/>
               Sign In with Google

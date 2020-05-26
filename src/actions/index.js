@@ -12,8 +12,7 @@ import {
 
 import googleAuthApi from '../apis/googleAuth'; 
 
-const googleAuthApiInstance = new googleAuthApi(); 
-let browserHistory; 
+const googleAuthApiInstance = new googleAuthApi();  
 
 export const initAuth = () => {
 
@@ -39,14 +38,6 @@ export const changeAuth = () => {
     
   }
 
-  // if (browserHistory && isSignedIn) {
-  //   browserHistory.replace('/account')
-  // } 
-  // else if (browserHistory && !isSignedIn) {
-  //   console.log(browserHistory); 
-  //   browserHistory.replace('/')
-  // }
-
   return function (dispatch) {
     dispatch({
       type: CHANGE_AUTH, 
@@ -55,9 +46,8 @@ export const changeAuth = () => {
   }  
 }
 
-export const trySignIn = (history) => {  
-  browserHistory = history; 
-  return function (dispatch) {
+export const trySignIn = () => {   
+  return function () {
     try {
       googleAuthApiInstance.signIn();
     } catch (err) {
@@ -66,8 +56,7 @@ export const trySignIn = (history) => {
   }
 };
 
-export const trySignOut = (history) => {
-  browserHistory = history; 
+export const trySignOut = () => {
   return function () {
     try {
       googleAuthApiInstance.signOut(); 
