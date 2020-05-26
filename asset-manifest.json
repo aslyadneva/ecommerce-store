@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ecommerce-store/static/css/main.aba6f494.chunk.css",
-    "main.js": "/ecommerce-store/static/js/main.fe70ecd5.chunk.js",
-    "main.js.map": "/ecommerce-store/static/js/main.fe70ecd5.chunk.js.map",
+    "main.js": "/ecommerce-store/static/js/main.889d484d.chunk.js",
+    "main.js.map": "/ecommerce-store/static/js/main.889d484d.chunk.js.map",
     "runtime-main.js": "/ecommerce-store/static/js/runtime-main.00b60670.js",
     "runtime-main.js.map": "/ecommerce-store/static/js/runtime-main.00b60670.js.map",
     "static/js/2.f80dd1c7.chunk.js": "/ecommerce-store/static/js/2.f80dd1c7.chunk.js",
     "static/js/2.f80dd1c7.chunk.js.map": "/ecommerce-store/static/js/2.f80dd1c7.chunk.js.map",
     "index.html": "/ecommerce-store/index.html",
-    "precache-manifest.0c06d76235e65ac0f2678a5d0db6ec98.js": "/ecommerce-store/precache-manifest.0c06d76235e65ac0f2678a5d0db6ec98.js",
+    "precache-manifest.7d030deeec86c6ec38138b9ebc2436bc.js": "/ecommerce-store/precache-manifest.7d030deeec86c6ec38138b9ebc2436bc.js",
     "service-worker.js": "/ecommerce-store/service-worker.js",
     "static/css/main.aba6f494.chunk.css.map": "/ecommerce-store/static/css/main.aba6f494.chunk.css.map",
     "static/js/2.f80dd1c7.chunk.js.LICENSE.txt": "/ecommerce-store/static/js/2.f80dd1c7.chunk.js.LICENSE.txt",
@@ -22,7 +22,7 @@
     "static/media/mainvideo2.mp4": "/ecommerce-store/static/media/mainvideo2.f2d6f55f.mp4",
     "static/media/photo1.jpg": "/ecommerce-store/static/media/photo1.d720c2c6.jpg",
     "static/media/photo2.jpg": "/ecommerce-store/static/media/photo2.5a844a81.jpg",
-    "static/media/photo4.jp2": "/ecommerce-store/static/media/photo4.2c94005a.jp2",
+    "static/media/photo4.jpg": "/ecommerce-store/static/media/photo4.67a4fe6b.jpg",
     "static/media/pinkjeans.jpeg": "/ecommerce-store/static/media/pinkjeans.3eb57b56.jpeg",
     "static/media/productListHeader.jpg": "/ecommerce-store/static/media/productListHeader.83f7175e.jpg",
     "static/media/stonejeans.jpeg": "/ecommerce-store/static/media/stonejeans.cb1c9b62.jpeg",
@@ -32,6 +32,6 @@
     "static/js/runtime-main.00b60670.js",
     "static/js/2.f80dd1c7.chunk.js",
     "static/css/main.aba6f494.chunk.css",
-    "static/js/main.fe70ecd5.chunk.js"
+    "static/js/main.889d484d.chunk.js"
   ]
 }
