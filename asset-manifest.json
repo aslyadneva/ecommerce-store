@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ecommerce-store/static/css/main.3ed6c1a2.chunk.css",
-    "main.js": "/ecommerce-store/static/js/main.016bdd41.chunk.js",
-    "main.js.map": "/ecommerce-store/static/js/main.016bdd41.chunk.js.map",
+    "main.js": "/ecommerce-store/static/js/main.c4fe813b.chunk.js",
+    "main.js.map": "/ecommerce-store/static/js/main.c4fe813b.chunk.js.map",
     "runtime-main.js": "/ecommerce-store/static/js/runtime-main.00b60670.js",
     "runtime-main.js.map": "/ecommerce-store/static/js/runtime-main.00b60670.js.map",
     "static/js/2.a9a47fd1.chunk.js": "/ecommerce-store/static/js/2.a9a47fd1.chunk.js",
     "static/js/2.a9a47fd1.chunk.js.map": "/ecommerce-store/static/js/2.a9a47fd1.chunk.js.map",
     "index.html": "/ecommerce-store/index.html",
-    "precache-manifest.138d7a5a01380c6ba748aadc453a6cfe.js": "/ecommerce-store/precache-manifest.138d7a5a01380c6ba748aadc453a6cfe.js",
+    "precache-manifest.777f05316f920032d7ba05ecaefb7e86.js": "/ecommerce-store/precache-manifest.777f05316f920032d7ba05ecaefb7e86.js",
     "service-worker.js": "/ecommerce-store/service-worker.js",
     "static/css/main.3ed6c1a2.chunk.css.map": "/ecommerce-store/static/css/main.3ed6c1a2.chunk.css.map",
     "static/js/2.a9a47fd1.chunk.js.LICENSE.txt": "/ecommerce-store/static/js/2.a9a47fd1.chunk.js.LICENSE.txt",
@@ -18,7 +18,7 @@
     "static/media/greyjeans.jpeg": "/ecommerce-store/static/media/greyjeans.d202cf03.jpeg",
     "static/media/lightbluejeans.jpeg": "/ecommerce-store/static/media/lightbluejeans.260907c5.jpeg",
     "static/media/mainvideo2.mp4": "/ecommerce-store/static/media/mainvideo2.f2d6f55f.mp4",
-    "static/media/photo2.jpg": "/ecommerce-store/static/media/photo2.77df6dab.jpg",
+    "static/media/photo2.jpg": "/ecommerce-store/static/media/photo2.41f75066.jpg",
     "static/media/pinkjeans.jpeg": "/ecommerce-store/static/media/pinkjeans.3eb57b56.jpeg",
     "static/media/productListHeader.jpg": "/ecommerce-store/static/media/productListHeader.83f7175e.jpg",
     "static/media/stonejeans.jpeg": "/ecommerce-store/static/media/stonejeans.cb1c9b62.jpeg",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.00b60670.js",
     "static/js/2.a9a47fd1.chunk.js",
     "static/css/main.3ed6c1a2.chunk.css",
-    "static/js/main.016bdd41.chunk.js"
+    "static/js/main.c4fe813b.chunk.js"
   ]
 }
