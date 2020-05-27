@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1574eaf113a60901601d53b7e719f7b0",
+    "revision": "81df2aef01fadaebe2e90c1d1811b1d6",
     "url": "/ecommerce-store/index.html"
   },
   {
-    "revision": "49bf52416de5f4ed773c",
-    "url": "/ecommerce-store/static/css/main.aba6f494.chunk.css"
+    "revision": "3ba92e5c23f0ec0d770c",
+    "url": "/ecommerce-store/static/css/main.3ed6c1a2.chunk.css"
   },
   {
-    "revision": "32c78283a5eb976112e8",
-    "url": "/ecommerce-store/static/js/2.f80dd1c7.chunk.js"
+    "revision": "af2e5f3a98dbc8b87241",
+    "url": "/ecommerce-store/static/js/2.a9a47fd1.chunk.js"
   },
   {
     "revision": "928d7b5eb39d16fe9a880722c974b51e",
-    "url": "/ecommerce-store/static/js/2.f80dd1c7.chunk.js.LICENSE.txt"
+    "url": "/ecommerce-store/static/js/2.a9a47fd1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "49bf52416de5f4ed773c",
-    "url": "/ecommerce-store/static/js/main.889d484d.chunk.js"
+    "revision": "3ba92e5c23f0ec0d770c",
+    "url": "/ecommerce-store/static/js/main.016bdd41.chunk.js"
   },
   {
     "revision": "5e80d4de94aabcffd793",
@@ -36,10 +36,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecommerce-store/static/media/creamjeans.2e5497ed.jpeg"
   },
   {
-    "revision": "a9f9a1591c972de52a77c858f7bccad0",
-    "url": "/ecommerce-store/static/media/free-shipping.a9f9a159.gif"
-  },
-  {
     "revision": "d202cf034a781f65f38779c607358e8c",
     "url": "/ecommerce-store/static/media/greyjeans.d202cf03.jpeg"
   },
@@ -48,24 +44,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecommerce-store/static/media/lightbluejeans.260907c5.jpeg"
   },
   {
-    "revision": "38440987b2e83c0f8b7d4abc5e4828df",
-    "url": "/ecommerce-store/static/media/list-header.38440987.jpg"
-  },
-  {
     "revision": "f2d6f55fe1dd8d8e528a950f97f059cd",
     "url": "/ecommerce-store/static/media/mainvideo2.f2d6f55f.mp4"
   },
   {
-    "revision": "d720c2c6bcf4c9594f69f596e954a4e9",
-    "url": "/ecommerce-store/static/media/photo1.d720c2c6.jpg"
-  },
-  {
-    "revision": "5a844a814020908443d855932dd230de",
-    "url": "/ecommerce-store/static/media/photo2.5a844a81.jpg"
-  },
-  {
-    "revision": "67a4fe6bfdf7b5dcc077c558bc34ac6b",
-    "url": "/ecommerce-store/static/media/photo4.67a4fe6b.jpg"
+    "revision": "77df6dabd242f99d2be3a94cd62a4913",
+    "url": "/ecommerce-store/static/media/photo2.77df6dab.jpg"
   },
   {
     "revision": "3eb57b56a0f9a5c4463dba27068b2db1",
