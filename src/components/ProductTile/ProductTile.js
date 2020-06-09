@@ -17,7 +17,7 @@ const ProductTile = ({id, image, name, price}) => {
         <span className="ProductTile__price Text--subdued">{`$${price}`}</span>  
       </div>   
 
-    </div>         
+    </div>          
   );
 }
 
