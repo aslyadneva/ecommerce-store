@@ -5,7 +5,14 @@
   justify-content: center;
   align-items: center; 
 
+  &__image {  
+    height: 100%; 
+    width: 100%;
+    object-fit: cover;
+  }
+
   &__textArea {
+    position: absolute; 
     display: flex; 
     flex-direction: column; 
   }

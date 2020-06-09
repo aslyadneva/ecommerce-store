@@ -45,7 +45,9 @@ class Cart extends Component {
       return (
         <div className="Cart__checkout">
             <button 
+              style={{cursor: 'pointer'}}
               onClick={this.handleCheckoutClick} 
+              onTouchStart={this.handleCheckoutClick}
               className="Button Button--full Button--primary Cart__checkoutButton"
             >
               <span className="Cart__checkoutSpan">Checkout</span>
@@ -53,7 +55,7 @@ class Cart extends Component {
             </button>
         </div>
       ); 
-    }
+    } 
 
     return null;
   } 
@@ -61,7 +63,11 @@ class Cart extends Component {
   render () {
     const { cartItems, isOpen, total } = this.props; 
     return ReactDOM.createPortal (
-      <div className="Cart__Modal" style={{visibility: isOpen ? "visible" : "hidden"}} onClick={this.props.closeCart}>
+      <div 
+        className="Cart__Modal" 
+        style={{visibility: isOpen ? "visible" : "hidden"}} 
+        onClick={this.props.closeCart}
+      >
 
         <div className="Cart" onClick={e => e.stopPropagation()}>
           <div className="Cart__header">

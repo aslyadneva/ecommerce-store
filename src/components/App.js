@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'; 
 
 import { connect } from 'react-redux'; 
@@ -8,8 +8,7 @@ import Navigation from './Navigation';
 import Newsletter from './Newsletter'; 
 import Footer from './Footer';
 import Home from './pages/Home/Home'; 
-import ProductList from './pages/ProductList/ProductList';
-import Product from '../components/pages/Product/Product'; 
+
 import Login from './pages/Login';
 import Account from './pages/Account';
 import Cart from './cart/Cart'; 
@@ -17,6 +16,10 @@ import SideNav from './SideNav';
 import Modal from './Modal'; 
 import Checkout from './pages/Checkout/Checkout'; 
 import Search from './Search';
+
+const LazyProductList = React.lazy(() => import('./pages/ProductList/ProductList'));
+const LazyProduct = React.lazy(() => import('../components/pages/Product/Product'));
+
 
 class App extends Component {
   state = {
@@ -47,7 +50,7 @@ class App extends Component {
 
   render () {
     const {searchOpen} = this.state
-    const {signedIn, checkingOut, products} = this.props
+    const {signedIn, checkingOut} = this.props
 
     return (   
       <Fragment> 
@@ -63,9 +66,12 @@ class App extends Component {
                 </Route>               
                 <Route path="/login" exact> 
                   {signedIn ? <Redirect to="/account"/> : <Login/>}
-                </Route>                                    
-                <Route path="/products" exact component={ProductList}/>
-                <Route path="/products/:name" exact component={Product}/>
+                </Route>      
+
+                <Route path="/products" exact render={(props) => <Suspense fallback={<div>Loading...</div>}><LazyProductList {...props}/></Suspense> }/>
+
+                <Route path="/products/:name" exact render={(props) => <Suspense fallback={<div>Loading...</div>}><LazyProduct {...props}/></Suspense> }/>
+
                 <Route path="/checkout" exact>
                   {checkingOut ? <Checkout/> : <Redirect to="/"/>}
                 </Route>

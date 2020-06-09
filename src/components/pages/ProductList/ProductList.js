@@ -3,8 +3,7 @@ import ProductTile  from '../../ProductTile/ProductTile';
 import { connect } from 'react-redux'; 
 import { openSort, getSortDistance, clearSort } from '../../../actions'; 
 
-import listHeaderImage from '../../../images/list-header.jpg'; 
-import productListHeader from '../../../images/productListHeader.jpg'; 
+import productListHeader from '../../../images/essentials_1400x.jpg'; 
 
 class ProductList extends Component  {
   constructor() {
@@ -51,7 +50,7 @@ class ProductList extends Component  {
   }
 
   render() {
-    const { products, sortTab, openSort, sortedProducts } = this.props; 
+    const { products, openSort, sortedProducts } = this.props; 
   
     return (
       <section className="ProductList">
