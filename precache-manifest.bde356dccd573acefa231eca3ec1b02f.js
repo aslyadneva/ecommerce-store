@@ -1,35 +1,47 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "481b2d78d5e82ddce17a30611f9365c2",
+    "revision": "6778bf5ee715682237c17e5fc2077f01",
     "url": "/ecommerce-store/index.html"
   },
   {
-    "revision": "a1a3ee3150cd556d6043",
-    "url": "/ecommerce-store/static/css/main.3ed6c1a2.chunk.css"
+    "revision": "5ca323be432cbfa675ae",
+    "url": "/ecommerce-store/static/css/main.bd5b0ccb.chunk.css"
   },
   {
-    "revision": "3745ea536ead0c323aee",
-    "url": "/ecommerce-store/static/js/2.65d1580f.chunk.js"
+    "revision": "b6f845fdc6157b6a3e34",
+    "url": "/ecommerce-store/static/js/2.21cdb692.chunk.js"
   },
   {
     "revision": "928d7b5eb39d16fe9a880722c974b51e",
-    "url": "/ecommerce-store/static/js/2.65d1580f.chunk.js.LICENSE.txt"
+    "url": "/ecommerce-store/static/js/2.21cdb692.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1c3c60f06d6428225b1d",
-    "url": "/ecommerce-store/static/js/3.80a0db7d.chunk.js"
+    "revision": "d6527379e0082842b3d4",
+    "url": "/ecommerce-store/static/js/3.e56bab6b.chunk.js"
   },
   {
-    "revision": "b835e59017f46fcf120b",
-    "url": "/ecommerce-store/static/js/4.c4dd3ac5.chunk.js"
+    "revision": "427603bc56df424626b5",
+    "url": "/ecommerce-store/static/js/4.4ecf28a9.chunk.js"
   },
   {
-    "revision": "a1a3ee3150cd556d6043",
-    "url": "/ecommerce-store/static/js/main.2d558c00.chunk.js"
+    "revision": "5ca323be432cbfa675ae",
+    "url": "/ecommerce-store/static/js/main.8171f717.chunk.js"
   },
   {
-    "revision": "99f8aea1f0e4398b5989",
-    "url": "/ecommerce-store/static/js/runtime-main.6eecab09.js"
+    "revision": "61a68856ab7c937b72a7",
+    "url": "/ecommerce-store/static/js/runtime-main.d6879d6b.js"
+  },
+  {
+    "revision": "a77f19fe7f86b49a8d3b2471c3e304ee",
+    "url": "/ecommerce-store/static/media/Basix_1400x.a77f19fe.jpg"
+  },
+  {
+    "revision": "284a686314a5c85fbc87f914ea06ab4b",
+    "url": "/ecommerce-store/static/media/Basix_700.284a6863.jpg"
+  },
+  {
+    "revision": "344017e842b823214fc40fc36a1e109a",
+    "url": "/ecommerce-store/static/media/Basix_900.344017e8.jpg"
   },
   {
     "revision": "3b18fea76345b5074e8e0f9a4ed071a3",
@@ -44,6 +56,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecommerce-store/static/media/creamjeans.2e5497ed.jpeg"
   },
   {
+    "revision": "581f2b627a45b4ed584e0fbbece43b75",
+    "url": "/ecommerce-store/static/media/essentials_1400x.581f2b62.jpg"
+  },
+  {
     "revision": "d202cf034a781f65f38779c607358e8c",
     "url": "/ecommerce-store/static/media/greyjeans.d202cf03.jpeg"
   },
@@ -56,16 +72,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecommerce-store/static/media/mainvideo2.f2d6f55f.mp4"
   },
   {
-    "revision": "41f75066e066efd84323e44c1c9ca7f7",
-    "url": "/ecommerce-store/static/media/photo2.41f75066.jpg"
-  },
-  {
     "revision": "3eb57b56a0f9a5c4463dba27068b2db1",
     "url": "/ecommerce-store/static/media/pinkjeans.3eb57b56.jpeg"
-  },
-  {
-    "revision": "83f7175ee526df3a2e3af9a7356bfe17",
-    "url": "/ecommerce-store/static/media/productListHeader.83f7175e.jpg"
   },
   {
     "revision": "cb1c9b62bfb84c6e26cdcfd40e302dd7",
