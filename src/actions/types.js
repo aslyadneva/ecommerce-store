@@ -18,3 +18,4 @@ export const ADD_SHIPPING = "ADD_SHIPPING";
 export const CLEAR_CART = "CLEAR_CART"; 
 export const CLEAR_TOTAL = "CLEAR_TOTAL"; 
 export const CLEAR_SORT = "CLEAR_SORT";
+export const GET_PRODUCTS = "GET_PRODUCTS";

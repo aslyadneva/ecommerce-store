@@ -6,7 +6,7 @@ import mainNavReducer from './mainNavReducer';
 import sideNavReducer from './sideNavReducer';
 import sortReducer from './sortReducer';
 import modalReducer from './modalReducer';
-import productsReducer from './productsReducer';
+import firestoreProductsReducer from './firestoreProductsReducer';
 import checkOutReducer from './checkOutReducer';
 
 export default combineReducers({
@@ -17,6 +17,6 @@ export default combineReducers({
   sort: sortReducer, 
   modalDistance: modalReducer, 
   auth: authReducer, 
-  products: productsReducer,
+  firestoreProducts: firestoreProductsReducer, 
   checkOut: checkOutReducer
 });  

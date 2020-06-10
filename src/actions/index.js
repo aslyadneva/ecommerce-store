@@ -8,11 +8,14 @@ import {
   CHECKING_OUT, 
   UPDATE_SUBTOTAL, 
   ADD_SHIPPING, 
-  CLEAR_CART, CLEAR_TOTAL, CLEAR_SORT} from './types'; 
+  CLEAR_CART, CLEAR_TOTAL, CLEAR_SORT, GET_PRODUCTS} from './types'; 
 
 import googleAuthApi from '../apis/googleAuth'; 
+import { firestore } from '../firebase';
+
 
 const googleAuthApiInstance = new googleAuthApi();  
+
 
 export const initAuth = () => {
 
@@ -66,20 +69,20 @@ export const trySignOut = () => {
   }
 };
 
+export const getProducts = () => {
+  return function (dispatch) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    firestore.collection('products').get()
+      .then(items => items.docs.map(item => {
+        let itemObj = {
+          id: item.id, 
+          ...item.data()
+        }
+        return itemObj
+      }))
+      .then(itemsArr => dispatch({ type: GET_PRODUCTS, payload: itemsArr }))
+  }
+}
 
 
 export const openCart = () => {

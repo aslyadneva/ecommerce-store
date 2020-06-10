@@ -2,7 +2,7 @@ import React, { Component, Fragment, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'; 
 
 import { connect } from 'react-redux'; 
-import { initAuth } from '../actions'; 
+import { initAuth, getProducts, closeSideNav } from '../actions'; 
 
 import Navigation from './Navigation'; 
 import Newsletter from './Newsletter'; 
@@ -17,8 +17,11 @@ import Modal from './Modal';
 import Checkout from './pages/Checkout/Checkout'; 
 import Search from './Search';
 
+
 const LazyProductList = React.lazy(() => import('./pages/ProductList/ProductList'));
 const LazyProduct = React.lazy(() => import('../components/pages/Product/Product'));
+
+
 
 
 class App extends Component {
@@ -26,8 +29,9 @@ class App extends Component {
     searchOpen: false
   }
 
-  componentDidMount () {
+  componentDidMount ()  {
     this.props.initAuth();
+    this.props.getProducts();
   }  
 
   renderPrivateRoute = () => {
@@ -41,9 +45,12 @@ class App extends Component {
   }
 
   openSearch = () => {
+    if (this.props.sideNav) {
+      this.props.closeSideNav()
+    }
     this.setState({searchOpen : true})
   }
-
+ 
   closeSearch = () => {
     this.setState({searchOpen : false})
   }
@@ -55,7 +62,7 @@ class App extends Component {
     return (   
       <Fragment> 
           {searchOpen && <Search close={this.closeSearch}/>}
-          <SideNav/>
+          {!searchOpen &&  <SideNav openSearch={this.openSearch}/>} 
           <Route path="/" component={Cart}/>
           <Modal/>
               {this.props.checkingOut ? null : <Navigation openSearch={this.openSearch}/>}                    
@@ -88,8 +95,9 @@ const mapStateToProps = state => {
     sortTab: state.sort.sortTab,
     cartOpen: state.cart.isOpen, 
     checkingOut: state.checkOut.inProgress, 
-    signedIn: state.auth.isSignedIn
+    signedIn: state.auth.isSignedIn, 
+    sideNav: state.sideNav
   }
 }
 
-export default connect(mapStateToProps, {initAuth})(App);
+export default connect(mapStateToProps, { initAuth, getProducts, closeSideNav })(App);

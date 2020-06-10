@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'; 
 import { addToCart, setNavColor } from '../../../actions'; 
 import ProductForm from '../../ProductForm/ProductForm'; 
@@ -22,25 +22,31 @@ class Product extends Component {
   }
  
   render () {
-    const { image, name, price, description } = this.props.product; 
+    const { product } = this.props;
 
     return (
       <section className="Product">
-          {/* Product Image */}  
-          <div className="Product__Gallery">    
-            <img className="Product__Image" src={image} alt={name}></img>
-          </div>  
 
-          {/* Product Info */}
-          <div className="Product__Info">       
+        {product && 
+          <Fragment>
+            < div className="Product__Gallery">
+              <img className="Product__Image" src={product.image} alt={product.name}></img>
+            </div>  
+      
+            <div className="Product__Info">
               <div className="Product__Meta">
-                <h1 className="Heading h2">{name}</h1>     
-                <span className="Heading Text--subdued h4">{`$${price}`}</span>     
+                <h1 className="Heading h2">{product.name}</h1>
+                <span className="Heading Text--subdued h4">{`$${product.price}`}</span>
                 {/* <p>or 4 interest free installments of bla bla bla</p> */}
-                <p className="ProductMeta__Description">{description}</p>
+                <p className="ProductMeta__Description">{product.description}</p>
               </div>
-              <ProductForm onSubmit={this.onSubmit}/>
-          </div>
+              <ProductForm onSubmit={this.onSubmit} />
+            </div>
+          </Fragment>
+        }
+
+      {!product && <h1>Loading</h1>}
+          
       </section>
     );
   }    
@@ -49,7 +55,7 @@ class Product extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    product: state.products.filter(product => product.id === ownProps.match.params.name)[0]
+    product: state.firestoreProducts.filter(product => product.id === ownProps.match.params.name)[0]
   }
 }
 

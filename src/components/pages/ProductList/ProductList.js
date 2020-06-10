@@ -36,7 +36,7 @@ class ProductList extends Component  {
       productsToRender = currentProducts; 
     } 
 
-    return productsToRender.map(product => {
+    return productsToRender.map((product, idx) => {
       return (                 
         <ProductTile     
           key={product.id}               
@@ -44,6 +44,7 @@ class ProductList extends Component  {
           image={product.image}
           name={product.name}
           price={product.price}
+          animationDelay={idx}
         />
       );
     }); 
@@ -78,7 +79,8 @@ class ProductList extends Component  {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products, 
+    // products: state.products, 
+    products: state.firestoreProducts, 
     sortTab: state.sort.sortTab, 
     sortedProducts: state.sort.sortedProducts
   }

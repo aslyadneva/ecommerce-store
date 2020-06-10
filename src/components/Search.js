@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products
+    products: state.firestoreProducts
   }
 }
 

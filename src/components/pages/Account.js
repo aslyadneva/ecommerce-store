@@ -1,8 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux'; 
 import { trySignOut, setNavColor } from '../../actions'; 
 import Separator from '../Separator'; 
-import SectionHeader from '../SectionHeader'; 
+
 
 class Account extends Component {
 

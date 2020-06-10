@@ -2,9 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
  
  
-const ProductTile = ({id, image, name, price}) => {
+const ProductTile = ({ id, image, name, price, animationDelay}) => {
   return (
-    <div className="ProductTile">
+    <div 
+      className="ProductTile" 
+      data-aos="fade-right" 
+      data-aos-easing="ease-in-sine" 
+      data-aos-once="true"
+      data-aos-duration="1000"
+      data-aos-delay={`${animationDelay}00`}
+    >
 
       <div style={{overflow: 'hidden'}}>
         <Link to={`/products/${id}`}>    

@@ -4,7 +4,7 @@ const CheckoutItem = ({ image, quantity, name, size, price}) => {
   return (
     <div className="CheckoutItem">
       <div className="CheckoutItem__thumbnail">
-        <img src={image}/>
+        <img src={image} alt={name}/>
         <span className="CheckoutItem__quantity">{quantity}</span>
       </div>
 

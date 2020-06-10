@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import { Link } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
 import CarouselButton from '../CarouselButton'; 
 import ProductTile from '../ProductTile/ProductTile'; 
@@ -60,10 +59,16 @@ class FeaturedCollection extends Component {
         <div className="FeatureCollection">
           {productScrollPos > 0 ? <CarouselButton direction='left' click={this.handleScrollLeft}/> : null}
           <div className="FeatureCollection__products" ref={this.productListRef}>
-              {products.map(product => { 
+              {products.map((product, idx) => { 
                 return (
                   <div className="Carousel__Item" key={product.id}>
-                    <ProductTile id={product.id} image={product.image} name={product.name} price={product.price}/>
+                    <ProductTile 
+                      id={product.id} 
+                      image={product.image} 
+                      name={product.name} 
+                      price={product.price}
+                      animationDelay={idx}
+                    />
                   </div>
                 );
               })}
@@ -82,7 +87,7 @@ class FeaturedCollection extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.firestoreProducts
   }
 }
 

@@ -17,6 +17,7 @@ import FeaturedProduct from '../../FeaturedProduct';
 class Home extends Component {
  
   render () { 
+    const { products } = this.props
   
     return (
       <Fragment>
@@ -55,7 +56,7 @@ class Home extends Component {
         <section className="Section">
           <div className="Container">
             <SectionHeader title="Featured Product"/>
-            <FeaturedProduct product={this.props.products[0]}/>
+            {products.length > 0 ? <FeaturedProduct product={this.props.products[0]}/> : null}     
           </div>
         </section>
   
@@ -69,7 +70,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.firestoreProducts
   }
 }
 

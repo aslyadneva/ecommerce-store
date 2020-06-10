@@ -1,6 +1,5 @@
 import React, {Component} from 'react'; 
 import { connect } from 'react-redux'; 
-import {Link} from 'react-router-dom'; 
 import { checkingOut, clearCart, clearTotal } from '../../../actions'; 
 import axios from 'axios'; 
 

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 
 const TextInput = ({type, placeholder, label, name, value, change}) => {
   // let inputContent; 

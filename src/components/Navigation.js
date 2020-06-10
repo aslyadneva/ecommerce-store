@@ -37,7 +37,7 @@ class Navigation extends React.Component {
 
   renderNavStyle (navStyle) {
     if (navStyle) {
-      return 'MainNav'
+      return 'MainNav' 
     } else if (!navStyle && this.state.scrollPosition < 15) {
       return 'MainNav MainNav--transparent'
     } else if ((!navStyle && this.state.scrollPosition > 15)) {
