@@ -16,6 +16,7 @@ import SideNav from './SideNav';
 import Modal from './Modal'; 
 import Checkout from './pages/Checkout/Checkout'; 
 import Search from './Search';
+import Loading from './Loading';
 
 
 const LazyProductList = React.lazy(() => import('./pages/ProductList/ProductList'));
@@ -75,9 +76,9 @@ class App extends Component {
                   {signedIn ? <Redirect to="/account"/> : <Login/>}
                 </Route>      
 
-                <Route path="/products" exact render={(props) => <Suspense fallback={<div>Loading...</div>}><LazyProductList {...props}/></Suspense> }/>
+                <Route path="/products" exact render={(props) => <Suspense fallback={<Loading />}><LazyProductList {...props}/></Suspense> }/>
 
-                <Route path="/products/:name" exact render={(props) => <Suspense fallback={<div>Loading...</div>}><LazyProduct {...props}/></Suspense> }/>
+                <Route path="/products/:name" exact render={(props) => <Suspense fallback={<Loading/>}><LazyProduct {...props}/></Suspense> }/>
 
                 <Route path="/checkout" exact>
                   {checkingOut ? <Checkout/> : <Redirect to="/"/>}

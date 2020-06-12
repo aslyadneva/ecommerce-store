@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'; 
 import { addToCart, setNavColor } from '../../../actions'; 
 import ProductForm from '../../ProductForm/ProductForm'; 
+import Loading from '../../Loading';
 
 class Product extends Component {
 
@@ -45,7 +46,7 @@ class Product extends Component {
           </Fragment>
         }
 
-      {!product && <h1>Loading</h1>}
+      {!product && <Loading/>}
           
       </section>
     );
