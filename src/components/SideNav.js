@@ -45,7 +45,7 @@ class SideNav extends Component {
             
             <nav className="SideNav__Main__SecondaryNav">
                 <ul>
-                  <li><NavLink  to={this.isAuthorized} onClick={this.props.closeSideNav}>Account</NavLink></li>
+                  {/* <li><NavLink  to={this.isAuthorized} onClick={this.props.closeSideNav}>Account</NavLink></li> */}
                   <li><NavLink to="/" onClick={openSearch}>Search</NavLink></li>          
                 </ul>
             </nav>

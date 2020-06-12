@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   componentDidMount ()  {
-    this.props.initAuth();
+    // this.props.initAuth();
     this.props.getProducts();
   }  
 

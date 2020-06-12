@@ -64,7 +64,7 @@ class Navigation extends React.Component {
           
               {/* LARGE Device Only */}
               <nav className="MainNav__SecondaryNav">       
-                <NavLink className="Heading Text--subdued" to={this.isAuthorized}>ACCOUNT</NavLink>                  
+                {/* <NavLink className="Heading Text--subdued" to={this.isAuthorized}>ACCOUNT</NavLink>                   */}
                 <NavLink className="Heading Text--subdued" to="#" onClick={openSearch}>SEARCH</NavLink>         
                 <NavLink className="Heading h6" to="#" onClick={this.props.openCart}>CART (<span>{this.renderNumOfCartItems(cartItems)}</span>)</NavLink>
               </nav>
