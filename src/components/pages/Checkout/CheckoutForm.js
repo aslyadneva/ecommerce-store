@@ -13,7 +13,7 @@ class CheckoutForm extends Component {
   state = { 
     page: 1, 
 
-    email: 'testuser@mail.com', firstName: 'Mary', lastName: 'Smith', address: '1234 Main St', city: 'New York', country: '', state: '', zipCode: '123456', phone: '(123) 456-7891', 
+    email: 'testuser@mail.com', firstName: 'Mary', lastName: 'Smith', address: '1234 Main St', city: 'New York', country: 'United States', state: 'NY', zipCode: '123456', phone: '(123) 456-7891', 
     shippingMethod: '', 
     cardNumber: '1234 5678 9110 6754', cardHolderName: 'Mary Smith', cardExpiry: '04/26', cardSecurityCode: '***',
 
