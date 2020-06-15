@@ -17,7 +17,7 @@ import FeaturedProduct from '../../FeaturedProduct';
 class Home extends Component {
  
   render () { 
-    const { products } = this.props
+    const { products, history } = this.props
   
     return (
       <Fragment>
@@ -44,7 +44,7 @@ class Home extends Component {
         {/* Featured Collection */}
         <section className="Section">    
           <SectionHeader title="new in"/>
-          <FeaturedCollection/>
+          <FeaturedCollection history={history}/>
         </section>
   
         {/* Video */}

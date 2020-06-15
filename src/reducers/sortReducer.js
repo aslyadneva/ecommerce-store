@@ -13,6 +13,7 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, sortTab: false}
     case SORT: 
       const { sortType, products } = action.payload; 
+      console.log(products)
 
       // SORT alpabetically a-z 
       function compareAlpha (a, b) {

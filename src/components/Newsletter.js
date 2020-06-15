@@ -2,22 +2,14 @@ import React, { Component } from 'react';
 // import { Field, reduxForm } from 'redux-form'; 
 
 class Newsletter extends Component {
-  // renderInput ({input, label}) {
-  //   return (
-  //     <div>
-  //       <label>{label}</label>
-  //       <input {...input}/>
-  //     </div>
-  //   );
-  // }
 
-  // onSubmit (formValues) {
-  //   console.log(formValues); 
-  // }
+  handleSubmit (e) {
+    e.preventDefault()
+  }
 
   render () {
     return (
-      <form className="Section Newsletter" autoComplete="off">
+      <form className="Section Newsletter" autoComplete="off" onSubmit={this.handleSubmit}>
        
        <div className="Newsletter__container">
           <h3 className="Heading h4 Newsletter__heading">Sign Up for Our Newsletter</h3>

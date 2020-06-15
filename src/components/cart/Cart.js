@@ -37,7 +37,7 @@ class Cart extends Component {
               );
             })}
       </div>
-    ); 
+    );  
   } 
 
   renderCartFooter(cartItems, total) {

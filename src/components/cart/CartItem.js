@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 import QuantityForm from '../QuantityForm'; 
 import { connect } from 'react-redux'; 
-import { increaseQuantity, decreaseQuantity } from '../../actions'; 
+import { increaseQuantity, decreaseQuantity, closeCart } from '../../actions'; 
 
 class CartItem extends Component {
 
@@ -24,7 +24,7 @@ class CartItem extends Component {
   }
 
   render () { 
-    const { image, title, size, price, quantity, item: id } = this.props; 
+    const { image, title, size, price, quantity, item: {id} } = this.props; 
     return (
       <div className="CartItem">
         
@@ -33,7 +33,7 @@ class CartItem extends Component {
         </div>
 
         <div className="CartItem__content">
-          <h2 className="CartItem__title Heading"><Link to={`/products/${id}`}>{title}</Link></h2>
+          <h2 className="CartItem__title Heading" onClick={() => this.props.closeCart()}><Link to={`/products/${id}`}>{title}</Link></h2>
           
           <div className="CartItem__info Heading Text--subdued">
             <p className="CartItem__Variant">{size}</p>              
@@ -59,4 +59,4 @@ class CartItem extends Component {
   
 }
 
-export default connect (null, { increaseQuantity, decreaseQuantity })(CartItem);
+export default connect (null, { increaseQuantity, decreaseQuantity, closeCart })(CartItem);

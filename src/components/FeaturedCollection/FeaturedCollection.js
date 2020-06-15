@@ -51,7 +51,7 @@ class FeaturedCollection extends Component {
   }
 
   render (props) {
-    const { products } = this.props; 
+    const { products, history } = this.props; 
     const { productScrollPos } = this.state; 
   
     return (
@@ -77,7 +77,7 @@ class FeaturedCollection extends Component {
         </div>
   
         <div className="Container" style={{textAlign: 'center'}}>
-            <button style={{marginTop: '8rem'}} className="Button Button--primary"> View all products</button>
+            <button style={{marginTop: '8rem'}} className="Button Button--primary" onClick={() => history.push('/products')}> View all products</button>
         </div>
       </Fragment>
     )

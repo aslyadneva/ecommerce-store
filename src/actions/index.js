@@ -216,11 +216,11 @@ export const sort = (sortType) => {
 
   return function (dispatch, getState) {
 
-    const { products } = getState(); 
+    const { firestoreProducts } = getState(); 
 
     dispatch({
       type: SORT, 
-      payload: {sortType: sortType, products: products}
+      payload: { sortType: sortType, products: firestoreProducts }
     });
     
     dispatch(closeSort())

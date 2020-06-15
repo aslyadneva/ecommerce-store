@@ -39,7 +39,7 @@ class SideNav extends Component {
                   <NavLink to="/products" onClick={this.props.closeSideNav}>SHOP</NavLink>
                 </div> 
                 <div className="NavItem">
-                  <NavLink to="/products">CLEARANCE</NavLink>
+                  <NavLink to="/products" onClick={this.props.closeSideNav}>CLEARANCE</NavLink>
                 </div>
             </nav>
             

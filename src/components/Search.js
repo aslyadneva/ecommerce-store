@@ -46,7 +46,7 @@ class Search extends Component {
             value={searchInput}
             onChange={this.handleChange}
           />
-          <i onClick={() => close()} style={{color: '#1c1b1b'}} className="fas fa-times fa-2x"/>
+          <i onClick={() => close()} style={{color: '#1c1b1b', cursor: 'pointer'}} className="fas fa-times fa-2x"/>
         </div>
         <div className="Search__results">
           {searchResults.length > 0 && 
