@@ -1,6 +1,6 @@
 # E-Commerce Store
 
-An e-commerce store built with React. Browse and search for products, add them to cart, and complete the checkout process.
+The front-end of an e-commerce store built with React. Browse and search for products, add them to cart, and complete the checkout process.
 
 [E-Commerce Store](https://ecom-site.netlify.app/)
 
